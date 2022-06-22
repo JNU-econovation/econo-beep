@@ -1,5 +1,6 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Theme from './styles/Theme';
 import Home from './Pages/Home';
@@ -18,9 +19,20 @@ function AppRouter() {
   return <LoggedInRoutes />;
 }
 
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+
+  * {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+`;
+
 function App() {
   return (
     <ThemeProvider theme={Theme}>
+      <GlobalStyle />
       <AppRouter />
     </ThemeProvider>
   );
