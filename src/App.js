@@ -1,27 +1,29 @@
-import React from "react";
-import {ThemeProvider} from "styled-components";
-import Theme from "./styles/Theme"
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Home from "./Pages/Home";
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Theme from './styles/Theme';
+import Home from './Pages/Home';
 
-const LoggedInRoutes = () => (
+function LoggedInRoutes() {
+  return (
     <Router>
-        <Routes>
-            <Route path="/" element={<Home/>}/>
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </Router>
-);
+  );
+}
 
-const AppRouter = () => (
-    <LoggedInRoutes/>
-)
+function AppRouter() {
+  return <LoggedInRoutes />;
+}
 
 function App() {
-    return (
-        <ThemeProvider theme={Theme}>
-            <AppRouter/>
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider theme={Theme}>
+      <AppRouter />
+    </ThemeProvider>
+  );
 }
 
 export default App;
