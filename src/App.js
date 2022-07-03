@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Theme from './styles/Theme';
+import theme from './styles/theme';
 import Home from './Pages/Home';
 
 function LoggedInRoutes() {
@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AppRouter />
     </ThemeProvider>
