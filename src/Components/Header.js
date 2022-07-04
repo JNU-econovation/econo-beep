@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { BiMenuAltLeft, BiX, BiUserCircle } from 'react-icons/bi';
+import { BiUserCircle } from 'react-icons/bi';
+import MenuButton from './MenuButton';
 
 function Header() {
   const [isToggled, setIsToggled] = useState(false);
@@ -10,11 +11,8 @@ function Header() {
   };
 
   return (
-    <Menubar isToggled={isToggled}>
-      {/* 메뉴 버튼 */}
-      <button type="button" className="toggle" onClick={onClick}>
-        {!isToggled ? (<BiMenuAltLeft />) : (<BiX />)}
-      </button>
+    <MenuBar isToggled={isToggled}>
+      <MenuButton isToggled={isToggled} onClick={onClick} />
       {/* 에코노삡 로고 */}
       <div className="logo">
         <h2>econoBeep</h2>
@@ -33,11 +31,11 @@ function Header() {
       <div className="profile profile__pc">
         <BiUserCircle />
       </div>
-    </Menubar>
+    </MenuBar>
   );
 }
 
-const Menubar = styled.div`
+const MenuBar = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
@@ -66,16 +64,7 @@ const Menubar = styled.div`
     color: ${(props) => props.theme.black};
     opacity: ${(props) => props.theme.secondaryOpacity};
   }
-
-  .toggle {
-    display: none;
-    font-size: 2rem;
-    padding: 0.2rem 0.2rem;
-    background-color: ${(props) => props.theme.bgColor};
-    border: none;
-    color: ${(props) => props.theme.blue};
-  }
-
+  
   .profile {
     display: block;
     font-size: 2rem;
