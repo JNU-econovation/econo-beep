@@ -19,9 +19,9 @@ function Header() {
       <div className="logo">
         <h2>econoBeep</h2>
       </div>
-      {/* 유저 프로필 */}
+      {/* 유저 프로필 for mobile */}
       <div className="profile profile__mobile">
-        <BiUserCircle />
+        {!isToggled ? <BiUserCircle /> : <div className="no__profile" /> }
       </div>
       {/* 메뉴 리스트 */}
       <ul className="menu_list">
@@ -29,6 +29,7 @@ function Header() {
         <li>기자재</li>
         <li>관리자</li>
       </ul>
+      {/* 유저 프로필 for pc */}
       <div className="profile profile__pc">
         <BiUserCircle />
       </div>
@@ -42,6 +43,7 @@ const Menubar = styled.div`
   width: 100%;
   max-width: 1280px;
   margin: 1rem auto;
+  padding: 0 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -82,6 +84,11 @@ const Menubar = styled.div`
   
   .profile__mobile {
     display: none;
+  }
+  
+  .no__profile {
+    width: 32px;
+    height: 32px;
   }
 
   @media screen and (max-width: 767px) {
