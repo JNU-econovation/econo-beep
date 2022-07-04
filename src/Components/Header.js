@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BiUserCircle } from 'react-icons/bi';
 import MenuButton from './MenuButton';
+import Logo from './Logo';
 
 function Header() {
   const [isToggled, setIsToggled] = useState(false);
@@ -14,9 +15,7 @@ function Header() {
     <MenuBar isToggled={isToggled}>
       <MenuButton isToggled={isToggled} onClick={onClick} />
       {/* 에코노삡 로고 */}
-      <div className="logo">
-        <h2>econoBeep</h2>
-      </div>
+      <Logo />
       {/* 유저 프로필 for mobile */}
       <div className="profile profile__mobile">
         {!isToggled ? <BiUserCircle /> : <div className="no__profile" /> }
@@ -47,11 +46,6 @@ const MenuBar = styled.div`
   align-items: center;
   color: ${(props) => props.theme.blue};
   background-color: ${(props) => props.theme.bgColor};
-  
-  .logo{
-    margin: 0 1rem;
-    font-size: 1.5rem;
-  }
   
   .menu_list {
     list-style: none;
@@ -95,11 +89,7 @@ const MenuBar = styled.div`
       margin: 1rem 1rem;
       padding: 0;
     }
-
-    .toggle {
-      display: block;
-    }
-
+    
     .profile {
       display: block;
     }
