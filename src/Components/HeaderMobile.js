@@ -28,18 +28,14 @@ const MenuBar = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    position: fixed;
-    top: 0;
     width: 100%;
-    margin: 1rem auto;
     padding: 0rem 0.5rem;
+    
+    position: fixed;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    color: ${(props) => props.theme.blue};
-    background-color: ${(props) => props.theme.bgColor};
-    
-    flex-wrap: wrap;
   }
 `;
 

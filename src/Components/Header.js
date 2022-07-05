@@ -1,15 +1,26 @@
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import HeaderMobile from './HeaderMobile';
 import HeaderPc from './HeaderPc';
 
 function Header() {
   return (
-    <div>
+    <Box>
       <HeaderMobile />
       <HeaderPc />
-    </div>
+    </Box>
   );
 }
+
+const Box = styled.div`
+  top: 0;
+  width: 100vh;
+  margin: 1rem auto;
+  
+  position: fixed;
+  
+  color: ${(props) => props.theme.blue};
+  background-color: ${(props) => props.theme.bgColor};
+`;
 
 export default Header;

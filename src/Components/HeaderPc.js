@@ -30,22 +30,18 @@ const MenuBar = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    position: fixed;
-    top: 0;
     width: 100%;
-    margin: 1rem auto;
     padding: 0rem 1.5rem;
+
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: ${(props) => props.theme.blue};
-    background-color: ${(props) => props.theme.bgColor};
   }
 `;
 
 const Box = styled.div`
   width: 65vw;
-  
   display: flex;
   justify-content: space-between;
 `;
