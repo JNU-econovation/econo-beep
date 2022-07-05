@@ -11,7 +11,6 @@ function Logo() {
 
 const Box = styled.div`
   margin: 0 1rem;
-  
   font-size: 1.5rem;
 `;
 
