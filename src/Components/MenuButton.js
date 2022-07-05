@@ -12,11 +12,13 @@ function MenuButton({ isToggled, onClick }) {
 
 const Box = styled.button`
   display: none;
-  font-size: 2rem;
   padding: 0.2rem 0.2rem;
-  background-color: ${(props) => props.theme.bgColor};
   border: none;
+  
+  font-size: 2rem;
+  
   color: ${(props) => props.theme.blue};
+  background-color: ${(props) => props.theme.bgColor};
   
   @media screen and (max-width: 767px) {
     display: block;
