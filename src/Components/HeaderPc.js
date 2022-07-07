@@ -1,20 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import MenuButton from './MenuButton';
 import Logo from './Logo';
 import Profile from './Profile';
 import Menu from './Menu';
 
 function HeaderPc() {
-  const [isToggled, setIsToggled] = useState(false);
-
-  const onClick = () => {
-    setIsToggled(!isToggled);
-  };
-
   return (
-    <MenuBar isToggled={isToggled}>
-      <MenuButton isToggled={isToggled} onClick={onClick} />
+    <MenuBar>
       <Box>
         <Logo />
         <Menu />
