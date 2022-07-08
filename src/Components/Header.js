@@ -6,6 +6,7 @@ import HeaderPc from './HeaderPc';
 function Header() {
   return (
     <Box>
+      {/* 어떻게 컴퓨터, 모바일을 감지하는건지..? */}
       <HeaderMobile />
       <HeaderPc />
     </Box>

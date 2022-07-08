@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import MenuButton from './MenuButton';
+import OpenMenuButton from './OpenMenuButton';
 import Logo from './Logo';
 import Profile from './Profile';
 import Menu from './Menu';
@@ -13,16 +13,19 @@ function HeaderMobile() {
   };
 
   return (
-    <MenuBar isToggled={isToggled}>
-      <MenuButton isToggled={isToggled} onClick={onClick} />
+  // Header 파일인데, 컴포넌트 이름은 또 MenuBar. 명명이 뭔가 이상함.
+  //  <MenuBar isToggled={isToggled}>
+    <HeaderHolder isToggled={isToggled}>
+      {/* MenuButton? 메유인 버튼? 메뉴를 위한 버튼? */}
+      <OpenMenuButton isToggled={isToggled} onClick={onClick} />
       <Logo />
       <Profile />
       <Menu isToggled={isToggled} />
-    </MenuBar>
+    </HeaderHolder>
   );
 }
 
-const MenuBar = styled.div`
+const HeaderHolder = styled.div`
   @media screen and (min-width: 768px) {
     display: none;
   }

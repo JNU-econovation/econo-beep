@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { BiMenuAltLeft, BiX } from 'react-icons/bi';
 
-function MenuButton({ isToggled, onClick }) {
+function OpenMenuButton({ isToggled, onClick }) {
   return (
     <Box isToggled={isToggled} onClick={onClick}>
       {!isToggled ? (<BiMenuAltLeft />) : (<BiX />)}
@@ -25,4 +25,4 @@ const Box = styled.button`
 }
 `;
 
-export default MenuButton;
+export default OpenMenuButton;
