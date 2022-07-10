@@ -13,10 +13,7 @@ function HeaderMobile() {
   };
 
   return (
-  // Header 파일인데, 컴포넌트 이름은 또 MenuBar. 명명이 뭔가 이상함.
-  //  <MenuBar isToggled={isToggled}>
     <HeaderHolder isToggled={isToggled}>
-      {/* MenuButton? 메유인 버튼? 메뉴를 위한 버튼? */}
       <OpenMenuButton isToggled={isToggled} onClick={onClick} />
       <Logo />
       <Profile />
@@ -32,7 +29,7 @@ const HeaderHolder = styled.div`
 
   @media screen and (max-width: 767px) {
     width: 100%;
-    padding: 0rem 0.5rem;
+    padding: 1rem 0;
     
     position: fixed;
     display: flex;

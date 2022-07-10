@@ -39,7 +39,7 @@ const muiTheme = createTheme({
   palette: {
     info: {
       light: styledTheme.black,
-      main: styledTheme.black,
+      main: styledTheme.firstGray,
       dark: styledTheme.black,
     },
   },

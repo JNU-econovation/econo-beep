@@ -1,9 +1,10 @@
 export default {
   bgColor: '#FDFDFD',
   blue: '#001AFF',
-  purple: '#8F00FF',
   gradientLogo: '90deg',
   bluePurple: 'linear-gradient(90deg, #001AFF 0%, #8F00FF 100%)',
   black: '#191A22',
-  secondaryOpacity: '70%',
+  firstGray: '#5D5E64',
+  borderTop: '1px solid rgba(25, 26, 34, 0.1)',
+  boxShadow: '0px 2px 4px rgba(25, 26, 34, 0.05)',
 };

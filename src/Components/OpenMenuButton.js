@@ -11,18 +11,18 @@ function OpenMenuButton({ isToggled, onClick }) {
 }
 
 const Box = styled.button`
-  display: none;
-  padding: 0.2rem 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  padding: 0.5rem;
+  margin-left: 0.5rem;
   border: none;
   
   font-size: 2rem;
   
   color: ${(props) => props.theme.blue};
   background-color: ${(props) => props.theme.bgColor};
-  
-  @media screen and (max-width: 767px) {
-    display: block;
-}
 `;
 
 export default OpenMenuButton;

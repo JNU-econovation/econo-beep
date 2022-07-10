@@ -6,7 +6,6 @@ import HeaderPc from './HeaderPc';
 function Header() {
   return (
     <Box>
-      {/* 어떻게 컴퓨터, 모바일을 감지하는건지..? */}
       <HeaderMobile />
       <HeaderPc />
     </Box>
@@ -16,7 +15,6 @@ function Header() {
 const Box = styled.div`
   top: 0;
   width: 100vh;
-  margin: 1rem auto;
   
   position: fixed;
   

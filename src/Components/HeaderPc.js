@@ -23,12 +23,14 @@ const MenuBar = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 100%;
-    padding: 0rem 1.5rem;
+    padding: 0.5rem 1.5rem;
 
     position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    box-shadow: ${(props) => props.theme.boxShadow};
   }
 `;
 
@@ -36,6 +38,7 @@ const Box = styled.div`
   width: 65vw;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export default HeaderPc;
