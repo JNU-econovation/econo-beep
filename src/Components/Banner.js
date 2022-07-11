@@ -22,7 +22,11 @@ const Box = styled.div`
   border-radius: 20px;
   
   display: flex;
-r;  align-items: center;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    height: 10vh;
+  }
 `;
 
 const Link = styled.a`

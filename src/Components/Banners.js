@@ -20,8 +20,7 @@ function Banners() {
 
   const items = [
     { href: 'https://econovation.kr/about', bgColor: 'black', text: '에코노베이션 홈페이지' },
-    { href: 'https://econovation.kr/about', bgColor: 'blue', text: 'T-ECONO' },
-    { href: 'https://www.youtube.com/channel/UCepdmgc4w5EQIc1J0lqXVtA', bgColor: '#FF0000', text: '에코노베이션 유튜브' },
+    { href: 'https://econovation.kr/about', bgColor: '#2269fa', text: 'T-ECONO' },
   ];
 
   return (
@@ -45,11 +44,11 @@ const StyledSlider = styled(Slider)`
   }
   
   @media screen and (min-width: 768px) {
-    width: 30vw;
-    height: 15vh;
+    width: 40vw;
+    height: 10vh;
     
     top: 50vh;
-    left: 35vw;
+    left: 30vw;
   }
 `;
 
