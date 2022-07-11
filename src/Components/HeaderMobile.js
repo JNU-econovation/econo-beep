@@ -14,9 +14,11 @@ function HeaderMobile() {
 
   return (
     <HeaderHolder isToggled={isToggled}>
-      <OpenMenuButton isToggled={isToggled} onClick={onClick} />
-      <Logo />
-      <Profile />
+      <Box>
+        <OpenMenuButton isToggled={isToggled} onClick={onClick} />
+        <Logo />
+        <Profile />
+      </Box>
       <Menu isToggled={isToggled} />
     </HeaderHolder>
   );
@@ -29,7 +31,6 @@ const HeaderHolder = styled.div`
 
   @media screen and (max-width: 767px) {
     width: 100%;
-    padding: 1rem 0;
     
     position: fixed;
     display: flex;
@@ -37,6 +38,16 @@ const HeaderHolder = styled.div`
     justify-content: space-between;
     align-items: center;
   }
+`;
+
+const Box = styled.div`
+  padding: 0.5rem 0;
+  
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export default HeaderMobile;

@@ -16,7 +16,7 @@ const Box = styled.button`
   align-items: center;
   
   padding: 0.5rem;
-  margin-right: 0.5rem;
+  margin-right: 0.25rem;
   border: none;
   
   font-size: 2rem;
