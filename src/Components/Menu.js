@@ -44,6 +44,10 @@ const StyledButton = styled(Button)`
       margin: 1rem 1rem;
       padding: 0;
     }
+    
+    &:hover{
+      background-color: ${(props) => props.theme.bgColor};
+    }
   }
   
 `;
