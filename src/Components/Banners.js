@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 function Banners() {
   const settings = {
-    dots: false,
+    dots: true,
     arrows: false,
     infinite: true,
     speed: 500,
@@ -34,6 +34,48 @@ function Banners() {
 }
 
 const StyledSlider = styled(Slider)`
+  position: relative;
+  
+  .slick-dots {
+    z-index: 1;
+
+    padding-right: 5px;
+    padding-top: 5px;
+    
+    position: absolute;
+    text-align: end;
+    
+    top: 0px;
+    right: 0px;
+    
+    width: 100px;
+    height: 30%;
+  }
+  
+  .slick-dots button {
+    display: block;
+
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    
+    border: none;
+    border-radius: 100%;
+    background-color: ${(props) => props.theme.bgColor};
+    
+    cursor: pointer;
+  }
+  
+  
+  .slick-dots li button:before {
+    display: none;
+  }
+  
+  
+  
+  .slick-dots li.slick-active button {
+    background-color: #FF7C7C;
+  }
   
   @media screen and (max-width: 767px) {
     width: 90vw;
