@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../Components/Header';
-import Classifications from '../Components/Classifications';
+import Category from '../Components/Category';
 
 function Home() {
   return (
     <Body>
       <Header />
-      <Classifications />
+      <Category />
     </Body>
   );
 }
