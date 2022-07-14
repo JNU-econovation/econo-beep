@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 function Banners() {
-  const settings = {
+  const sliderSettings = {
     dots: true,
     arrows: false,
     infinite: true,
@@ -18,16 +18,16 @@ function Banners() {
     pauseOnHover: true,
   };
 
-  const items = [
+  const bannerInfos = [
     { href: 'https://econovation.kr/about', bgColor: 'black', text: '에코노베이션 홈페이지' },
     { href: 'https://econovation.kr/about', bgColor: '#2269fa', text: 'T-ECONO' },
   ];
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <StyledSlider {...settings} position="absolute" top="50vh">
-      {items.map((item) => (
-        <Banner href={item.href} bgColor={item.bgColor} text={item.text} />
+    <StyledSlider {...sliderSettings} position="absolute" top="50vh">
+      {bannerInfos.map((item) => (
+        <Banner key={item.id} href={item.href} bgColor={item.bgColor} text={item.text} />
       ))}
     </StyledSlider>
   );

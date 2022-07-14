@@ -1,14 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Banner({
-  href, bgColor, text, src,
-}) {
+function Banner({ href, bgColor, text, src }) {
   return (
     <Link href={href}>
       <Box bgColor={bgColor}>
         <Img src={src} />
-        <Text text={text}> {text} </Text>
+        <Text> {text} </Text>
       </Box>
     </Link>
   );
@@ -39,9 +37,10 @@ const Link = styled.a`
 
 const Img = styled.img``;
 
-const Text = styled.h1`
+const Text = styled.div`
   color: ${(props) => props.theme.bgColor};
   font-size: 1rem;
+  font-weight: 600;
   
   margin-left: 1rem;
 `;
