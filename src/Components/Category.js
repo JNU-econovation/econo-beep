@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Class from './Class';
+import Type from './Type';
 
 function Category() {
   const firstRowItems = [
@@ -17,18 +17,18 @@ function Category() {
     { src: 'https://seeklogo.com/images/A/android-icon-logo-DB06FA8B39-seeklogo.com.png', to: '/app', text: 'APP' },
   ];
   return (
-    <ClassBox>
+    <TypeButtonBox>
       <Box>
         {firstRowItems.map((item) => (
-          <Class src={item.src} to={item.to} text={item.text} />
+          <Type key={item.id} src={item.src} to={item.to} text={item.text} />
         ))}
       </Box>
       <Box>
         {secondRowItems.map((item) => (
-          <Class src={item.src} to={item.to} text={item.text} />
+          <Type key={item.id} src={item.src} to={item.to} text={item.text} />
         ))}
       </Box>
-    </ClassBox>
+    </TypeButtonBox>
   );
 }
 
@@ -45,7 +45,7 @@ const Box = styled.div`
   }
 `;
 
-const ClassBox = styled.div`
+const TypeButtonBox = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

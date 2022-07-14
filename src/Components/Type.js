@@ -2,24 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-function Class({ to, src, text }) {
+function Type({ to, src, text }) {
   return (
-    <Box to={to}>
-      <Img src={src} />
-      <Text>{text}</Text>
+    <Box>
+      <Link to={to}>
+        <Img src={src} />
+        <Text>{text}</Text>
+      </Link>
     </Box>
   );
 }
-
-const Box = styled(Link)`
+const Box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   
-  text-decoration: none;
-  
   margin: 1rem;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Img = styled.img`
@@ -31,10 +34,10 @@ const Img = styled.img`
   margin: 0.5rem;
 `;
 
-const Text = styled.h3`
+const Text = styled.div`
   text-align: center;
   color: ${(props) => props.theme.firstGray};
   font-size: 1rem;
 `;
 
-export default Class;
+export default Type;
