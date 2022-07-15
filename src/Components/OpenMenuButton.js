@@ -4,13 +4,13 @@ import { BiMenuAltLeft, BiX } from 'react-icons/bi';
 
 function OpenMenuButton({ isToggled, onClick }) {
   return (
-    <Box isToggled={isToggled} onClick={onClick}>
+    <OpenMenu isToggled={isToggled} onClick={onClick}>
       {!isToggled ? (<BiMenuAltLeft />) : (<BiX />)}
-    </Box>
+    </OpenMenu>
   );
 }
 
-const Box = styled.button`
+const OpenMenu = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;

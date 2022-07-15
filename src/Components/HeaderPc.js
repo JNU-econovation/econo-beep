@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from './Logo';
-import Profile from './Profile';
+import ProfileButton from './ProfileButton';
 import Menu from './Menu';
 
 function HeaderPc() {
@@ -11,7 +11,7 @@ function HeaderPc() {
         <Logo />
         <Menu />
       </Box>
-      <Profile />
+      <ProfileButton />
     </MenuBar>
   );
 }
@@ -30,6 +30,7 @@ const MenuBar = styled.div`
     justify-content: space-between;
     align-items: center;
     
+    background-color: ${(props) => props.theme.bgColor};
     box-shadow: ${(props) => props.theme.boxShadow};
   }
 `;

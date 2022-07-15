@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import OpenMenuButton from './OpenMenuButton';
 import Logo from './Logo';
-import Profile from './Profile';
+import ProfileButton from './ProfileButton';
 import Menu from './Menu';
 
 function HeaderMobile() {
@@ -17,7 +17,7 @@ function HeaderMobile() {
       <Box>
         <OpenMenuButton isToggled={isToggled} onClick={onClick} />
         <Logo />
-        <Profile />
+        <ProfileButton isToggled={isToggled} />
       </Box>
       <Menu isToggled={isToggled} />
     </HeaderHolder>
@@ -42,12 +42,15 @@ const HeaderHolder = styled.div`
 
 const Box = styled.div`
   padding: 0.5rem 0;
-  
   width: 100%;
+  z-index: 1;
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  
+  background-color: ${(props) => props.theme.bgColor};
 `;
 
 export default HeaderMobile;

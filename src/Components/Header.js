@@ -15,7 +15,7 @@ function Header() {
 const Box = styled.div`
   top: 0;
   width: 100vh;
-  z-index: 100;
+  z-index: 2;
   
   position: fixed;
   
