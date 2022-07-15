@@ -13,7 +13,5 @@ function Home() {
 }
 
 const Body = styled.body`
-  width: 100vw;
-  height: 200vh;
 `;
 export default Home;

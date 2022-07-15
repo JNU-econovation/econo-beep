@@ -38,10 +38,12 @@ const Box = styled.div`
   justify-content: space-between;
   align-items: center;
   
-  width: 100vw;
+  width: 90vw;
+  margin: 0 5vw;
   
-  @media screen and (min-width: 767px) {
-    width: 60vw;
+  @media screen and (min-width: 768px) {
+    width: 40vw;
+    margin: 0 30vw;
   }
 `;
 
@@ -49,18 +51,10 @@ const TypeButtonBox = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-
-  width: 90vw;
   
-  position: absolute;
-  top: 60vh;
-  left: 5vw;
-  
-  @media screen and (min-width: 767px) {
-    left: 20vw;
-  }
+  width: 100vw;
 `;
 
 export default Category;

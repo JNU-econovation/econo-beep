@@ -4,15 +4,13 @@ import { Link } from 'react-router-dom';
 
 function Type({ to, src, text }) {
   return (
-    <Box>
-      <Link to={to}>
-        <Img src={src} />
-        <Text>{text}</Text>
-      </Link>
-    </Box>
+    <StyledLink to={to}>
+      <Img src={src} />
+      <Text>{text}</Text>
+    </StyledLink>
   );
 }
-const Box = styled.div`
+const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,9 +18,7 @@ const Box = styled.div`
   
   margin: 1rem;
 
-  a {
-    text-decoration: none;
-  }
+  text-decoration: none;
 `;
 
 const Img = styled.img`
@@ -30,8 +26,8 @@ const Img = styled.img`
   justify-content: center;
   align-items: center;
   
-  width: 5vh;
-  margin: 0.5rem;
+  width: 3rem;
+  margin-bottom: 1rem;
 `;
 
 const Text = styled.div`
