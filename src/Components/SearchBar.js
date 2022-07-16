@@ -23,7 +23,7 @@ function SearchBar() {
       <Icon>
         <BiSearch />
       </Icon>
-      <Search type="text" placeholder="|  Search" value={keyword} onChange={onChange} />
+      <Search type="text" placeholder="Search" value={keyword} onChange={onChange} />
     </SearchBox>
   );
 }
@@ -52,10 +52,12 @@ const Icon = styled.div`
 
 const Search = styled.input`
   width: 85%;
-  margin: 5px 0px;
-  padding: 0px;
+  margin: 5px 8px;
+  padding: 0px; 
+  padding-left: 12px;
   
   border: none;
+  border-left: 2px solid gray;
   font-size: 1rem;
   
   &:focus {
