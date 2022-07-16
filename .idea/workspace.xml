@@ -9,6 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8b12f7db-d2bf-4d69-b84a-28efd2ae39af" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

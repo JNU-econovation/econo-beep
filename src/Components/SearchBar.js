@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
 
 function SearchBar() {
   const [keyword, setKeyword] = useState('');
+
+  const navigate = useNavigate();
 
   const onChange = (event) => {
     setKeyword(event.target.value);
@@ -11,33 +14,28 @@ function SearchBar() {
 
   const onEnterPress = (event) => {
     if (event.key === 'Enter') {
-      event.preventDefault();
-      // eslint-disable-next-line
-      alert(keyword);
-      /*
-        fetch 후 filter 사용해서 검색 결과 가지고 오기
-       */
-      setKeyword('');
+      navigate(`/search?q=${keyword}`);
     }
   };
 
   return (
-    <Box onKeyPress={onEnterPress}>
+    <SearchBox onKeyPress={onEnterPress}>
       <Icon>
         <BiSearch />
       </Icon>
-      <Search type="text" placeholder="Search" value={keyword} onChange={onChange} />
-    </Box>
+      <Search type="text" placeholder="|  Search" value={keyword} onChange={onChange} />
+    </SearchBox>
   );
 }
 
-const Box = styled.form`
+const SearchBox = styled.form`
   height: 5vh;
+  width: 100%;
   
   display: flex;
   align-items: center;
   
-  border: 2px ${(props) => props.theme.blue} solid;
+  border: 1.5px ${(props) => props.theme.blue} solid;
   border-radius: 20px;
 `;
 
@@ -48,16 +46,15 @@ const Icon = styled.div`
   
   margin: 0px 5px 0px 10px;
   
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: ${(props) => props.theme.blue};
 `;
 
 const Search = styled.input`
-  width: 80%;
-  
+  width: 85%;
   margin: 5px 0px;
   padding: 0px;
-
+  
   border: none;
   font-size: 1rem;
   
