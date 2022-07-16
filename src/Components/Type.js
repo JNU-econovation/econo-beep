@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom';
 
 function Type({ to, src, text }) {
   return (
-    <StyledLink to={to}>
-      <Img src={src} />
-      <Text>{text}</Text>
-    </StyledLink>
+    <Box>
+      <Link to={to}>
+        <Img src={src} />
+        <Text>{text}</Text>
+      </Link>
+    </Box>
   );
 }
-const StyledLink = styled(Link)`
+const Box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   
   margin: 1rem;
-
-  text-decoration: none;
 `;
 
 const Img = styled.img`

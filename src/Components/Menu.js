@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 function Menu({ isToggled }) {
   return (
     <MenuButtonsHolder isToggled={isToggled}>
-      <StyledButton component={Link} to="/books" variant="text" color="info">도서</StyledButton>
-      <StyledButton component={Link} to="/equipment" variant="text" color="info">기자재</StyledButton>
-      <StyledButton component={Link} to="/manager" variant="text" color="info">관리자</StyledButton>
+      <MenuButton component={Link} to="/books" variant="text" color="info">도서</MenuButton>
+      <MenuButton component={Link} to="/equipment" variant="text" color="info">기자재</MenuButton>
+      <MenuButton component={Link} to="/manager" variant="text" color="info">관리자</MenuButton>
     </MenuButtonsHolder>
   );
 }
@@ -49,7 +49,7 @@ const MenuButtonsHolder = styled.ul`
   
 `;
 
-const StyledButton = styled(Button)`
+const MenuButton = styled(Button)`
   && {
     padding: 0 5vw;
     font-size: 1rem;

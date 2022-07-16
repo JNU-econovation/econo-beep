@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function ProfileButton({ isToggled }) {
   return (
     <Profile isToggled={isToggled}>
-      {!isToggled ? <StyledLink to="/profile"><BiUserCircle /></StyledLink> : <NoLogo /> }
+      {!isToggled ? <Link to="/profile"><Box><BiUserCircle /></Box></Link> : <NoLogo /> }
     </Profile>
   );
 }
@@ -31,14 +31,13 @@ const NoLogo = styled.div`
   justify-content: center;
 `;
 
-const StyledLink = styled(Link)`
+const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   
-  text-decoration: none;
   color: ${(props) => props.theme.blue};
-  
+
   font-size: 2rem;
 
   cursor: pointer;

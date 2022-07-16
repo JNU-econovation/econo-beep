@@ -19,21 +19,21 @@ function Banners() {
   };
 
   const bannerInfos = [
-    { href: 'https://econovation.kr/about', bgColor: 'black', text: '에코노베이션 홈페이지' },
-    { href: 'https://econovation.kr/about', bgColor: '#2269fa', text: 'T-ECONO' },
+    { to: 'https://econovation.kr/about', bgColor: 'black', text: '에코노베이션 홈페이지' },
+    { to: 'https://econovation.kr/about', bgColor: '#2269fa', text: 'T-econo' },
   ];
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <StyledSlider {...sliderSettings} position="absolute" top="50vh">
+    <BannersSlider {...sliderSettings} position="absolute" top="50vh">
       {bannerInfos.map((item) => (
-        <Banner key={item.id} href={item.href} bgColor={item.bgColor} text={item.text} />
+        <Banner key={item.id} to={item.to} bgColor={item.bgColor} text={item.text} />
       ))}
-    </StyledSlider>
+    </BannersSlider>
   );
 }
 
-const StyledSlider = styled(Slider)`
+const BannersSlider = styled(Slider)`
   position: relative;
   
   .slick-dots {

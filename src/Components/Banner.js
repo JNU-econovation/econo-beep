@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-function Banner({ href, bgColor, text, src }) {
+function Banner({ to, bgColor, text, src }) {
   return (
-    <Link href={href}>
+    <Link to={to}>
       <Box bgColor={bgColor}>
         <Img src={src} />
         <Text> {text} </Text>
@@ -24,14 +25,6 @@ const Box = styled.div`
 
   @media screen and (min-width: 768px) {
     height: 10vh;
-  }
-`;
-
-const Link = styled.a`
-  text-decoration-line: none;
-  
-  :visited {
-    color: ${(props) => props.theme.bgColor};
   }
 `;
 

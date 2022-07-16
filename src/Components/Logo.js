@@ -4,22 +4,18 @@ import { Link } from 'react-router-dom';
 
 function Logo() {
   return (
-    <Box>
-      <StyledLink to="/">econoBeep</StyledLink>
-    </Box>
+    <Link to="/">
+      <LogoText>econoBeep</LogoText>
+    </Link>
   );
 }
 
-const Box = styled.div`
+const LogoText = styled.div`
   margin: 0 1rem;
   font-size: 1.5rem;
+  color: ${(props) => props.theme.blue};
   
   cursor: pointer;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: ${(props) => props.theme.blue};
 `;
 
 export default Logo;
