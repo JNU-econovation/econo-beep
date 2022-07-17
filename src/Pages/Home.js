@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import SearchBar from '../Components/SearchBar';
+import SearchAll from '../Components/SearchAll';
+import SearchBook from '../Components/SearchBook';
+import SearchEquipment from '../Components/SearchEquipment';
 
 function Home() {
   return (
     <Body>
-      <SearchBar />
+      <SearchAll />
+      <SearchBook />
+      <SearchEquipment />
     </Body>
   );
 }

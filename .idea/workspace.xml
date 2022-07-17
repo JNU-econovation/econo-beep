@@ -8,10 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b12f7db-d2bf-4d69-b84a-28efd2ae39af" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/2/a2a8cd67cc67e04d2101c0e95da09147b5c5e2b2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/SearchAll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/SearchBook.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/SearchEquipment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +82,7 @@
       <workItem from="1656673786755" duration="24000" />
       <workItem from="1656673818241" duration="5467000" />
       <workItem from="1656687194340" duration="7987000" />
+      <workItem from="1658059485412" duration="1643000" />
     </task>
     <servers />
   </component>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
-function SearchBar() {
+function SearchBar({ placeholder, searchFor }) {
   const [keyword, setKeyword] = useState('');
 
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function SearchBar() {
 
   const onEnterPress = (event) => {
     if (event.key === 'Enter') {
-      navigate(`/search?q=${keyword}`);
+      navigate(`/${searchFor}?q=${keyword}`);
     }
   };
 
@@ -23,13 +23,13 @@ function SearchBar() {
       <Icon>
         <BiSearch />
       </Icon>
-      <Search type="text" placeholder="Search" value={keyword} onChange={onChange} />
+      <Search type="text" placeholder={placeholder} searchFor={searchFor} value={keyword} onChange={onChange} />
     </SearchBox>
   );
 }
 
 const SearchBox = styled.form`
-  height: 5vh;
+  height: 42px;
   width: 100%;
   
   display: flex;
@@ -44,21 +44,22 @@ const Icon = styled.div`
   justify-content: center;
   align-items: center;
   
-  margin: 0px 5px 0px 10px;
+  margin: 0px 0px 0px 15px;
   
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: ${(props) => props.theme.blue};
 `;
 
 const Search = styled.input`
   width: 85%;
   margin: 5px 8px;
-  padding: 0px; 
-  padding-left: 12px;
+  padding: 0 0 0 10px;
   
   border: none;
-  border-left: 2px solid gray;
-  font-size: 1rem;
+  border-left: 2px solid #C8C8C8;
+  
+  font-size: 0.9rem;
+  color: ${(props) => props.theme.black};
   
   &:focus {
     outline: none;
