@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Header from '../Components/Header';
 import Category from '../Components/Category';
 import Banners from '../Components/Banners';
+import Footer from '../Components/Footer';
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
       <Header />
       <Category />
       <Banners />
+      <Footer />
     </Body>
   );
 }
