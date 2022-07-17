@@ -3,7 +3,7 @@ import SearchBar from './SearchBar';
 
 function SearchEquipment() {
   return (
-    <SearchBar placeholder="기자재" searchFor="search-book" />
+    <SearchBar placeholder="기자재" searchFor="search/equipment" />
   );
 }
 
