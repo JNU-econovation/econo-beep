@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 function RecommendBook({ src, to }) {
   return (
     <Link to={to}>
-      <BookDiv>
+      <Box>
         <BookImg src={src} />
-      </BookDiv>
+      </Box>
     </Link>
   );
 }
@@ -24,7 +24,7 @@ const BookImg = styled.img`
   }
 `;
 
-const BookDiv = styled.div`
+const Box = styled.div`
   display: grid;
   place-items: center;
   margin: auto;

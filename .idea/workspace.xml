@@ -7,11 +7,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b12f7db-d2bf-4d69-b84a-28efd2ae39af" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/src/Components/BookSlider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/RecommendBook.js" afterDir="false" />
+    <list default="true" id="8c3d5c80-fe44-4a48-8d2b-9e2add40160d" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/SearchAll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/SearchBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/SearchBook.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/SearchEquipment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/econo-beep.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/9/196258fa80e308992dbdaf34aed070321122b61a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/0/7030d0b2f71b999ff89a343de08c414af32fc93a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/c/7c4d6ef51533a642e459ffc809af157252a7589a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c2ecef38a11c4658e74ebced5781bdefdef0bbeb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e803b5416ba4d9442cb3e33a0489e00cf5fc4d0a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f900edc44cb929c2267a16100a32851f6d5b477d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BookSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BookSlider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Home.js" afterDir="false" />
+    </list>
+    <list id="1661ad7a-eee8-46d8-9b5c-72e04d3d2978" name="chan 님이 변경한 내용" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Components/BookSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BookSlider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/RecommendBook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/RecommendBook.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +54,18 @@
         <option name="url" value="https://github.com/JNU-econovation/econo-beep.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Components/BookSlider.js">
+      <ranges>
+        <range start1="8" end1="27" start2="8" end2="8" changelist="8c3d5c80-fe44-4a48-8d2b-9e2add40160d" />
+        <range start1="35" end1="37" start2="16" end2="27" changelist="1661ad7a-eee8-46d8-9b5c-72e04d3d2978" />
+        <range start1="48" end1="49" start2="38" end2="39" changelist="1661ad7a-eee8-46d8-9b5c-72e04d3d2978" />
+        <range start1="50" end1="51" start2="40" end2="41" changelist="1661ad7a-eee8-46d8-9b5c-72e04d3d2978" />
+        <range start1="52" end1="53" start2="42" end2="43" changelist="1661ad7a-eee8-46d8-9b5c-72e04d3d2978" />
+        <range start1="57" end1="58" start2="47" end2="48" changelist="1661ad7a-eee8-46d8-9b5c-72e04d3d2978" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -83,7 +121,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8b12f7db-d2bf-4d69-b84a-28efd2ae39af" name="Changes" comment="" />
+      <changelist id="8c3d5c80-fe44-4a48-8d2b-9e2add40160d" name="변경" comment="" />
       <created>1654001121634</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -110,6 +148,7 @@
       <workItem from="1657213900873" duration="2472000" />
       <workItem from="1657969327209" duration="11193000" />
       <workItem from="1657998775129" duration="2339000" />
+      <workItem from="1658146695598" duration="560000" />
     </task>
     <servers />
   </component>
