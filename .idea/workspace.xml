@@ -7,15 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b12f7db-d2bf-4d69-b84a-28efd2ae39af" name="Changes" comment="Changes">
+    <list default="true" id="8b12f7db-d2bf-4d69-b84a-28efd2ae39af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchAll.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchAll.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchBook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchBook.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchEquipment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchEquipment.js" afterDir="false" />
-    </list>
-    <list id="c7ee251b-0234-45ff-8073-a2d22ea11f6e" name="chan 님이 변경한 내용" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Banner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Banners.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Banners.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Logo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Logo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ProfileButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ProfileButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Type.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,14 +25,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Components/SearchBar.js">
-      <ranges>
-        <range start1="5" end1="6" start2="5" end2="6" changelist="8b12f7db-d2bf-4d69-b84a-28efd2ae39af" />
-        <range start1="16" end1="17" start2="16" end2="17" changelist="8b12f7db-d2bf-4d69-b84a-28efd2ae39af" />
-        <range start1="25" end1="26" start2="25" end2="26" changelist="c7ee251b-0234-45ff-8073-a2d22ea11f6e" />
-      </ranges>
-    </file>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="e2bb84ac-0ee9-4fc1-aedd-81181c4f5339" />
+        <option name="url" value="https://github.com/JNU-econovation/econo-beep.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -58,7 +57,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/chan/code/js/econo-beep/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -67,6 +66,23 @@
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -93,8 +109,9 @@
       <workItem from="1656673786755" duration="24000" />
       <workItem from="1656673818241" duration="5467000" />
       <workItem from="1656687194340" duration="7987000" />
-      <workItem from="1658059485412" duration="1643000" />
-      <workItem from="1658144402015" duration="581000" />
+      <workItem from="1657520979228" duration="89000" />
+      <workItem from="1657213468381" duration="430000" />
+      <workItem from="1657213900873" duration="2472000" />
     </task>
     <servers />
   </component>
