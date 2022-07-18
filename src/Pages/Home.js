@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import Header from '../Components/Header';
 import Category from '../Components/Category';
 import Banners from '../Components/Banners';
-import BookSlider from '../Components/BookSlider';
+import RecommendBookSlider from '../Components/RecommendBookSlider';
 import SearchAll from '../Components/SearchAll';
+import Footer from '../Components/Footer';
 
 function Home() {
   return (
@@ -13,7 +14,8 @@ function Home() {
       <SearchAll />
       <Banners />
       <Category />
-      <BookSlider />
+      <RecommendBookSlider />
+      <Footer />
     </Body>
   );
 }

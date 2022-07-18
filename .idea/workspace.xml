@@ -7,6 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="8b12f7db-d2bf-4d69-b84a-28efd2ae39af" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Home.js" afterDir="false" />
+=======
     <list default="true" id="8c3d5c80-fe44-4a48-8d2b-9e2add40160d" name="변경" comment="">
       <change afterPath="$PROJECT_DIR$/src/Components/SearchAll.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Components/SearchBar.js" afterDir="false" />
@@ -38,6 +44,7 @@
     <list id="1661ad7a-eee8-46d8-9b5c-72e04d3d2978" name="chan 님이 변경한 내용" comment="">
       <change beforePath="$PROJECT_DIR$/src/Components/BookSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BookSlider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/RecommendBook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/RecommendBook.js" afterDir="false" />
+>>>>>>> e44ed14f6027727478f33579076e21963d0e7d5f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

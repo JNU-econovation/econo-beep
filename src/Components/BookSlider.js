@@ -5,14 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import RecommendBook from './RecommendBook';
 
-function BookSlider() {
-  const recommendBookList = [
-    { to: '/인공지능책', src: 'http://image.yes24.com/goods/66913718/XL' },
-    { to: '/소설', src: 'http://image.yes24.com/goods/109705390/XL' },
-    { to: '/인공지능책', src: 'http://image.yes24.com/goods/66913718/XL' },
-    { to: '/소설', src: 'http://image.yes24.com/goods/109705390/XL' },
-  ];
-
+function BookSlider({bookList}) {
   return (
     <SliderBox
       dots={false}
@@ -25,7 +18,7 @@ function BookSlider() {
       autoplaySpeed={2000}
       pauseOnHover
     >
-      {recommendBookList.map((item) => (
+      {bookList.map((item) => (
         <RecommendBook key={item.id} to={item.to} src={item.src} />
       ))}
     </SliderBox>
