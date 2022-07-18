@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
-function SearchBar({ placeholder, searchFor }) {
+function SearchBar({ placeholder, searchApiUrl }) {
   const [keyword, setKeyword] = useState('');
 
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function SearchBar({ placeholder, searchFor }) {
 
   const onEnterPress = (event) => {
     if (event.key === 'Enter') {
-      navigate(`/${searchFor}?q=${keyword}`);
+      navigate(`/${searchApiUrl}?q=${keyword}`);
     }
   };
 
@@ -23,7 +23,7 @@ function SearchBar({ placeholder, searchFor }) {
       <Icon>
         <BiSearch />
       </Icon>
-      <Search type="text" placeholder={placeholder} searchFor={searchFor} value={keyword} onChange={onChange} />
+      <Search type="text" placeholder={placeholder} value={keyword} onChange={onChange} />
     </SearchBox>
   );
 }

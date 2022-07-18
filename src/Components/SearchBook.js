@@ -3,7 +3,7 @@ import SearchBar from './SearchBar';
 
 function SearchBook() {
   return (
-    <SearchBar placeholder="도서" searchFor="search/book" />
+    <SearchBar placeholder="도서" searchApiUrl="search/book" />
   );
 }
 
