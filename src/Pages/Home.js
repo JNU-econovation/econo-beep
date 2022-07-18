@@ -3,20 +3,24 @@ import styled from 'styled-components';
 import Header from '../Components/Header';
 import Category from '../Components/Category';
 import Banners from '../Components/Banners';
+import BookSlider from '../Components/BookSlider';
+import SearchAll from '../Components/SearchAll';
 import Footer from '../Components/Footer';
 
 function Home() {
   return (
     <Body>
       <Header />
-      <Category />
+      <SearchAll />
       <Banners />
+      <Category />
+      <BookSlider />
       <Footer />
     </Body>
   );
 }
 
-const Body = styled.body`
+const Body = styled.div`
   @media screen and (max-width: 767px) {
     width: 100vw;
     height: 200vh;

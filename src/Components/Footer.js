@@ -13,10 +13,12 @@ const FooterBox = styled.footer`
   width: 100%;
   height: 10vh;
   
-  padding: 1rem 1.5rem;
+  padding: 2rem 1.5rem;
   
-  background-color: #F6F6F7;
+  margin-top: 100px;
+  
   color: ${(props) => props.theme.firstGray};
+  border-top: 1px solid ${(props) => props.theme.borderGray};
   
   font-size: 0.8rem;
 `;
