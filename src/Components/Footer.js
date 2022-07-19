@@ -10,12 +10,13 @@ function Footer() {
 }
 
 const FooterBox = styled.footer`
-  width: 100%;
+  width: 100vw;
   height: 10vh;
   
-  padding: 2rem 1.5rem;
+  position: absolute;
+  top: 87.5vh;
   
-  margin-top: 100px;
+  padding: 1.5rem;
   
   color: ${(props) => props.theme.firstGray};
   border-top: 1px solid ${(props) => props.theme.borderGray};

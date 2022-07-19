@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import BookSlider from './BookSlider';
 
 function RecommendBookSlider() {
@@ -10,8 +11,46 @@ function RecommendBookSlider() {
   ];
 
   return (
-    <BookSlider bookList={recommendBookList} />
+    <Box>
+      <TextBox>
+        <Text>추천 도서</Text>
+      </TextBox>
+      <BookSlider bookList={recommendBookList} />
+    </Box>
   );
 }
+
+const Box = styled.div`
+  position: relative;
+  top: 25vh;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TextBox = styled.div`
+  font-size: 1rem;
+  color: ${(props) => props.theme.black};
+  margin: 0 5vw;
+  
+  @media screen and (max-width: 767px) {
+    width: 90vw;
+  }
+  
+  @media screen and (min-width: 768px) {
+    width: 700px;
+  }
+`;
+
+const Text = styled.div`
+  @media screen and (max-width: 767px) {
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 0 0 0 47px;
+  }
+`;
 
 export default RecommendBookSlider;

@@ -6,5 +6,4 @@ function SearchAll() {
     <SearchBar placeholder="검색" searchApiUrl="search/all" />
   );
 }
-
 export default SearchAll;

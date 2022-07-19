@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import RecommendBook from './RecommendBook';
 
-function BookSlider({bookList}) {
+function BookSlider({ bookList }) {
   return (
     <SliderBox
       dots={false}
@@ -29,14 +29,12 @@ const SliderBox = styled(Slider)`
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  width: 100vw;
+  margin: 1rem;
 
   .slick-track {
     overflow-x: hidden;
-  }
-
-  @media screen and (max-width: 767px) {
-    width: 90vw;
-    left: 5vw;
   }
 
   @media screen and (min-width: 768px) {

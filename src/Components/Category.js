@@ -18,6 +18,9 @@ function Category() {
   ];
   return (
     <TypeButtonBox>
+      <TextBox>
+        <Text>카테고리</Text>
+      </TextBox>
       <Box>
         {firstRowItems.map((item) => (
           <Type key={item.id} src={item.src} to={item.to} text={item.text} />
@@ -38,8 +41,10 @@ const Box = styled.div`
   justify-content: space-between;
   align-items: center;
   
-  width: 90vw;
-  margin: 0 5vw;
+  @media screen and (max-width: 767px) {
+    width: 90vw;
+    margin: 0 5vw;
+  }
   
   @media screen and (min-width: 768px) {
     width: 40vw;
@@ -55,6 +60,29 @@ const TypeButtonBox = styled.div`
   align-items: center;
   
   width: 100vw;
+  
+  position: relative;
+
+  top: 12.5vh;
+`;
+
+const TextBox = styled.div`
+  font-size: 1rem;
+  color: ${(props) => props.theme.black};
+
+  @media screen and (max-width: 767px) {
+    width: 90vw;
+    margin: 0 5vw;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 40vw;
+    margin: 0 30vw;
+  }
+`;
+
+const Text = styled.div`
+  margin-left: 1rem;
 `;
 
 export default Category;
