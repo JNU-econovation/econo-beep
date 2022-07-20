@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import RecommendBook from './RecommendBook';
 
-function BookSlider({bookList}) {
+function BookSlider({ bookList }) {
   return (
     <SliderBox
       dots={false}

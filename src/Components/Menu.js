@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Menu({ isToggled }) {
   return (
     <MenuButtonsHolder isToggled={isToggled}>
-      <MenuButton component={Link} to="/books" variant="text" color="info">도서</MenuButton>
+      <MenuButton component={Link} to="/book" variant="text" color="info">도서</MenuButton>
       <MenuButton component={Link} to="/equipment" variant="text" color="info">기자재</MenuButton>
       <MenuButton component={Link} to="/manager" variant="text" color="info">관리자</MenuButton>
     </MenuButtonsHolder>
