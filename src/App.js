@@ -5,12 +5,24 @@ import reset from 'styled-reset';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styledTheme from './styles/Theme';
 import Home from './Pages/Home';
+import BookList from './Pages/BookList';
+import EquipmentList from './Pages/EquipmentList';
+import SearchList from './Pages/SearchList';
+import BookDetail from './Pages/BookDetail';
+import EquipmentDetail from './Pages/EquipmentDetail';
+import Manager from './Pages/Manager';
 
 function LoggedInRoutes() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/search/books" element={<BookList />} />
+        <Route path="/search/equipments" element={<EquipmentList />} />
+        <Route path="/search/all" element={<SearchList />} />
+        <Route path="/book/:bookId" element={<BookDetail />} />
+        <Route path="/equipment/:equipmentId" element={<EquipmentDetail />} />
+        <Route path="/manager" element={<Manager />} />
       </Routes>
     </Router>
   );
