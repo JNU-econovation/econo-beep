@@ -17,11 +17,11 @@ function LoggedInRoutes() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/book" element={<BookList />} />
-        <Route path="/equipment" element={<EquipmentList />} />
-        <Route path="/search" element={<SearchList />} />
-        <Route path="/book-detail/:bookId" element={<BookDetail />} />
-        <Route path="/equipment-detail/:equipmentId" element={<EquipmentDetail />} />
+        <Route path="/search/books" element={<BookList />} />
+        <Route path="/search/equipments" element={<EquipmentList />} />
+        <Route path="/search/all" element={<SearchList />} />
+        <Route path="/book/:bookId" element={<BookDetail />} />
+        <Route path="/equipment/:equipmentId" element={<EquipmentDetail />} />
         <Route path="/manager" element={<Manager />} />
       </Routes>
     </Router>
