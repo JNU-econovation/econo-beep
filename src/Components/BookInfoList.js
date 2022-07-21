@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import BookImg from './BookImg';
 
-function BookInfoInList({ to, src, bookId, bookTitle, bookAuthorName, bookRent }) {
+function BookInfoList({ to, src, bookId, bookTitle, bookAuthorName, bookRent }) {
   return (
     <Link to={to}>
       <BookBox>
@@ -25,10 +25,19 @@ const BookBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
   padding: 1rem 0;
-  
+
   border-bottom: 0.2px solid darkgray;
+
+  @media screen and (max-width: 767px) {
+    width: 82.5vw;
+    margin: 0 8.625vw;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 700px;
+    margin: 0;
+  }
 `;
 
 const TextBox = styled.div`
@@ -79,4 +88,4 @@ const BookAuthorName = styled.div`
   color: ${(props) => props.theme.firstGray};
 `;
 
-export default BookInfoInList;
+export default BookInfoList;
