@@ -29,6 +29,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     text-decoration: none;
   }
+  
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+  }
 `;
 
 const muiTheme = createTheme({
