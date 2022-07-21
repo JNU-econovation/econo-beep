@@ -10,8 +10,8 @@ const BookImg = styled.img`
   }
 
   @media screen and (min-width: 768px) {
-    width: 140px;
-    height: 200px;
+    width: 105px;
+    height: 150px;
   }
 `;
 

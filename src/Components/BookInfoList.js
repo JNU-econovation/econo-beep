@@ -53,7 +53,7 @@ const TextBox = styled.div`
   
   @media screen and (min-width: 768px) {
     width: 400px;
-    height: 200px;
+    height: 150px;
     padding: 1rem;
   }
 `;
