@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import OpenMenuButton from './OpenMenuButton';
-import Logo from './Logo';
 import ProfileButton from './ProfileButton';
 import Menu from './Menu';
 
@@ -16,7 +15,6 @@ function HeaderMobile() {
     <HeaderHolder isToggled={isToggled}>
       <Box>
         <OpenMenuButton isToggled={isToggled} onClick={onClick} />
-        <Logo />
         <ProfileButton isToggled={isToggled} />
       </Box>
       <Menu isToggled={isToggled} />
