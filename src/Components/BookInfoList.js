@@ -35,8 +35,8 @@ const BookBox = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    width: 700px;
-    margin: 0;
+    width: 80vw;
+    max-width: 900px;
   }
 `;
 

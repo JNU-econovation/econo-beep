@@ -30,6 +30,8 @@ const Body = styled.div``;
 
 const ListBox = styled.div`
   width: 100vw;
+  
+  background-color: ${(props) => props.theme.bgColor};
 
   @media screen and (min-width: 768px) {
     display: flex;
