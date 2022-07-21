@@ -32,7 +32,7 @@ const Img = styled.img``;
 const Text = styled.div`
   color: ${(props) => props.theme.bgColor};
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   
   margin-left: 1rem;
 `;

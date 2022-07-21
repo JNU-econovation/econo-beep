@@ -33,7 +33,8 @@ const Img = styled.img`
 const Text = styled.div`
   text-align: center;
   color: ${(props) => props.theme.firstGray};
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: ${(props) => props.theme.fontWeightRegular};
 `;
 
 export default Type;

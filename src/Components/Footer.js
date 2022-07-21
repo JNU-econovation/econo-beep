@@ -16,6 +16,7 @@ const FooterBox = styled.footer`
   position: absolute;
   top: 87.5vh;
   
+  margin-top: 10px;
   padding: 1.5rem;
   
   color: ${(props) => props.theme.firstGray};

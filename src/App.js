@@ -32,6 +32,7 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
   }
 `;
 
@@ -42,6 +43,13 @@ const muiTheme = createTheme({
       main: styledTheme.firstGray,
       dark: styledTheme.black,
     },
+  },
+  typography: {
+    fontFamily: '"Noto Sans KR", sans-serif',
+    fontWeightLight: 300,
+    fontWeightRegular: 300,
+    fontWeightMedium: 400,
+    fontWeightBold: 300,
   },
 });
 

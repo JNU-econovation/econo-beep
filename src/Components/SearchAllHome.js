@@ -33,6 +33,7 @@ const LogoText = styled.div`
   margin: 0.75rem;
   
   font-size: 2.75rem;
+  font-family: ${(props) => props.theme.fontFamilyLogo};
   color: ${(props) => props.theme.blue};
 `;
 export default SearchAllHome;

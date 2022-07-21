@@ -68,6 +68,7 @@ const TypeButtonBox = styled.div`
 
 const TextBox = styled.div`
   font-size: 1rem;
+  font-weight: ${(props) => props.theme.fontWeightBold};
   color: ${(props) => props.theme.black};
 
   @media screen and (max-width: 767px) {

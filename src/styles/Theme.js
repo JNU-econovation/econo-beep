@@ -8,4 +8,7 @@ export default {
   borderGray: '#E8E8E8',
   borderTop: '1px solid rgba(25, 26, 34, 0.02)',
   boxShadow: '0px 2px 4px rgba(25, 26, 34, 0.05)',
+  fontWeightRegular: '400',
+  fontWeightBold: '600',
+  fontFamilyLogo: "'Advent Pro', sans-serif",
 };
