@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const BookImg = styled.img`
+const InfoImg = styled.img`
   border-radius: 10px;
   object-fit: cover;
   
@@ -8,4 +8,4 @@ const BookImg = styled.img`
   max-width: 140px;
 `;
 
-export default BookImg;
+export default InfoImg;
