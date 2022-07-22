@@ -25,19 +25,13 @@ const BookBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  width: 85vw;
+  max-width: 900px;
+  
   padding: 1rem 0;
 
   border-bottom: 0.2px solid darkgray;
-
-  @media screen and (max-width: 767px) {
-    width: 82.5vw;
-    margin: 0 8.625vw;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 80vw;
-    max-width: 900px;
-  }
 `;
 
 const TextBox = styled.div`
@@ -45,21 +39,15 @@ const TextBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  
-  @media screen and (max-width: 767px) {
-    width: 45vw;
-    height: 25vw;
-  }
-  
-  @media screen and (min-width: 768px) {
-    width: 400px;
-    height: 150px;
-    padding: 1rem;
-  }
+
+  width: 50%;
+  height: 100%;
+  margin-left: 1rem;
 `;
 
 const BookInformation = styled.div`
   width: 100%;
+  margin-bottom: 20%;
   text-align: left;
 `;
 
