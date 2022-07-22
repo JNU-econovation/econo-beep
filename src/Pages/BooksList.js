@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BookInfoList from '../Components/BookInfoList';
+import BookInfo from '../Components/BookInfo';
 
 function BooksList() {
   const bookResultList = [
@@ -12,7 +12,7 @@ function BooksList() {
     <Body>
       <ListBox>
         {bookResultList.map((item) => (
-          <BookInfoList
+          <BookInfo
             key={item.id}
             to={item.to}
             src={item.src}
