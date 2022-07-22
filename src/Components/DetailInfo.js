@@ -4,17 +4,17 @@ import styled from 'styled-components';
 function DetailInfo({ author, publisher, publicationDay }) {
   return (
     <DetailInfoBox>
-      <TopBox>
+      <TitleBox>
         <Title>저자</Title>
         <Title>출판사</Title>
-      </TopBox>
-      <BottomBox>
+      </TitleBox>
+      <TextBox>
         <AuthorText>{author}</AuthorText>
         <PublisherText>
           <Publisher>{publisher}</Publisher>
           <PublicationDay>{publicationDay}</PublicationDay>
         </PublisherText>
-      </BottomBox>
+      </TextBox>
     </DetailInfoBox>
   );
 }
@@ -33,7 +33,7 @@ const DetailInfoBox = styled.div`
   color: ${(props) => props.theme.black};
 `;
 
-const TopBox = styled.div`
+const TitleBox = styled.div`
   width: 100%;
   
   display: flex;
@@ -41,7 +41,7 @@ const TopBox = styled.div`
   align-items: center;
 `;
 
-const BottomBox = styled.div`
+const TextBox = styled.div`
   width: 100%;
   
   display: flex;
