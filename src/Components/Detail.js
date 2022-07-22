@@ -8,7 +8,7 @@ const Detail = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding-top: 2rem;
+  padding: 1rem 0;
   
   border-radius: 30px;
 `;

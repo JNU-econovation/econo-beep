@@ -14,7 +14,7 @@ const Img = styled.img`
   width: 50%;
   max-width: 300px;
   
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 `;
 
 export default DetailImg;
