@@ -21,6 +21,7 @@ function Category() {
   return (
     <Content>
       <ContentTitle>카테고리</ContentTitle>
+      <h1>123</h1>
       <Row>
         {firstRowTypes.map((item) => (
           <Type key={item.id} src={item.src} to={item.to} text={item.text} />
@@ -37,19 +38,6 @@ function Category() {
 
 const Row = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  
-  @media screen and (max-width: 767px) {
-    width: 90vw;
-    margin: 0 5vw;
-  }
-  
-  @media screen and (min-width: 768px) {
-    width: 40vw;
-    margin: 0 30vw;
-  }
 `;
 
 export default Category;

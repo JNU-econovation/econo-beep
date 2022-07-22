@@ -13,10 +13,6 @@ function Type({ to, src, text }) {
   );
 }
 const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   
   margin: 1rem;
 `;
