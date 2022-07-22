@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import BookImg from './BookImg';
 
-function BookInfoList({ to, src, bookId, bookTitle, bookAuthorName, bookRent }) {
+function BookInfoList({ src, bookId, bookTitle, bookAuthorName, bookRent }) {
   return (
-    <Link to={to}>
+    <Link to={`/book/${bookId}`}>
       <BookBox>
         <BookImg src={src} />
         <TextBox>
@@ -25,10 +25,10 @@ const BookBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
   width: 85vw;
   max-width: 900px;
-  
+
   padding: 1rem 0;
 
   border-bottom: 0.2px solid darkgray;
@@ -59,20 +59,20 @@ const RentInformation = styled.div`
 
 const BookId = styled.div`
   font-size: 0.3rem;
-  
+
   color: ${(props) => props.theme.secondGray};
 `;
 
 const BookTitle = styled.div`
   font-size: 1rem;
   padding: 0.3rem 0;
-  
+
   color: ${(props) => props.theme.black};
 `;
 
 const BookAuthorName = styled.div`
   font-size: 0.8rem;
-  
+
   color: ${(props) => props.theme.firstGray};
 `;
 
