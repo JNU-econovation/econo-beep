@@ -5,7 +5,7 @@ import reset from 'styled-reset';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styledTheme from './styles/Theme';
 import Home from './Pages/Home';
-import BookList from './Pages/BookList';
+import BooksList from './Pages/BooksList';
 import EquipmentList from './Pages/EquipmentList';
 import SearchList from './Pages/SearchList';
 import BookDetail from './Pages/BookDetail';
@@ -17,7 +17,7 @@ function LoggedInRoutes() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search/books" element={<BookList />} />
+        <Route path="/search/books" element={<BooksList />} />
         <Route path="/search/equipments" element={<EquipmentList />} />
         <Route path="/search/all" element={<SearchList />} />
         <Route path="/book/:bookId" element={<BookDetail />} />
@@ -34,6 +34,11 @@ function AppRouter() {
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
   * {
     -moz-box-sizing: border-box;
