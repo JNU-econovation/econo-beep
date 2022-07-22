@@ -4,7 +4,7 @@ import styled from 'styled-components';
 function Footer() {
   return (
     <FooterBox>
-      <p>copyright 어쩌구저쩌꾸</p>
+      <p>ⓒ ECONOVATION Management Dpt.</p>
     </FooterBox>
   );
 }
@@ -14,7 +14,7 @@ const FooterBox = styled.footer`
   height: 10vh;
   
   position: absolute;
-  top: 87.5vh;
+  bottom: 0;
   
   margin-top: 10px;
   padding: 1.5rem;

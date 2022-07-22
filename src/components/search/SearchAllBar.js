@@ -1,9 +1,9 @@
 import React from 'react-router-dom';
 import SearchBar from './SearchBar';
 
-function SearchAll() {
+function SearchAllBar() {
   return (
     <SearchBar placeholder="검색" searchApiUrl="search/all" />
   );
 }
-export default SearchAll;
+export default SearchAllBar;
