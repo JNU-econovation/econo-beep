@@ -26,17 +26,14 @@ function BookSlider({ bookList }) {
 }
 
 const SliderBox = styled(Slider)`
+  width: 100%;
+  
   display: flex;
   justify-content: center;
   align-items: center;
 
   .slick-track {
     overflow-x: hidden;
-  }
-
-  @media screen and (max-width: 767px) {
-    width: 90vw;
-    left: 5vw;
   }
 
   @media screen and (min-width: 768px) {

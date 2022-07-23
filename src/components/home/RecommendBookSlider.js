@@ -1,5 +1,7 @@
 import React from 'react';
 import BookSlider from './BookSlider';
+import ContentTitle from './ContentTitle';
+import Content from './Content';
 
 function RecommendBookSlider() {
   const recommendBookList = [
@@ -10,7 +12,10 @@ function RecommendBookSlider() {
   ];
 
   return (
-    <BookSlider bookList={recommendBookList} />
+    <Content>
+      <ContentTitle>추천 도서</ContentTitle>
+      <BookSlider bookList={recommendBookList} />
+    </Content>
   );
 }
 

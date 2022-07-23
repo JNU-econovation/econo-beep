@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import EquipmentInfo from '../Components/EquipmentInfo';
+import EquipmentInfo from '../components/List/EquipmentInfo';
 
 function BooksList() {
   const equipmentResultList = [

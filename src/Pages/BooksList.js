@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BookInfo from '../Components/BookInfo';
+import BookInfo from '../components/List/BookInfo';
 
 function BooksList() {
   const bookResultList = [

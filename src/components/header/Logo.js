@@ -13,6 +13,7 @@ function Logo() {
 const LogoText = styled.div`
   margin: 0 1rem;
   font-size: 1.5rem;
+  font-family: ${(props) => props.theme.fontFamilyLogo};
   color: ${(props) => props.theme.blue};
   
   cursor: pointer;
