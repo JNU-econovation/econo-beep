@@ -21,7 +21,6 @@ function Category() {
   return (
     <Content>
       <ContentTitle>카테고리</ContentTitle>
-      <h1>123</h1>
       <Row>
         {firstRowTypes.map((item) => (
           <Type key={item.id} src={item.src} to={item.to} text={item.text} />
@@ -37,7 +36,10 @@ function Category() {
 }
 
 const Row = styled.div`
+  width: 100%;
+  
   display: flex;
+  justify-content: space-around;
 `;
 
 export default Category;

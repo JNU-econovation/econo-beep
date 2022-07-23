@@ -24,10 +24,20 @@ function Banners() {
   ];
 
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <BannersSlider {...sliderSettings} position="absolute" top="50vh">
+    <BannersSlider
+      dots={true}
+      arrows={false}
+      infinite={true}
+      speed={500}
+      slidesToShow={1}
+      slidesToScroll={1}
+      autoplay={true}
+      autoplaySpeed={2500}
+      pauseOnHover={true}
+    >
+
       {bannerInfos.map((item) => (
-        <Banner key={item.id} href={item.href} bgColor={item.bgColor} text={item.text} />
+        <Banner key={item.id} href={item.href} bgColor={item.bgColor} text={item.text}/>
       ))}
     </BannersSlider>
   );
@@ -36,7 +46,17 @@ function Banners() {
 export default Banners;
 
 const BannersSlider = styled(Slider)`
-  position: relative;
+  height: 12.5vh;
+  width: 90vw;
+
+  position: absolute;
+  bottom: 4vh;
+
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+
 
   .slick-dots {
     z-index: 1;
@@ -74,18 +94,5 @@ const BannersSlider = styled(Slider)`
 
   .slick-dots li.slick-active button {
     background-color: #FF7C7C;
-  }
-  
-  height: 12.5vh;
-  top: 70vh;
-
-  @media screen and (max-width: 767px) {
-    width: 90vw;
-    left: 5vw;
-  }
-  
-  @media screen and (min-width: 768px) {
-    width: 40vw;
-    left: 30vw;
   }
 `;

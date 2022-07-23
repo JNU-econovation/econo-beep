@@ -13,8 +13,6 @@ function Type({ to, src, text }) {
   );
 }
 const Box = styled.div`
-  
-  margin: 1rem;
 `;
 
 const Img = styled.img`

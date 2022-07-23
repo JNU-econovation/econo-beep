@@ -21,10 +21,6 @@ const Box = styled.div`
   
   display: flex;
   align-items: center;
-
-  @media screen and (min-width: 768px) {
-    height: 10vh;
-  }
 `;
 
 const Img = styled.img``;

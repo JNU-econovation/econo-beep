@@ -18,6 +18,7 @@ function Home() {
         </SearchBarHolder>
         <Banners />
       </MainPage>
+
       <ExpendPage>
         <Category />
         <RecommendBookSlider />
@@ -74,9 +75,12 @@ const LogoText = styled.div`
 const ExpendPage = styled.div`
   width: 100vw;
   min-height: 100vh;
-  
   padding-top: 50px;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
   position: relative;
 `;
 

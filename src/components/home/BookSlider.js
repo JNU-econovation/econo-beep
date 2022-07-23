@@ -26,12 +26,11 @@ function BookSlider({ bookList }) {
 }
 
 const SliderBox = styled(Slider)`
+  width: 100%;
+  
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  width: 100vw;
-  margin: 1rem;
 
   .slick-track {
     overflow-x: hidden;

@@ -1,22 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
+import React  from 'react';
+import { isMobile } from 'react-device-detect';
 import HeaderMobile from './HeaderMobile';
 import HeaderPc from './HeaderPc';
 
 function Header() {
+
   return (
-    <Box>
-      <HeaderMobile />
-      <HeaderPc />
-    </Box>
+    <>
+      {
+        isMobile ? <HeaderMobile/> : <HeaderPc/>
+      }
+    </>
   );
 }
-
-const Box = styled.div`
-  width: 100vh;
-  
-  color: ${(props) => props.theme.blue};
-  background-color: ${(props) => props.theme.bgColor};
-`;
 
 export default Header;
