@@ -22,11 +22,13 @@ function PinCode() {
 
   return (
     <Body>
-      <ResultBox>
-        <TextBox>PIN CODE 입력</TextBox>
-        <Circle numberLength={numberLength} />
-      </ResultBox>
-      <Keyboard addNumber={addNumber} deleteNumber={deleteNumber} sendNumber={sendNumber}/>
+      <PinCodeBox>
+        <ResultBox>
+          <TextBox>PIN CODE 입력</TextBox>
+          <Circle numberLength={numberLength} />
+        </ResultBox>
+        <Keyboard addNumber={addNumber} deleteNumber={deleteNumber} sendNumber={sendNumber}/>
+      </PinCodeBox>
     </Body>
   );
 }
@@ -34,8 +36,21 @@ function PinCode() {
 const Body = styled.div`
   width: 100vw;
   height: 100vh;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   background-color: ${(props) => props.theme.bgColor};
+`;
+
+const PinCodeBox = styled.div`
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  max-height: 1000px;
+  
+  position: relative;
 `;
 
 const ResultBox = styled.div`
