@@ -7,7 +7,7 @@ export default {
   firstGray: '#7F7F7F',
   secondGray: '#B9B9BB',
   borderGray: '#E8E8E8',
-  borderTop: '1px solid rgba(25, 26, 34, 0.02)',
+  borderTop: '1px solid #F8F8F9',
   boxShadow: '0px 2px 4px rgba(25, 26, 34, 0.05)',
   fontWeightRegular: '400',
   fontWeightBold: '600',

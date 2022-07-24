@@ -47,7 +47,7 @@ const MainPage = styled.div`
 `;
 
 const SearchBarHolder = styled.div`
-  position: relative;
+  position: absolute;
   top: 35vh;
   
   @media screen and (max-width: 767px) {

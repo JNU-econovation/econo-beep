@@ -31,7 +31,7 @@ const MenuBar = styled.div`
     width: 100%;
     padding: 0.5rem 1.5rem;
 
-    position: fixed;
+    // position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
