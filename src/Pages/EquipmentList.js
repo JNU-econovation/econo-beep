@@ -1,6 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import EquipmentInfo from '../components/List/EquipmentInfo';
+import ListBody from '../components/List/ListBody';
+import Header from '../components/header/Header';
+import ListSearchBarHolder from '../components/List/ListSearchBarHolder';
+import SearchEquipmentBar from '../components/search/SearchEquipmentBar';
+import ListResultBox from '../components/List/ListResultBox';
 
 function BooksList() {
   const equipmentResultList = [
@@ -11,38 +15,25 @@ function BooksList() {
   ];
 
   return (
-    <Body>
-      <ListBox>
+    <ListBody>
+      <Header />
+      <ListSearchBarHolder>
+        <SearchEquipmentBar />
+      </ListSearchBarHolder>
+      <ListResultBox>
         {equipmentResultList.map((item) => (
           <EquipmentInfo
             key={item.id}
-            to={item.to}
+            to={item.equipmentId}
             src={item.src}
             equipmentId={item.equipmentId}
             equipmentName={item.equipmentName}
             equipmentRent={item.equipmentRent}
           />
         ))}
-      </ListBox>
-    </Body>
+      </ListResultBox>
+    </ListBody>
   );
 }
-const Body = styled.div``;
-
-const ListBox = styled.div`
-  background-color: ${(props) => props.theme.bgColor};
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-`;
 
 export default BooksList;

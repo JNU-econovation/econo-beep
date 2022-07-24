@@ -6,7 +6,7 @@ const InfoBox = styled.div`
   align-items: center;
   
   width: 85vw;
-  max-width: 900px;
+  max-width: 800px;
   
   padding: 1rem 0;
 
