@@ -9,7 +9,7 @@ import Rent from '../Components/Rent';
 import RentButton from '../Components/RentButton';
 
 function BookDetail() {
-  const book = { to: '/389', src: 'http://image.yes24.com/goods/66913718/XL', bookId: 'b-622', bookTitle: '인공지능을 위한 수학', bookAuthorName: '이사카와 어쩌구저쩌구', bookPublisher: '출판사입니다아아아아아', bookPublicationDay: '2021.03.08', bookRent: '대여 가능' };
+  const book = { to: '/389', src: 'http://image.yes24.com/goods/66913718/XL', bookId: 'b-622', bookTitle: '인공지능을 위한 수학', bookAuthorName: '이사카와 어쩌구저쩌구', bookPublisher: '출판사입니다아아아아아', bookPublicationDay: '2021.03.08', bookAvailable: '반납하기' };
 
   const bookType = { src: 'https://seeklogo.com/images/A/android-icon-logo-DB06FA8B39-seeklogo.com.png' };
 
@@ -34,7 +34,7 @@ function BookDetail() {
       <Detail>
         <Rent rent={rent} />
       </Detail>
-      <RentButton />
+      <RentButton isAvailable={book.bookAvailable} />
     </Body>
   );
 }
