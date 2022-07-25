@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Rent({ rent }) {
+function RentBox({ rent }) {
   return (
     <RentInfo>
       <TitleBox>
@@ -9,12 +9,13 @@ function Rent({ rent }) {
         <Title>대여일</Title>
         <Title>반납일</Title>
       </TitleBox>
+
       { rent.map((item) => (
-        <RentRecord>
+        <RentHistoryRow>
           <Text>{item.renter}</Text>
           <Text>{item.rentalDate}</Text>
           <Text>{item.returnDate}</Text>
-        </RentRecord>
+        </RentHistoryRow>
       )) }
     </RentInfo>
   );
@@ -44,7 +45,7 @@ const Title = styled.div`
   color: ${(props) => props.theme.black};
 `;
 
-const RentRecord = styled.div`
+const RentHistoryRow = styled.div`
   width: 100%;
   
   display: flex;
@@ -60,4 +61,4 @@ const Text = styled.div`
   color: ${(props) => props.theme.firstGray};
 `;
 
-export default Rent;
+export default RentBox;
