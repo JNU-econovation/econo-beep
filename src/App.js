@@ -11,6 +11,7 @@ import SearchList from './Pages/SearchList';
 import BookDetail from './Pages/BookDetail';
 import EquipmentDetail from './Pages/EquipmentDetail';
 import Manager from './Pages/Manager';
+import PinCode from './Pages/PinCode';
 
 function LoggedInRoutes() {
   return (
@@ -22,6 +23,7 @@ function LoggedInRoutes() {
         <Route path="/search/all" element={<SearchList />} />
         <Route path="/book/:bookId" element={<BookDetail />} />
         <Route path="/equipment/:equipmentId" element={<EquipmentDetail />} />
+        <Route path="/pincode/:id" element={<PinCode />} />
         <Route path="/manager" element={<Manager />} />
       </Routes>
     </Router>

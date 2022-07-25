@@ -36,6 +36,8 @@ const HeaderHolder = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  
+  position: relative;
 `;
 
 const Box = styled.div`
@@ -64,13 +66,13 @@ const MenuButtonsHolder = styled.div`
   box-shadow: ${(props) => props.theme.boxShadow};
 
   display: ${(props) => props.isToggled ? 'block' : 'none'};
-
-  animation: ${menuAnimation} 500ms ease-in-out;
+  position: absolute;
+  top: 100%;
 `;
 
 const MenuButton = styled.div`
   width: 100%;
-  padding: 0.8rem 0;
+  padding: 1rem 0;
   border-bottom: ${(props) => props.theme.borderTop};
   background-color: ${(props) => props.theme.bgColor};
 
@@ -78,7 +80,7 @@ const MenuButton = styled.div`
   justify-content: center;
   align-items: center;
 
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 300;
   color: ${(props) => props.theme.firstGray};
 
