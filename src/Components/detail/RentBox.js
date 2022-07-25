@@ -2,23 +2,34 @@ import React from 'react';
 import styled from 'styled-components';
 
 function RentBox({ rent }) {
-  return (
-    <RentInfo>
-      <TitleBox>
-        <Title>이름</Title>
-        <Title>대여일</Title>
-        <Title>반납일</Title>
-      </TitleBox>
+  if (rent.length === 0) {
+    return (
+      <RentInfo>
+        <TitleBox>
+          <Title>이름</Title>
+          <Title>대여일</Title>
+          <Title>반납일</Title>
+        </TitleBox>
+      </RentInfo>)
+  } else {
+    return (
+      <RentInfo>
+        <TitleBox>
+          <Title>이름</Title>
+          <Title>대여일</Title>
+          <Title>반납일</Title>
+        </TitleBox>
 
-      { rent.map((item) => (
-        <RentHistoryRow>
-          <Text>{item.renter}</Text>
-          <Text>{item.rentalDate}</Text>
-          <Text>{item.returnDate}</Text>
-        </RentHistoryRow>
-      )) }
-    </RentInfo>
-  );
+        { rent.map((item) => (
+          <RentHistoryRow>
+            <Text>{item.renterName}</Text>
+            <Text>{item.rentalEpochSecond}</Text>
+            <Text>{item.returnEpochSecond}</Text>
+          </RentHistoryRow>
+        )) }
+      </RentInfo>
+    );
+  }
 }
 
 const RentInfo = styled.div`
