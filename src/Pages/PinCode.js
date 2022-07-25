@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Keyboard from '../components/pincode/Keyboard';
 import Circle from '../components/pincode/Circle';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function PinCode() {
+  const { isAvailable, renteeId } = useParams();
   const [number, setNumber] = useState([]);
+
 
   const deleteNumber = () => {
     setNumber((number) => number.slice(0, -1));
@@ -20,9 +24,32 @@ function PinCode() {
     }
   }
 
+  const sendReturn = async () => {
+    const post = {
+      id: parseInt(renteeId),
+      pinCode: number.join(""),
+    };
+    console.log(post);
+
+    await axios.put(process.env.REACT_APP_BEEP_API + 'book/' + renteeId + '/return', post);
+  }
+
+  const sendRent =  async () => {
+    const post = {
+      id: parseInt(renteeId),
+      pinCode: number.join("")
+    }
+
+    await axios.put(process.env.REACT_APP_BEEP_API + 'book/' + renteeId + '/rent', post);
+  }
+
   useEffect(() => {
     if (number.length === 4) {
-      console.log(number);
+      if (isAvailable === 'return') {
+        sendReturn();
+      } else if (isAvailable === 'rent') {
+        sendRent();
+      }
     }
   }, [number])
 

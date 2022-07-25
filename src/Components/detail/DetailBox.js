@@ -6,17 +6,17 @@ function DetailBox({ rentee }) {
 
   return (
     <Box>
-      <CoverImg src={rentee.bookCoverImageUrl}/>
+      <CoverImg src={rentee.thumbnailUrl}/>
 
       <TitleHolder>
-        <TypeIcon src={BOOK_TYPE_ICON.APP}/>
+        <TypeIcon src={`BOOK_TYPE_ICON.${rentee.type}`}/>
         <TextHolder>
           <Id>{rentee.id}</Id>
           <Title>{rentee.title}</Title>
         </TextHolder>
       </TitleHolder>
 
-      { rentee.authorName || rentee.publisherName || rentee.publishedDateEpochSecond ? (
+      { rentee.type != 'EQUIPMENT' ? (
         <DetailInfoBox>
           <InfoTitleHolder>
             <InfoTitle>저자</InfoTitle>

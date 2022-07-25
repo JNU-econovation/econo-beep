@@ -9,12 +9,19 @@ function RentButton({ to, isAvailable }) {
         <GrayButton>대여 불가</GrayButton>
       </ButtonBox>
     );
-  } else {
+  } else if (isAvailable === 'RENTABLE') {
     return (
-      <Link to={`/pincode/${to}`}>
+      <Link to={`/pincode/return/${to}`}>
         <ButtonBox>
-          {(isAvailable === 'RENTABLE') && (<BlueButton>대여하기</BlueButton>)}
-          {(isAvailable === 'RENTED') && (<RedButton>반납하기</RedButton>)}
+          <RedButton>반납하기</RedButton>
+        </ButtonBox>
+      </Link>
+    );
+  } else if (isAvailable === 'RENTED') {
+    return (
+      <Link to={`pincode/rent/${to}`}>
+        <ButtonBox>
+          <RedButton>반납하기</RedButton>
         </ButtonBox>
       </Link>
     );
