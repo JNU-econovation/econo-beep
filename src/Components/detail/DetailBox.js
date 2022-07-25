@@ -2,46 +2,48 @@ import React from 'react';
 import styled from 'styled-components';
 import BOOK_TYPE_ICON from '../constant/BOOK_TYPE_ICON';
 
-function DetailBox({ book }) {
+function DetailBox({ rentee }) {
 
   return (
     <Box>
-      <BookCoverImg src={book.src}/>
+      <CoverImg src={rentee.src}/>
 
-      <BookTitleHolder>
+      <TitleHolder>
         <TypeIcon src={BOOK_TYPE_ICON.ANDROID}/>
         <TextHolder>
-          <Id>{book.bookId}</Id>
-          <Title>{book.bookTitle}</Title>
+          <Id>{rentee.id}</Id>
+          <Title>{rentee.title}</Title>
         </TextHolder>
-      </BookTitleHolder>
+      </TitleHolder>
 
-      <DetailInfoBox>
-        <InfoTitleHolder>
-          <InfoTitle>저자</InfoTitle>
-          <InfoTitle>출판사</InfoTitle>
-        </InfoTitleHolder>
+      { rentee.bookAuthorName && rentee.bookPublisher && rentee.bookPublicationDay ? (
+        <DetailInfoBox>
+          <InfoTitleHolder>
+            <InfoTitle>저자</InfoTitle>
+            <InfoTitle>출판사</InfoTitle>
+          </InfoTitleHolder>
 
-        <InfoTextHolder>
-          <AuthorText>{book.bookAuthorName}</AuthorText>
-          <PublisherText>
-            <Publisher>{book.bookPublisher}</Publisher>
-            <PublicationDay>{book.bookPublicationDay}</PublicationDay>
-          </PublisherText>
-        </InfoTextHolder>
-      </DetailInfoBox>
+          <InfoTextHolder>
+            <AuthorText>{rentee.bookAuthorName}</AuthorText>
+            <PublisherText>
+              <Publisher>{rentee.bookPublisher}</Publisher>
+              <PublicationDay>{rentee.bookPublicationDay}</PublicationDay>
+            </PublisherText>
+          </InfoTextHolder>
+        </DetailInfoBox>
+      ) : null }
 
       <NoteBox>
         <NoteEmoji>💡</NoteEmoji>
         <NoteText>
-          {book.note}
+          {rentee.note}
         </NoteText>
       </NoteBox>
     </Box>
   );
 }
 
-const BookCoverImg = styled.img`
+const CoverImg = styled.img`
   border-radius: 10px;
   object-fit: cover;
 
@@ -51,7 +53,7 @@ const BookCoverImg = styled.img`
   margin: 1.8vh 0;
 `;
 
-const BookTitleHolder = styled.div`
+const TitleHolder = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,6 +158,7 @@ const NoteBox = styled.div`
 
 const NoteEmoji = styled.div`
   font-size: 1.8vh;
+  margin: 1.5vh 0;
 `;
 
 const NoteText = styled.div`
