@@ -1,33 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Keyboard from '../components/pincode/Keyboard';
 import Circle from '../components/pincode/Circle';
 
 function PinCode() {
-  const [number, setNumber] = useState('');
-  const numberLength = number.length;
-
-  const sendNumber = () => {
-  }
+  const [number, setNumber] = useState([]);
 
   const deleteNumber = () => {
-    setNumber(``);
+    setNumber((number) => number.slice(0, -1));
+  }
+
+  const deleteAll = () => {
+    setNumber([]);
   }
 
   const addNumber = (e) => {
-    if (numberLength < 4) {
-      setNumber((number) => (number + e.target.value));
+    if (number.length <= 3) {
+      setNumber((number) => [...number, e.target.value]);
     }
   }
+
+  useEffect(() => {
+    if (number.length === 4) {
+      console.log(number);
+    }
+  }, [number])
 
   return (
     <Body>
       <PinCodeBox>
         <ResultBox>
           <TextBox>PIN CODE 입력</TextBox>
-          <Circle numberLength={numberLength} />
+          <Circle numberLength={number.length} />
+          <div>{number}</div>
         </ResultBox>
-        <Keyboard addNumber={addNumber} deleteNumber={deleteNumber} sendNumber={sendNumber}/>
+        <Keyboard addNumber={addNumber} deleteAll={deleteAll} deleteNumber={deleteNumber}/>
       </PinCodeBox>
     </Body>
   );

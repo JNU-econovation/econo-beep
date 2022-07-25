@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-function Keyboard({ addNumber, deleteNumber, sendNumber }) {
+function Keyboard({ addNumber, deleteAll, deleteNumber }) {
   return (
     <KeyboardBox>
       <KeyboardColumn>
@@ -20,9 +20,9 @@ function Keyboard({ addNumber, deleteNumber, sendNumber }) {
         <KeyboardButton value='9' onClick={addNumber}>9</KeyboardButton>
       </KeyboardColumn>
       <KeyboardColumn>
-        <KeyboardTextButton onClick={deleteNumber}>삭제</KeyboardTextButton>
+        <KeyboardTextButton onClick={deleteAll}>전체삭제</KeyboardTextButton>
         <KeyboardButton value='0' onClick={addNumber}>0</KeyboardButton>
-        <KeyboardTextButton onClick={sendNumber}>확인</KeyboardTextButton>
+        <KeyboardTextButton onClick={deleteNumber}>삭제</KeyboardTextButton>
       </KeyboardColumn>
     </KeyboardBox>
   );
