@@ -4,15 +4,21 @@ import { Link } from 'react-router-dom';
 
 function Type({ to, src, text }) {
   return (
-    <Box>
-      <Link to={to}>
+    <Link to={to}>
+      <Box>
         <Img src={src} />
         <Text>{text}</Text>
-      </Link>
-    </Box>
+      </Box>
+    </Link>
   );
 }
 const Box = styled.div`
+  margin-bottom: 2vh;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Img = styled.img`
@@ -21,13 +27,17 @@ const Img = styled.img`
   align-items: center;
   
   width: 3rem;
-  margin-bottom: 1rem;
+  height: 3rem;
+  
+  object-fit: contain;
+
+  margin-bottom: 1.5vh;
 `;
 
 const Text = styled.div`
   text-align: center;
   color: ${(props) => props.theme.firstGray};
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: ${(props) => props.theme.fontWeightRegular};
 `;
 

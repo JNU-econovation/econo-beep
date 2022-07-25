@@ -9,7 +9,7 @@ function DetailBox({ rentee }) {
       <CoverImg src={rentee.src}/>
 
       <TitleHolder>
-        <TypeIcon src={BOOK_TYPE_ICON.ANDROID}/>
+        <TypeIcon src={BOOK_TYPE_ICON.APP}/>
         <TextHolder>
           <Id>{rentee.id}</Id>
           <Title>{rentee.title}</Title>
