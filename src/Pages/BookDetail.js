@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import DetailBox from '../Components/book/DetailBox';
-import RentBox from '../Components/book/RentBox';
-import RentButton from '../Components/book/RentButton';
+import DetailBox from '../components/book/DetailBox';
+import RentBox from '../components/book/RentBox';
+import RentButton from '../components/book/RentButton';
+import Header from '../components/header/Header';
 
 function BookDetail() {
   const BOOK_DUMMY = { to: '/389', src: 'http://image.yes24.com/goods/66913718/XL', bookId: 'b-622', bookTitle: '인공지능을 위한 수학', bookAuthorName: '이사카와 어쩌구저쩌구', bookPublisher: '출판사입니다아아아아아', bookPublicationDay: '2021.03.08', bookAvailable: '반납하기', note: "비고란이다이말이야~알았냐고알앗ㅇ냐곹야루아ㅓㄹ니ㅏㅇ러ㅏㅣ" };
@@ -15,6 +16,7 @@ function BookDetail() {
 
   return (
     <Body>
+      <Header />
       <DetailBox book={BOOK_DUMMY} />
 
       <ContentBox>

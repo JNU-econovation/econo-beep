@@ -6,7 +6,7 @@ import InfoBox from './InfoBox';
 
 function EquipmentInfo({ to, src, equipmentId, equipmentName, equipmentRent }) {
   return (
-    <Link to={to}>
+    <Link to={`/equipment/${to}`}>
       <InfoBox>
         <InfoImg src={src} />
         <InfoText id={equipmentId} title={equipmentName} rent={equipmentRent} />
