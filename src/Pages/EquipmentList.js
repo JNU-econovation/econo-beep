@@ -1,10 +1,10 @@
 import React from 'react';
-import EquipmentInfo from '../components/List/EquipmentInfo';
-import ListBody from '../components/List/ListBody';
-import Header from '../components/header/Header';
-import ListSearchBarHolder from '../components/List/ListSearchBarHolder';
-import SearchEquipmentBar from '../components/search/SearchEquipmentBar';
-import ListResultBox from '../components/List/ListResultBox';
+import EquipmentInfo from '../Components/list/EquipmentInfo';
+import ListBody from '../Components/list/ListBody';
+import Header from '../Components/header/Header';
+import ListSearchBarHolder from '../Components/list/ListSearchBarHolder';
+import SearchEquipmentBar from '../Components/search/SearchEquipmentBar';
+import ListResultBox from '../Components/list/ListResultBox';
 
 function BooksList() {
   const equipmentResultList = [

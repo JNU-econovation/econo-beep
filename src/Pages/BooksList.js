@@ -1,10 +1,10 @@
 import React from 'react';
-import BookInfo from '../components/List/BookInfo';
-import SearchBookBar from '../components/search/SearchBookBar';
-import Header from '../components/header/Header';
-import ListBody from '../components/List/ListBody';
-import ListSearchBarHolder from '../components/List/ListSearchBarHolder';
-import ListResultBox from '../components/List/ListResultBox';
+import BookInfo from '../Components/list/BookInfo';
+import SearchBookBar from '../Components/search/SearchBookBar';
+import Header from '../Components/header/Header';
+import ListBody from '../Components/list/ListBody';
+import ListSearchBarHolder from '../Components/list/ListSearchBarHolder';
+import ListResultBox from '../Components/list/ListResultBox';
 
 function BooksList() {
   const bookResultList = [
