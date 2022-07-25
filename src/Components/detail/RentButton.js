@@ -1,14 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-function RentButton({ isAvailable }) {
-  return (
-    <ButtonBox>
-      {(isAvailable === '대여하기') && (<BlueButton>{isAvailable}</BlueButton>)}
-      {(isAvailable === '반납하기') && (<RedButton>{isAvailable}</RedButton>)}
-      {(isAvailable === '대여 불가') && (<GrayButton>{isAvailable}</GrayButton>)}
-    </ButtonBox>
-  );
+function RentButton({ to, isAvailable }) {
+  if (isAvailable === 'UNRENTABLE') {
+    return (
+      <ButtonBox>
+        <GrayButton>대여 불가</GrayButton>
+      </ButtonBox>
+    );
+  } else {
+    return (
+      <Link to={`/pincode/${to}`}>
+        <ButtonBox>
+          {(isAvailable === 'RENTABLE') && (<BlueButton>대여하기</BlueButton>)}
+          {(isAvailable === 'RENTED') && (<RedButton>반납하기</RedButton>)}
+        </ButtonBox>
+      </Link>
+    );
+  }
 }
 
 const ButtonBox = styled.div`

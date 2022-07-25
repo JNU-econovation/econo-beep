@@ -6,17 +6,17 @@ function DetailBox({ rentee }) {
 
   return (
     <Box>
-      <CoverImg src={rentee["bookCoverImageUrl"]}/>
+      <CoverImg src={rentee.bookCoverImageUrl}/>
 
       <TitleHolder>
         <TypeIcon src={BOOK_TYPE_ICON.APP}/>
         <TextHolder>
-          <Id>{rentee["id"]}</Id>
-          <Title>{rentee["title"]}</Title>
+          <Id>{rentee.id}</Id>
+          <Title>{rentee.title}</Title>
         </TextHolder>
       </TitleHolder>
 
-      { rentee["authorName"] || rentee["publisherName"] || rentee["publishedDateEpochSecond"] ? (
+      { rentee.authorName || rentee.publisherName || rentee.publishedDateEpochSecond ? (
         <DetailInfoBox>
           <InfoTitleHolder>
             <InfoTitle>저자</InfoTitle>
@@ -24,10 +24,10 @@ function DetailBox({ rentee }) {
           </InfoTitleHolder>
 
           <InfoTextHolder>
-            <AuthorText>{rentee["authorName"]}</AuthorText>
+            <AuthorText>{rentee.authorName}</AuthorText>
             <PublisherText>
-              <Publisher>{rentee["publisherName"]}</Publisher>
-              <PublicationDay>{rentee["publishedDateEpochSecond"]}</PublicationDay>
+              <Publisher>{rentee.publisherName}</Publisher>
+              <PublicationDay>{rentee.publishedDateEpochSecond}</PublicationDay>
             </PublisherText>
           </InfoTextHolder>
         </DetailInfoBox>
@@ -36,7 +36,7 @@ function DetailBox({ rentee }) {
       <NoteBox>
         <NoteEmoji>💡</NoteEmoji>
         <NoteText>
-          {rentee["note"]}
+          {rentee.note}
         </NoteText>
       </NoteBox>
     </Box>

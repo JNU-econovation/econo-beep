@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 import DetailBox from '../components/detail/DetailBox';
 import RentBox from '../components/detail/RentBox';
 import RentButton from '../components/detail/RentButton';
 import Header from '../components/header/Header';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 function BookDetail() {
   const { id } = useParams();
@@ -25,6 +25,8 @@ function BookDetail() {
 
   useEffect(() => {
     getBookDummy();
+    console.log(BOOK_DUMMY);
+    console.log(RENT_DUMMY);
   }, []);
 
   return (
@@ -35,7 +37,7 @@ function BookDetail() {
         <ContentBox>
           <RentBox rent={RENT_DUMMY} />
         </ContentBox>
-        <RentButton isAvailable={BOOK_DUMMY.rentState} />
+        <RentButton to={BOOK_DUMMY.id} isAvailable={BOOK_DUMMY.rentState} />
       </DetailMain>
     </Body>
   );
