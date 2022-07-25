@@ -10,6 +10,9 @@ export default {
   rentBlue: '#5566FF',
   rentRed: '#CB6C4B',
   rentGray: '#5D5E64',
-  borderTop: '1px solid rgba(25, 26, 34, 0.02)',
+  borderTop: '1px solid #F8F8F9',
   boxShadow: '0px 2px 4px rgba(25, 26, 34, 0.05)',
+  fontWeightRegular: '400',
+  fontWeightBold: '600',
+  fontFamilyLogo: "'Advent Pro', sans-serif",
 };

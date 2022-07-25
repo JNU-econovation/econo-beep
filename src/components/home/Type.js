@@ -13,12 +13,6 @@ function Type({ to, src, text }) {
   );
 }
 const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  
-  margin: 1rem;
 `;
 
 const Img = styled.img`
@@ -33,7 +27,8 @@ const Img = styled.img`
 const Text = styled.div`
   text-align: center;
   color: ${(props) => props.theme.firstGray};
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: ${(props) => props.theme.fontWeightRegular};
 `;
 
 export default Type;
