@@ -16,12 +16,14 @@ function EquipmentDetail() {
   return (
     <Body>
       <Header />
-      <DetailBox rentee={EQUIPMENT_DUMMY} />
+      <DetailMain>
+        <DetailBox rentee={EQUIPMENT_DUMMY} />
 
-      <ContentBox>
-        <RentBox rent={RENT_DUMMY} />
-      </ContentBox>
-      <RentButton isAvailable={EQUIPMENT_DUMMY.equipmentAvailable} />
+        <ContentBox>
+          <RentBox rent={RENT_DUMMY} />
+        </ContentBox>
+        <RentButton isAvailable={EQUIPMENT_DUMMY.equipmentAvailable} />
+      </DetailMain>
     </Body>
   );
 }
@@ -44,6 +46,13 @@ const Body = styled.div`
   width: 100vw;
   height: 100vh;
   
+  background-color: ${(props) => props.theme.bgColor};
+`;
+
+const DetailMain = styled.div`
+  width: 100%;
+  height: 100%;
+
   background-color: #f2f2f2;
 `;
 
