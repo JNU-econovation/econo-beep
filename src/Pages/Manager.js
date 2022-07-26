@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { RiPencilFill, RiDeleteBinLine } from 'react-icons/ri'
 import Header from '../components/header/Header';
 import ManagerButtonSearchHolder from '../components/manager/ManagerButtonSearchHolder';
 import ManagerBookInfo from '../components/manager/ManagerBookInfo';
 import ManagerBookInfoTitle from '../components/manager/ManagerBookInfoTitle';
+import ManagerEquipmentInfo from '../components/manager/ManagerEquipmentInfo';
+import ManagerEquipmentInfoTitle from '../components/manager/ManagerEquipmentInfoTitle';
 
 function Manager() {
 
@@ -20,6 +21,13 @@ function Manager() {
     publishDay: "2022.06.08",
     type: "AI",
     note: "분실"
+  }
+  const equipment = {
+    id: 345,
+    src: 'https://www.lge.co.kr/kr/images/monitors/md08951826/gallery/medium02.jpg',
+    title: "LG 24인치 모니터",
+    type: "EQUIPMENT",
+    note: ""
   }
 
   const onBookClick = () => {
@@ -44,19 +52,32 @@ function Manager() {
         viewMethod={viewMethod}
         onViewChange={onViewChange}
       />
-      <InfoBox>
-        <ManagerBookInfoTitle />
-        <ManagerBookInfo
-          id={book.id}
-          src={book.src}
-          title={book.title}
-          author={book.author}
-          publisher={book.publisher}
-          publishDay={book.publishDay}
-          type={book.type}
-          note={book.note}
-        />
-      </InfoBox>
+      {isActivated ? (
+        <InfoBox>
+          <ManagerBookInfoTitle />
+          <ManagerBookInfo
+            id={book.id}
+            src={book.src}
+            title={book.title}
+            author={book.author}
+            publisher={book.publisher}
+            publishDay={book.publishDay}
+            type={book.type}
+            note={book.note}
+          />
+        </InfoBox>
+      ) : (
+        <InfoBox>
+          <ManagerEquipmentInfoTitle />
+          <ManagerEquipmentInfo
+            id={equipment.id}
+            src={equipment.src}
+            title={equipment.title}
+            type={equipment.type}
+            note={equipment.note}
+          />
+        </InfoBox>
+      )}
     </Body>
   );
 }

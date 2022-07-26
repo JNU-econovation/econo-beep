@@ -1,20 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function ManagerBookInfoTitle() {
+function ManagerEquipmentInfoTitle() {
   return (
-    <BookInfoTitle>
+    <InfoTitle>
       <TitleBox>제목</TitleBox>
-      <AuthorBox>저자</AuthorBox>
-      <PublisherBox>출판사</PublisherBox>
-      <PublishDayBox>출판일</PublishDayBox>
       <TypeBox>분야</TypeBox>
       <NoteBox>비고</NoteBox>
-    </BookInfoTitle>
+    </InfoTitle>
   );
 }
 
-const BookInfoTitle = styled.div`
+const InfoTitle = styled.div`
   width: 80%;
   height: 4vh;
   
@@ -32,34 +29,7 @@ const BookInfoTitle = styled.div`
 `;
 
 const TitleBox = styled.div`
-  width: 31.25%;
-  height: 100%;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const AuthorBox = styled.div`
-  width: 18.75%;
-  height: 100%;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const PublisherBox = styled.div`
-  width: 18.75%;
-  height: 100%;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const PublishDayBox = styled.div`
-  width: 9.375%;
+  width: 50%;
   height: 100%;
   
   display: flex;
@@ -68,7 +38,7 @@ const PublishDayBox = styled.div`
 `;
 
 const TypeBox = styled.div`
-  width: 9.375%;
+  width: 25%;
   height: 100%;
   
   display: flex;
@@ -77,11 +47,12 @@ const TypeBox = styled.div`
 `;
 
 const NoteBox = styled.div`
-  width: 12%;
+  width: 25%;
   height: 100%;
   
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-export default ManagerBookInfoTitle;
+
+export default ManagerEquipmentInfoTitle;
