@@ -1,35 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import InfoTitle from './ManagerInfoTitle';
 
 function ManagerBookInfoTitle() {
   return (
-    <BookInfoTitle>
+    <InfoTitle>
       <TitleBox>제목</TitleBox>
       <AuthorBox>저자</AuthorBox>
       <PublisherBox>출판사</PublisherBox>
       <PublishDayBox>출판일</PublishDayBox>
       <TypeBox>분야</TypeBox>
       <NoteBox>비고</NoteBox>
-    </BookInfoTitle>
+    </InfoTitle>
   );
 }
-
-const BookInfoTitle = styled.div`
-  width: 80%;
-  height: 4vh;
-  
-  display: flex;
-  align-items: center;
-  
-  margin: 0 0 2% 0;
-  
-  border-radius: 15px;
-  color: ${(props) => props.theme.black};
-  font-size: 0.8rem;
-  
-  background-color: ${(props) => props.theme.managerGray};
-  box-shadow: ${(props) => props.theme.managerBoxShadow};
-`;
 
 const TitleBox = styled.div`
   width: 31.25%;

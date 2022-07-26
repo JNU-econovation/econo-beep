@@ -1,10 +1,11 @@
 import React from 'react';
 import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
+import ManagerInfoBox from './ManagerInfoBox';
 
-function ManagerEquipmentInfo({ id, src, title, author, publisher, publishDay, type, note }) {
+function ManagerEquipmentInfo({ id, src, title, type, note }) {
   return (
-    <ManagerEquipmentInfoBox>
+    <ManagerInfoBox>
       <IdBox>{id}</IdBox>
       <ImgBox>
         <Img src={src} />
@@ -18,32 +19,9 @@ function ManagerEquipmentInfo({ id, src, title, author, publisher, publishDay, t
       <DeleteButton>
         <RiDeleteBinLine />
       </DeleteButton>
-    </ManagerEquipmentInfoBox>
+    </ManagerInfoBox>
   );
 }
-
-const ManagerEquipmentInfoBox = styled.button`
-  width: 100%;
-  height: 5vh;
-  
-  margin: 0.25% 0;
-  
-  display: flex;
-  align-items: center;
-  
-  border-radius: 10px;
-  border: none;
-  
-  background-color: ${(props) => props.theme.bgColor};
-  box-shadow: ${(props) => props.theme.managerBoxShadow};
-  
-  color: ${(props) => props.theme.firstGray};
-  font-size: 0.8rem;
-  
-  :focus {
-    box-shadow: 0px 5px 20px 4px rgba(0, 0, 0, 0.06);
-  }
-`;
 
 const IdBox = styled.div`
   width: 5%;
