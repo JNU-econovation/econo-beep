@@ -37,7 +37,7 @@ function BooksList() {
   }
 
   const getTypeList = async () => {
-    const list = await  axios.get(process.env.REACT_APP_BEEP_API + 'book/list/', {
+    const list = await axios.get(process.env.REACT_APP_BEEP_API + 'book/list/' + searchParams.get('type'), {
       params: {
         type: searchParams.get('type'),
         pageSize: 8,
