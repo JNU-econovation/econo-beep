@@ -14,7 +14,11 @@ function SearchBar({ placeholder, searchApiUrl }) {
 
   const onEnterPress = (event) => {
     if (event.key === 'Enter') {
-      navigate(`/${searchApiUrl}?q=${keyword}`);
+      event.preventDefault();
+      navigate({
+        pathname: `/${searchApiUrl}`,
+        search: `?keyword=${keyword}`
+      });
     }
   };
 
@@ -31,10 +35,10 @@ function SearchBar({ placeholder, searchApiUrl }) {
 const SearchBox = styled.form`
   height: 42px;
   width: 100%;
-  
+
   display: flex;
   align-items: center;
-  
+
   border: 1.5px ${(props) => props.theme.blue} solid;
   border-radius: 20px;
 `;
@@ -43,9 +47,9 @@ const Icon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   margin: 0px 0px 0px 15px;
-  
+
   font-size: 1.5rem;
   color: ${(props) => props.theme.blue};
 `;
@@ -54,17 +58,17 @@ const Search = styled.input`
   width: 85%;
   margin: 5px 8px;
   padding: 0 0 0 10px;
-  
+
   border: none;
   border-left: 2px solid #C8C8C8;
-  
+
   font-size: 0.9rem;
   color: ${(props) => props.theme.black};
-  
+
   &:focus {
     outline: none;
   }
-  
+
   &:focus::placeholder{
     opacity: 0;
   }
