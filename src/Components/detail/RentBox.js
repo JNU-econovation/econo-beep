@@ -12,6 +12,13 @@ function RentBox({ rent }) {
         </TitleBox>
       </RentInfo>)
   } else {
+
+    const epochSecondToDate = (e) => {
+      let date = new Date(e * 1000);
+
+      return (date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate());
+    }
+
     return (
       <RentInfo>
         <TitleBox>
@@ -23,8 +30,8 @@ function RentBox({ rent }) {
         { rent.map((item) => (
           <RentHistoryRow>
             <Text>{item.renterName}</Text>
-            <Text>{item.rentalEpochSecond}</Text>
-            <Text>{item.returnEpochSecond}</Text>
+            <Text>{epochSecondToDate(item.rentalEpochSecond)}</Text>
+            { item.returnEpochSecond ? <Text>{epochSecondToDate(item.returnEpochSecond)}</Text> : <Text />}
           </RentHistoryRow>
         )) }
       </RentInfo>

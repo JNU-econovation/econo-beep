@@ -21,19 +21,13 @@ function BookDetail() {
 
     setBookDummy(dataList);
     setRentDummy([...historyList]);
+    console.log(BOOK_DUMMY);
+    console.log(RENT_DUMMY);
   }
 
   useEffect(() => {
-    getBookDummy()
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-    console.log(BOOK_DUMMY);
-    console.log(RENT_DUMMY);
-  }, []);
+    getBookDummy();
+  }, [id]);
 
   return (
     <Body>

@@ -6,7 +6,7 @@ function DetailBox({ rentee }) {
 
   return (
     <Box>
-      <CoverImg src={rentee.thumbnailUrl}/>
+      <CoverImg src={process.env.REACT_APP_BEEP_API + rentee.thumbnailUrl}/>
 
       <TitleHolder>
         <TypeIcon src={`BOOK_TYPE_ICON.${rentee.type}`}/>
