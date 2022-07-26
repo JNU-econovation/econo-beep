@@ -7,17 +7,17 @@ import BOOK_TYPE_ICON from '../constant/BOOK_TYPE_ICON';
 
 function Category() {
   const firstRowTypes = [
-    { src: BOOK_TYPE_ICON.WEB, to: 'web', text: '웹' },
-    { src: BOOK_TYPE_ICON.APP, to: 'app', text: '앱' },
-    { src: BOOK_TYPE_ICON.LANGUAGE, to: 'language', text: '언어' },
-    { src: BOOK_TYPE_ICON.AI, to: 'ai', text: 'AI' },
+    { src: BOOK_TYPE_ICON.WEB.src, to: 'web', text: '웹' },
+    { src: BOOK_TYPE_ICON.APP.src, to: 'app', text: '앱' },
+    { src: BOOK_TYPE_ICON.LANGUAGE.src, to: 'language', text: '개발 언어' },
+    { src: BOOK_TYPE_ICON.AI.src, to: 'ai', text: 'AI' },
   ];
 
   const secondRowTypes = [
-    { src: BOOK_TYPE_ICON.GAME, to: 'game', text: '게임' },
-    { src: BOOK_TYPE_ICON.DEVELOPMENT, to: 'development', text: '개발 교양' },
-    { src: BOOK_TYPE_ICON.MAJOR, to: 'major', text: '전공' },
-    { src: BOOK_TYPE_ICON.EQUIPMENT, to: 'equipment', text: '기자재' },
+    { src: BOOK_TYPE_ICON.GAME.src, to: 'game', text: '게임' },
+    { src: BOOK_TYPE_ICON.DEVELOPMENT.src, to: 'development', text: '개발 교양' },
+    { src: BOOK_TYPE_ICON.MAJOR.src, to: 'major', text: '전공' },
+    { src: BOOK_TYPE_ICON.EQUIPMENT.src, to: 'equipment', text: '기자재' },
   ];
   return (
     <Content>
