@@ -1,5 +1,6 @@
 export default {
   bgColor: '#FDFDFD',
+  managerBgColor: '#F9F9F9',
   blue: '#001AFF',
   gradientLogo: '90deg',
   bluePurple: 'linear-gradient(90deg, #001AFF 0%, #8F00FF 100%)',
@@ -7,6 +8,8 @@ export default {
   firstGray: '#7F7F7F',
   secondGray: '#B9B9BB',
   borderGray: '#E8E8E8',
+  managerGray: '#EFEFEF',
+  managerLightBlue: '#CACFFF',
   rentBlue: '#5566FF',
   rentRed: '#CB6C4B',
   rentGray: '#5D5E64',
