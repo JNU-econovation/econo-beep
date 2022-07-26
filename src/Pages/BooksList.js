@@ -22,10 +22,7 @@ function BooksList() {
     });
 
     const dataList = list.data
-    console.log(list);
     setBookList((bookList) => [...bookList, ...dataList]);
-    console.log(dataList);
-    console.log(bookList);
   }
 
   const getKeywordList = async () => {
@@ -39,14 +36,37 @@ function BooksList() {
     setBookList((bookList) => [...dataList])
   }
 
+  const getTypeList = async () => {
+    const list = await  axios.get(process.env.REACT_APP_BEEP_API + 'book/list/', {
+      params: {
+        type: searchParams.get('type'),
+        pageSize: 8,
+        lastBookId: lastBookId
+      }
+    });
+
+    const dataList = list.data
+    console.log(dataList);
+    setBookList((bookList) => [...dataList])
+  }
+
   useEffect(() => {
-    console.log(searchParams.get('keyword'));
+    // console.log(searchParams.get('keyword'));
     if (searchParams.get('keyword') === null) {
       getBookList();
     } else if (searchParams.get('keyword')) {
       getKeywordList();
     }
-  }, [searchParams.get('keyword')]);
+
+    if (searchParams.get('type')) {
+      getTypeList();
+    }
+
+    console.log(searchParams.get('type'));
+    // if (searchParams.get('type')) {
+    //   getTypeList();
+    // }
+  }, [searchParams.get('keyword'), searchParams.get('type')]);
 
   return (
     <ListBody>
@@ -59,7 +79,7 @@ function BooksList() {
           <BookInfo
             key={item.id}
             to={item.id}
-            src={process.env.REACT_APP_BEEP_API + item.thumbNailUrl}
+            src={process.env.REACT_APP_BEEP_API + item.bookCoverImageUrl}
             bookId={item.id}
             bookTitle={item.title}
             bookAuthorName={item.authorName}
