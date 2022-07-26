@@ -24,7 +24,13 @@ function BookDetail() {
   }
 
   useEffect(() => {
-    getBookDummy();
+    getBookDummy()
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
     console.log(BOOK_DUMMY);
     console.log(RENT_DUMMY);
   }, []);
@@ -37,7 +43,7 @@ function BookDetail() {
         <ContentBox>
           <RentBox rent={RENT_DUMMY} />
         </ContentBox>
-        <RentButton to={BOOK_DUMMY.id} isAvailable={BOOK_DUMMY.rentState} />
+        <RentButton renteeId={BOOK_DUMMY.id} isAvailable={BOOK_DUMMY.rentState} />
       </DetailMain>
     </Body>
   );

@@ -19,6 +19,7 @@ function BooksList() {
       }
     });
     const dataList = list.data
+    console.log(dataList);
 
     setBookList((bookList) => [...bookList, ...dataList]);
   }
@@ -38,7 +39,7 @@ function BooksList() {
           <BookInfo
             key={item.id}
             to={item.id}
-            src={item.bookCoverImageUrl}
+            src={item.thumbNailUrl}
             bookId={item.id}
             bookTitle={item.title}
             bookAuthorName={item.authorName}

@@ -3,7 +3,7 @@ import SearchBar from './SearchBar';
 
 function SearchEquipmentBar() {
   return (
-    <SearchBar placeholder="기자재" searchApiUrl="search/equipment" />
+    <SearchBar placeholder="기자재" searchApiUrl="search/equipments" />
   );
 }
 

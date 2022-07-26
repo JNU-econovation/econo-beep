@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-function RentButton({ to, isAvailable }) {
+function RentButton({ renteeId, isAvailable }) {
   if (isAvailable === 'UNRENTABLE') {
     return (
       <ButtonBox>
@@ -10,16 +10,18 @@ function RentButton({ to, isAvailable }) {
       </ButtonBox>
     );
   } else if (isAvailable === 'RENTABLE') {
+    const rentOrReturn = 'return';
     return (
-      <Link to={`/pincode/return/${to}`}>
+      <Link to={`/pincode/${rentOrReturn}/${renteeId}`}>
         <ButtonBox>
           <RedButton>반납하기</RedButton>
         </ButtonBox>
       </Link>
     );
   } else if (isAvailable === 'RENTED') {
+    const rentOrReturn = 'rent'
     return (
-      <Link to={`pincode/rent/${to}`}>
+      <Link to={`pincode/${rentOrReturn}/${renteeId}`}>
         <ButtonBox>
           <RedButton>반납하기</RedButton>
         </ButtonBox>
