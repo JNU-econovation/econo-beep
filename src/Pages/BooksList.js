@@ -11,9 +11,7 @@ import { useSearchParams } from 'react-router-dom';
 function BooksList() {
   const [lastBookId] = useState(null);
   const [bookList , setBookList] = useState([]);
-  const [keyword, setKeyword] = useState("");
-  const [search] = useSearchParams();
-
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const getBookList = async () => {
     const list = await axios.get(process.env.REACT_APP_BEEP_API + 'book/list/all/', {
@@ -22,34 +20,33 @@ function BooksList() {
         lastBookId: lastBookId
       }
     });
-    const dataList = list.data
-    console.log(dataList);
 
+    const dataList = list.data
+    console.log(list);
     setBookList((bookList) => [...bookList, ...dataList]);
+    console.log(dataList);
+    console.log(bookList);
   }
 
   const getKeywordList = async () => {
     const list = await axios.get(process.env.REACT_APP_BEEP_API + `book/search/`, {
       params: {
-        keyword: keyword
+        keyword: searchParams.get('keyword')
       }
     });
 
     const dataList = list.data
-    setBookList((bookList) => [...bookList, ...dataList])
+    setBookList((bookList) => [...dataList])
   }
 
   useEffect(() => {
-    getBookList()
-  }, []);
-
-  useEffect(() => {
-    if (keyword === "") {
-      return;
-    } else {
+    console.log(searchParams.get('keyword'));
+    if (searchParams.get('keyword') === null) {
+      getBookList();
+    } else if (searchParams.get('keyword')) {
       getKeywordList();
     }
-  }, [keyword]);
+  }, [searchParams.get('keyword')]);
 
   return (
     <ListBody>
@@ -62,7 +59,7 @@ function BooksList() {
           <BookInfo
             key={item.id}
             to={item.id}
-            src={item.thumbNailUrl}
+            src={process.env.REACT_APP_BEEP_API + item.thumbNailUrl}
             bookId={item.id}
             bookTitle={item.title}
             bookAuthorName={item.authorName}
