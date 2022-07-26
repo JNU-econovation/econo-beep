@@ -15,6 +15,7 @@ export default {
   rentGray: '#5D5E64',
   borderTop: '1px solid #F8F8F9',
   boxShadow: '0px 2px 4px rgba(25, 26, 34, 0.05)',
+  managerBoxShadow: '0px -5px 20px 4px rgba(0, 0, 0, 0.02)',
   fontWeightRegular: '400',
   fontWeightBold: '600',
   fontFamilyLogo: "'Advent Pro', sans-serif",

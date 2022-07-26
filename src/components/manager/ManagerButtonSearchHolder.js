@@ -74,6 +74,14 @@ const ManagerSearchBarHolder = styled.div`
   
   background-color: white;
   border-radius: 20px;
+  
+  .edhUcD {
+    border: none;
+  }
+  
+  .gGPxXx {
+    color: #7280FF;
+  }
 `;
 
 export default ManagerButtonSearchHolder;
