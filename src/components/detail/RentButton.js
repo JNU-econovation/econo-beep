@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import RENT_STATE from '../constant/RENT_STATE';
 
 function RentButton({ renteeId, isAvailable }) {
-  if (isAvailable === 'UNRENTABLE') {
+  if (isAvailable === RENT_STATE.UNRENTABLE) {
     return (
       <ButtonBox>
         <GrayButton>대여 불가</GrayButton>
       </ButtonBox>
     );
-  } else if (isAvailable === 'RENTABLE') {
+  } else if (isAvailable === RENT_STATE.RENTED) {
     const rentOrReturn = 'return';
     return (
       <Link to={`/pincode/${rentOrReturn}/${renteeId}`}>
@@ -18,12 +19,12 @@ function RentButton({ renteeId, isAvailable }) {
         </ButtonBox>
       </Link>
     );
-  } else if (isAvailable === 'RENTED') {
+  } else if (isAvailable === RENT_STATE.RENTABLE) {
     const rentOrReturn = 'rent'
     return (
-      <Link to={`pincode/${rentOrReturn}/${renteeId}`}>
+      <Link to={`/pincode/${rentOrReturn}/${renteeId}`}>
         <ButtonBox>
-          <RedButton>반납하기</RedButton>
+          <BlueButton>대여하기</BlueButton>
         </ButtonBox>
       </Link>
     );
