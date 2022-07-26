@@ -3,7 +3,7 @@ import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
 
-function ManagerBookInfo({ id, src, title, author, publisher, publishDay, type, note }) {
+function ManagerBookInfo({ id, src, title, author, publisher, publishDay, type, note, onCorrectClick, onDeleteClick }) {
   return (
     <ManagerInfoBox>
       <IdBox>{id}</IdBox>
@@ -16,10 +16,10 @@ function ManagerBookInfo({ id, src, title, author, publisher, publishDay, type, 
       <PublishDayBox>{publishDay}</PublishDayBox>
       <TypeBox>{type}</TypeBox>
       <NoteBox>{note}</NoteBox>
-      <ChangeButton>
+      <ChangeButton onClick={onCorrectClick}>
         <RiPencilFill />
       </ChangeButton>
-      <DeleteButton>
+      <DeleteButton onClick={onDeleteClick}>
         <RiDeleteBinLine />
       </DeleteButton>
     </ManagerInfoBox>

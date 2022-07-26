@@ -6,11 +6,14 @@ import ManagerBookInfo from '../components/manager/ManagerBookInfo';
 import ManagerBookInfoTitle from '../components/manager/ManagerBookInfoTitle';
 import ManagerEquipmentInfo from '../components/manager/ManagerEquipmentInfo';
 import ManagerEquipmentInfoTitle from '../components/manager/ManagerEquipmentInfoTitle';
+import ManagerBookForm from '../components/manager/ManagerBookForm';
 
 function Manager() {
 
   const [isActivated, setIsActivated] = useState(true);
   const [viewMethod, setViewMethod] = useState(0);
+  const [correctData, setCorrectData] = useState(false);
+  const [deleteData, setDeleteData] = useState(false);
 
   const book = {
     id: 123,
@@ -42,6 +45,14 @@ function Manager() {
     setViewMethod(e.target.value);
   }
 
+  const onCorrectClick = () => {
+    setCorrectData(true);
+  }
+
+  const onDeleteClick = () => {
+    setDeleteData(true);
+  }
+
   return (
     <Body>
       <Header />
@@ -53,7 +64,7 @@ function Manager() {
         onViewChange={onViewChange}
       />
       {isActivated ? (
-        <InfoBox>
+        <Box>
           <ManagerBookInfoTitle />
           <ManagerBookInfo
             id={book.id}
@@ -64,10 +75,12 @@ function Manager() {
             publishDay={book.publishDay}
             type={book.type}
             note={book.note}
+            onCorrectClick={onCorrectClick}
+            onDeleteClick={onDeleteClick}
           />
-        </InfoBox>
+        </Box>
       ) : (
-        <InfoBox>
+        <Box>
           <ManagerEquipmentInfoTitle />
           <ManagerEquipmentInfo
             id={equipment.id}
@@ -75,8 +88,19 @@ function Manager() {
             title={equipment.title}
             type={equipment.type}
             note={equipment.note}
+            onCorrectClick={onCorrectClick}
+            onDeleteClick={onDeleteClick}
           />
-        </InfoBox>
+        </Box>
+      )}
+      {isActivated ? (
+        <FormBox>
+          <ManagerBookForm correctData={correctData}/>
+        </FormBox>
+      ) : (
+        <FormBox>
+          dd
+        </FormBox>
       )}
     </Body>
   );
@@ -93,13 +117,21 @@ const Body = styled.div`
   background-color: ${(props) => props.theme.managerBgColor};
 `;
 
-const InfoBox = styled.div`
+const Box = styled.div`
   width: 90%;
+  
+  margin-bottom: 3vh;
   
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const FormBox = styled(Box)`
+  position: absolute;
+  
+  bottom: 0;
 `;
 
 export default Manager

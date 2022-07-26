@@ -3,7 +3,7 @@ import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
 
-function ManagerEquipmentInfo({ id, src, title, type, note }) {
+function ManagerEquipmentInfo({ id, src, title, type, note, onCorrectClick, onDeleteClick }) {
   return (
     <ManagerInfoBox>
       <IdBox>{id}</IdBox>
@@ -13,10 +13,10 @@ function ManagerEquipmentInfo({ id, src, title, type, note }) {
       <TitleBox>{title}</TitleBox>
       <TypeBox>{type}</TypeBox>
       <NoteBox>{note}</NoteBox>
-      <ChangeButton>
+      <ChangeButton onClick={onCorrectClick}>
         <RiPencilFill />
       </ChangeButton>
-      <DeleteButton>
+      <DeleteButton onClick={onDeleteClick}>
         <RiDeleteBinLine />
       </DeleteButton>
     </ManagerInfoBox>
