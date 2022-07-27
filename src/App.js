@@ -25,7 +25,7 @@ function LoggedInRoutes() {
         <Route path="/search/all" element={<SearchList />} />
         <Route path="/book/:id" element={<BookDetail />} />
         <Route path="/equipment/:id" element={<EquipmentDetail />} />
-        <Route path="/pincode/:rentOrReturn/:renteeId" element={<PinCode />} />
+        <Route path="/pincode/:rentOrReturn/:id" element={<PinCode />} />
         <Route path="/manager" element={<Manager />} />
       </Routes>
     </Router>

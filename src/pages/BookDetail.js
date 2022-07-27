@@ -35,7 +35,7 @@ function BookDetail() {
         <ContentBox>
           <RentBox rent={RENTAL_RECORD} />
         </ContentBox>
-        <RentButton renteeId={RENTEE_DUMMY.id} isAvailable={RENTEE_DUMMY.rentState} />
+        <RentButton id={RENTEE_DUMMY.id} isAvailable={RENTEE_DUMMY.rentState} />
       </DetailMain>
     </Body>
   );
