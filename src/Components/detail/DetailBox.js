@@ -4,12 +4,32 @@ import BOOK_TYPE_ICON from '../constant/BOOK_TYPE_ICON';
 import epochSecondToDate from './epochSecondToDate';
 
 function DetailBox({ rentee }) {
+  let typeSrc;
+  if (rentee.type === BOOK_TYPE_ICON.APP.text) {
+    typeSrc = BOOK_TYPE_ICON.APP.src;
+  } else if (rentee.type === BOOK_TYPE_ICON.WEB.text) {
+    typeSrc = BOOK_TYPE_ICON.WEB.src;
+  } else if (rentee.type === BOOK_TYPE_ICON.LANGUAGE.text) {
+    typeSrc = BOOK_TYPE_ICON.LANGUAGE.text;
+  } else if (rentee.type === BOOK_TYPE_ICON.AI.text) {
+    typeSrc = BOOK_TYPE_ICON.AI.text;
+  } else if (rentee.type === BOOK_TYPE_ICON.GAME.text) {
+    typeSrc = BOOK_TYPE_ICON.GAME.text;
+  } else if (rentee.type === BOOK_TYPE_ICON.DEVELOPMENT.text) {
+    typeSrc = BOOK_TYPE_ICON.DEVELOPMENT.text;
+  } else if (rentee.type === BOOK_TYPE_ICON.MAJOR.text) {
+    typeSrc = BOOK_TYPE_ICON.MAJOR.text;
+  } else if (rentee.type === BOOK_TYPE_ICON.EQUIPMENT.text) {
+    typeSrc = BOOK_TYPE_ICON.EQUIPMENT.text;
+  }
+
+
   return (
     <Box>
       <CoverImg src={process.env.REACT_APP_BEEP_API + rentee.thumbnailUrl}/>
 
       <TitleHolder>
-        <TypeIcon src={`BOOK_TYPE_ICON.${rentee.type}`}/>
+        <TypeIcon src={typeSrc}/>
         <TextHolder>
           <Id>{rentee.id}</Id>
           <Title>{rentee.title}</Title>
@@ -65,8 +85,10 @@ const TitleHolder = styled.div`
 
 const TypeIcon = styled.img`
   width: 8%;
-  max-width: 30px;
-  border-radius: 50%;
+  max-width: 40px;
+  border-radius: 0;
+  
+  object-fit: cover;
 `;
 
 const TextHolder = styled.div`
@@ -117,7 +139,7 @@ const InfoTitle = styled.div`
 
 const InfoTextHolder = styled.div`
   width: 100%;
-  
+
   display: flex;
   justify-content: space-between;
   align-items: center;
