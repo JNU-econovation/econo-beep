@@ -44,8 +44,10 @@ function EquipmentList() {
 
   useEffect(() => {
     if (searchParams.get('keyword') === null) {
+      setRenteeList([]);
       getEquipmentList();
     } else if (searchParams.get('keyword')) {
+      setRenteeList([]);
       getKeywordList();
     }
   }, [searchParams.get('keyword')]);

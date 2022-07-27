@@ -20,8 +20,6 @@ function BooksList() {
         lastBookId: lastRenteeId
       }
     });
-    console.log('getBookList');
-    console.log(list);
 
     const dataList = list.data
     setRenteeList((renteeList) => [...renteeList, ...dataList]);
@@ -43,8 +41,10 @@ function BooksList() {
 
   useEffect(() => {
     if (searchParams.get('keyword') === null) {
+      setRenteeList([]);
       getBookList();
     } else if (searchParams.get('keyword')) {
+      setRenteeList([]);
       getKeywordList();
     }
   }, [searchParams.get('keyword')]);

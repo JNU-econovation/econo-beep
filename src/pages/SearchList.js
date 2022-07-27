@@ -18,32 +18,34 @@ function SearchList() {
   const [renteeList , setRenteeList] = useState([]);
 
   const getKeywordList = async () => {
-    if (searchParams.get('keyword') !== "") {
-      const list = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/`, {
-        params: {
-          keyword: searchParams.get('keyword')
-        }
-      });
-      const dataList = list.data
-      setRenteeList((renteeList) => [...renteeList, ...dataList])
-    } else if (searchParams.get('keyword') === "") {
-      const list = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/all', {
-        params: {
-          pageSize: 8,
-          lastRenteeId: lastRenteeId
-        }
-      });
-      const dataList = list.data
-      setRenteeList((renteeList) => [...renteeList, ...dataList])
-    }
-
+    const list = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/`, {
+      params: {
+        keyword: searchParams.get('keyword')
+      }
+    });
+    const dataList = list.data
+    setRenteeList((renteeList) => [...renteeList, ...dataList])
   }
 
+  const getAllList = async () => {
+    const list = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/all', {
+      params: {
+        pageSize: 8,
+        lastRenteeId: lastRenteeId
+      }
+    });
+    const dataList = list.data
+    setRenteeList((renteeList) => [...renteeList, ...dataList])
+  }
 
   useEffect(() => {
     console.log(searchParams);
     if (searchParams.get('keyword')) {
+      setRenteeList([]);
       getKeywordList();
+    } else {
+      setRenteeList([]);
+      getAllList()
     }
   }, [searchParams.get('keyword')]);
 
@@ -67,7 +69,7 @@ function SearchList() {
           ) : (
             <EquipmentInfo
               key={item.id}
-              id={id}
+              id={item.id}
               src={process.env.REACT_APP_BEEP_API + item.thumbnailUrl}
               title={item.title}
               rentState={item.rentState}
