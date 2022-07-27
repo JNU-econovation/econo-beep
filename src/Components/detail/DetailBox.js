@@ -10,17 +10,17 @@ function DetailBox({ rentee }) {
   } else if (rentee.type === BOOK_TYPE_ICON.WEB.text) {
     typeSrc = BOOK_TYPE_ICON.WEB.src;
   } else if (rentee.type === BOOK_TYPE_ICON.LANGUAGE.text) {
-    typeSrc = BOOK_TYPE_ICON.LANGUAGE.text;
+    typeSrc = BOOK_TYPE_ICON.LANGUAGE.src;
   } else if (rentee.type === BOOK_TYPE_ICON.AI.text) {
-    typeSrc = BOOK_TYPE_ICON.AI.text;
+    typeSrc = BOOK_TYPE_ICON.AI.src;
   } else if (rentee.type === BOOK_TYPE_ICON.GAME.text) {
-    typeSrc = BOOK_TYPE_ICON.GAME.text;
+    typeSrc = BOOK_TYPE_ICON.GAME.src;
   } else if (rentee.type === BOOK_TYPE_ICON.DEVELOPMENT.text) {
-    typeSrc = BOOK_TYPE_ICON.DEVELOPMENT.text;
+    typeSrc = BOOK_TYPE_ICON.DEVELOPMENT.src;
   } else if (rentee.type === BOOK_TYPE_ICON.MAJOR.text) {
-    typeSrc = BOOK_TYPE_ICON.MAJOR.text;
+    typeSrc = BOOK_TYPE_ICON.MAJOR.src;
   } else if (rentee.type === BOOK_TYPE_ICON.EQUIPMENT.text) {
-    typeSrc = BOOK_TYPE_ICON.EQUIPMENT.text;
+    typeSrc = BOOK_TYPE_ICON.EQUIPMENT.src;
   }
 
 

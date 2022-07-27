@@ -1,10 +1,10 @@
 const BOOK_TYPE_ICON = {
-  WEB: { text: "WEB", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png"},
-  APP: { text: "APP", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/488px-Apple_logo_black.svg.png"},
-  LANGUAGE: {text: "LANGUAGE", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png"},
-  AI : {text: "AI", src: ""},
-  GAME : {text: "GAME", src: ""},
-  DEVELOPMENT : {text: "DEVELOPMENT", src: ""},
+  WEB: { text: "WEB", src: "https://cdn-icons-png.flaticon.com/512/493/493805.png"},
+  APP: { text: "APP", src: "https://cdn-icons-png.flaticon.com/512/94/94225.png"},
+  LANGUAGE: {text: "LANGUAGE", src: "http://cdn.onlinewebfonts.com/svg/img_545245.png"},
+  AI : {text: "AI", src: "https://cdn-icons-png.flaticon.com/512/1693/1693746.png"},
+  GAME : {text: "GAME", src: "https://toppng.com/uploads/preview/video-game-icon-online-multiplayer-icon-11553487532mjosxalbze.png"},
+  DEVELOPMENT : {text: "DEVELOPMENT", src: "https://cdn-icons-png.flaticon.com/512/4599/4599858.png"},
   MAJOR : {text: "MAJOR", src: ""},
   EQUIPMENT : {text: "EQUIPMENT", src: ""}
 }
