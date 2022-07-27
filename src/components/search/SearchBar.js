@@ -20,6 +20,7 @@ function SearchBar({ placeholder, searchApiUrl }) {
         pathname: `/${searchApiUrl}`,
         search: `?keyword=${keyword}`
       });
+      setInputKeyword('');
     }
   };
 
