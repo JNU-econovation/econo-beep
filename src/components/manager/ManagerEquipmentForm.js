@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FormControl, MenuItem, Select } from '@mui/material';
-import BOOK_TYPE_ICON from '../constant/BOOK_TYPE_ICON';
 
 function ManagerEquipmentForm({ correctData, onCorrectClick }) {
   return (

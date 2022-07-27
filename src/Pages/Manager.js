@@ -14,7 +14,6 @@ function Manager() {
   const [isBookActivated, setIsBookActivated] = useState(true);
   const [viewMethod, setViewMethod] = useState(0);
   const [correctData, setCorrectData] = useState(null);
-  // const [deleteData, setDeleteData] = useState(false);
 
   const [lastBookId, setLastBookId] = useState(null);
   const [bookList, setBookList] = useState([]);
@@ -49,14 +48,6 @@ function Manager() {
     setViewMethod(e.target.value);
   }
 
-  // const onCorrectClick = () => {
-  //   setCorrectData(!correctData);
-  // }
-
-  // const onDeleteClick = () => {
-  //   setDeleteData(true);
-  // }
-
   const getBookList = async () => {
     const list = await axios.get(process.env.REACT_APP_BEEP_API + 'management/book/list/all', {
       params: {
@@ -88,19 +79,19 @@ function Manager() {
       {isBookActivated ? (
         <Box>
           <ManagerBookInfoTitle />
-          {bookList.map((item) => (
-            <ManagerBookInfo
-              id={item.id}
-              src={process.env.REACT_APP_BEEP_API+item.thumbnailUrl}
-              title={item.title}
-              author={item.authorName}
-              publisher={item.publisherName}
-              publishDay={item.publishedDateEpochSecond}
-              type={item.type}
-              note={item.note}
-              setCorrectData = {setCorrectData}
-            />
-          ))}
+          {/* {bookList.map((item) => ( */}
+          {/*   <ManagerBookInfo */}
+          {/*     id={item.id} */}
+          {/*     src={process.env.REACT_APP_BEEP_API+item.thumbnailUrl} */}
+          {/*     title={item.title} */}
+          {/*     author={item.authorName} */}
+          {/*     publisher={item.publisherName} */}
+          {/*     publishDay={item.publishedDateEpochSecond} */}
+          {/*     type={item.type} */}
+          {/*     note={item.note} */}
+          {/*     setCorrectData = {setCorrectData} */}
+          {/*   /> */}
+          {/* ))} */}
           <ManagerBookInfo
             id={book.id}
             src={book.src}

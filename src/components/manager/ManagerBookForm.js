@@ -90,42 +90,6 @@ function ManagerBookForm({ correctData, setCorrectData }) {
       </Form>
     )}
     </FormBody>
-
-
-    // <Form>
-    //   <InputImg>
-    //     <input type="file" placeholder="이미지" id="thumbnailImg" />
-    //   </InputImg>
-    //   <InputTitle placeholder="제목" id="title"/>
-    //   <InputAuthor placeholder="저자" id="authorName" />
-    //   <InputPublisher placeholder="출판사" id="publisherName" />
-    //   <InputPublishDate placeholder="출판일" id="publishDate" />
-    //   <InputType placeholder="타입" id="type">
-    //     <FormControl fullWidth size="small">
-    //       <Select
-    //         labelId="SelectViewMethod"
-    //         id="Select"
-    //         value={type}
-    //         onChange={onTypeChange}
-    //       >
-    //         <MenuItem value={0}>{BOOK_TYPE_ICON.WEB.text}</MenuItem>
-    //         <MenuItem value={1}>{BOOK_TYPE_ICON.APP.text}</MenuItem>
-    //         <MenuItem value={2}>{BOOK_TYPE_ICON.LANGUAGE.text}</MenuItem>
-    //         <MenuItem value={3}>{BOOK_TYPE_ICON.AI.text}</MenuItem>
-    //         <MenuItem value={4}>{BOOK_TYPE_ICON.GAME.text}</MenuItem>
-    //         <MenuItem value={5}>{BOOK_TYPE_ICON.DEVELOPMENT.text}</MenuItem>
-    //         <MenuItem value={6}>{BOOK_TYPE_ICON.MAJOR.text}</MenuItem>
-    //       </Select>
-    //     </FormControl>
-    //   </InputType>
-    //   <InputNote placeholder="비고" id="note" />
-  //     {correctData ? (
-  //       <CorrectBox>
-  //         <InputButton>수정</InputButton>
-  //         <InputButton onClick={onCorrectClick}>취소</InputButton>
-  //       </CorrectBox>
-  //     ) : <AddButton>추가</AddButton>}
-  //   </Form>
   );
 }
 
