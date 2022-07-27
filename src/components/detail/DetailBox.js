@@ -56,6 +56,7 @@ function DetailBox({ rentee }) {
       <NoteBox>
         <NoteEmoji>💡</NoteEmoji>
         <NoteText>
+          #{rentee.type} <br />
           {rentee.note}
         </NoteText>
       </NoteBox>
@@ -85,7 +86,9 @@ const TitleHolder = styled.div`
 
 const TypeIcon = styled.img`
   width: 8%;
-  max-width: 40px;
+  max-width: 100px;
+  
+  margin-right: 1%;
   border-radius: 0;
   
   object-fit: cover;
