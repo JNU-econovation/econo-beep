@@ -9,20 +9,26 @@ import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 
 function BooksList() {
-  const [lastRenteeId, setLastRenteeId] = useState(null);
+  const [lastRenteeId, setLastRenteeId] = useState(0);
   const [renteeList , setRenteeList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const getBookList = async () => {
+  const getBookList = async (lastId) => {
     const list = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/book/', {
       params: {
-        pageSize: 8,
-        lastBookId: lastRenteeId
+        pageSize: 1,
+        lastBookId: lastId
       }
     });
-
     const dataList = list.data
+    const lastData = list.data.slice(-1);
+
     setRenteeList((renteeList) => [...renteeList, ...dataList]);
+    setLastRenteeId(lastData[0].id);
+
+    console.log(list);
+    console.log(lastData[0].id);
+    console.log(lastRenteeId);
   }
 
   const getKeywordList = async () => {
@@ -48,6 +54,31 @@ function BooksList() {
       getKeywordList();
     }
   }, [searchParams.get('keyword')]);
+
+  useEffect(() => {
+    function onScroll(){
+      if (window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 10) {
+        console.log('맨 아래 도착');
+        console.log(lastRenteeId);
+        if (lastRenteeId !== 0) {
+          if (searchParams.get('keyword') === null) {
+            console.log(lastRenteeId);
+            getBookList(lastRenteeId);
+          } else {
+            //키워드
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('touchmove', onScroll)
+    return() => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('touchmove', onScroll);
+    };
+  }, [lastRenteeId])
+
 
   return (
     <ListBody>
