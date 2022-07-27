@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { FormControl, MenuItem, Select } from '@mui/material';
 import BOOK_TYPE_ICON from '../constant/BOOK_TYPE_ICON';
 
-function ManagerBookForm({correctData, onCorrectClick}) {
-  const [type, setType] = useState(BOOK_TYPE_ICON.WEB.text)
+function ManagerBookForm({ correctData, onCorrectClick }) {
+  const [type, setType] = useState(0)
 
   const onTypeChange = (e) => {
     setType(e.target.value);
@@ -24,16 +24,16 @@ function ManagerBookForm({correctData, onCorrectClick}) {
           <Select
             labelId="SelectViewMethod"
             id="Select"
-            state={type}
+            value={type}
             onChange={onTypeChange}
           >
-            <MenuItem value={BOOK_TYPE_ICON.WEB.text}>{BOOK_TYPE_ICON.WEB.text}</MenuItem>
-            <MenuItem value={BOOK_TYPE_ICON.APP.text}>{BOOK_TYPE_ICON.APP.text}</MenuItem>
-            <MenuItem value={BOOK_TYPE_ICON.LANGUAGE.text}>{BOOK_TYPE_ICON.LANGUAGE.text}</MenuItem>
-            <MenuItem value={BOOK_TYPE_ICON.AI.text}>{BOOK_TYPE_ICON.AI.text}</MenuItem>
-            <MenuItem value={BOOK_TYPE_ICON.GAME.text}>{BOOK_TYPE_ICON.GAME.text}</MenuItem>
-            <MenuItem value={BOOK_TYPE_ICON.DEVELOPMENT.text}>{BOOK_TYPE_ICON.DEVELOPMENT.text}</MenuItem>
-            <MenuItem value={BOOK_TYPE_ICON.MAJOR.text}>{BOOK_TYPE_ICON.MAJOR.text}</MenuItem>
+            <MenuItem value={0}>{BOOK_TYPE_ICON.WEB.text}</MenuItem>
+            <MenuItem value={1}>{BOOK_TYPE_ICON.APP.text}</MenuItem>
+            <MenuItem value={2}>{BOOK_TYPE_ICON.LANGUAGE.text}</MenuItem>
+            <MenuItem value={3}>{BOOK_TYPE_ICON.AI.text}</MenuItem>
+            <MenuItem value={4}>{BOOK_TYPE_ICON.GAME.text}</MenuItem>
+            <MenuItem value={5}>{BOOK_TYPE_ICON.DEVELOPMENT.text}</MenuItem>
+            <MenuItem value={6}>{BOOK_TYPE_ICON.MAJOR.text}</MenuItem>
           </Select>
         </FormControl>
       </InputType>

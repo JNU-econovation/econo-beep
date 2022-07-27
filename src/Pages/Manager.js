@@ -11,7 +11,6 @@ import ManagerEquipmentForm from '../components/manager/ManagerEquipmentForm';
 import axios from 'axios';
 
 function Manager() {
-
   const [isBookActivated, setIsBookActivated] = useState(true);
   const [viewMethod, setViewMethod] = useState(0);
   const [correctData, setCorrectData] = useState(false);
@@ -59,7 +58,7 @@ function Manager() {
   // }
 
   const getBookList = async () => {
-    const list = await axios.get(process.env.REACT_APP_BEEP_API + 'management/book/list/all/', {
+    const list = await axios.get(process.env.REACT_APP_BEEP_API + 'management/book/list/all', {
       params: {
         pageSize: 8,
         lastBookId: lastBookId
@@ -67,7 +66,8 @@ function Manager() {
     });
 
     const dataList = list.data
-    setBookList((bookList) => [...bookList, ...dataList]);
+    console.log(dataList);
+    setBookList((bookList) => [...dataList]);
   }
 
   useEffect(() => {
@@ -98,7 +98,6 @@ function Manager() {
               type={item.type}
               note={item.note}
               onCorrectClick={onCorrectClick}
-              onDeleteClick={onDeleteClick}
             />
           ))}
           <ManagerBookInfo
@@ -110,6 +109,7 @@ function Manager() {
             publishDay={book.publishDay}
             type={book.type}
             note={book.note}
+            onCorrectClick={onCorrectClick}
           />
         </Box>
       ) : (
