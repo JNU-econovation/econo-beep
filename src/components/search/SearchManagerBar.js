@@ -23,6 +23,7 @@ function SearchManagerBar({ isBookActivated, setBookList }) {
   };
 
   const getKeyword = async () => {
+    //isBookActivated === true => 책 검색 : false => 기자재 검색
     const list = await axios.get();
     const dataList = list.data
 
