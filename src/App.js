@@ -4,20 +4,22 @@ import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/st
 import reset from 'styled-reset';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styledTheme from './styles/Theme';
-import Home from './Pages/Home';
-import BooksList from './Pages/BooksList';
-import EquipmentList from './Pages/EquipmentList';
-import SearchList from './Pages/SearchList';
-import BookDetail from './Pages/BookDetail';
-import EquipmentDetail from './Pages/EquipmentDetail';
-import Manager from './Pages/Manager';
-import PinCode from './Pages/PinCode';
+import Home from './pages/Home';
+import BooksList from './pages/BooksList';
+import EquipmentList from './pages/EquipmentList';
+import SearchList from './pages/SearchList';
+import BookDetail from './pages/BookDetail';
+import EquipmentDetail from './pages/EquipmentDetail';
+import Manager from './pages/Manager';
+import PinCode from './pages/PinCode';
+import TypeRenteesList from './pages/TypeRenteesList';
 
 function LoggedInRoutes() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/type/:to" element={<TypeRenteesList />} />
         <Route path="/search/books" element={<BooksList />} />
         <Route path="/search/equipments" element={<EquipmentList />} />
         <Route path="/search/all" element={<SearchList />} />

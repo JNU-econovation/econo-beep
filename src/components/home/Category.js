@@ -24,12 +24,12 @@ function Category() {
       <ContentTitle>카테고리</ContentTitle>
       <Row>
         {firstRowTypes.map((item) => (
-          <Type key={item.id} src={item.src} to={`search/books?type=${item.to}`} text={item.text} />
+          <Type key={item.id} src={item.src} to={`type/${item.to}`} text={item.text} />
         ))}
       </Row>
       <Row>
         {secondRowTypes.map((item) => (
-          <Type key={item.id} src={item.src} to={`search/books?type=${item.to}`} text={item.text} />
+          <Type key={item.id} src={item.src} to={`type/${item.to}`} text={item.text} />
         ))}
       </Row>
     </Content>

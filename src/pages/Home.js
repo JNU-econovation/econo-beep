@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/header/Header';
 import Category from '../components/home/Category';
@@ -6,8 +6,6 @@ import Banners from '../components/home/Banners';
 import RecommendBookSlider from '../components/home/RecommendBookSlider';
 import Footer from '../components/Footer';
 import SearchAllBar from '../components/search/SearchAllBar';
-// import axios from 'axios';
-// import BookType from '../components/BookType';
 
 function Home() {
 
