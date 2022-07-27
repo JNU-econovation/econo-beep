@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
+import axios from 'axios';
 
-function SearchManagerBar({ isBookActivated }) {
+function SearchManagerBar({ isBookActivated, setBookList }) {
   const [keyword, setKeyword] = useState('');
+  const [isEnterPressed, setIsEnterPressed] = useState(false);
 
   const onChange = (event) => {
     setKeyword(event.target.value);
@@ -11,13 +13,26 @@ function SearchManagerBar({ isBookActivated }) {
 
   const onEnterPress = (event) => {
     if (event.key === 'Enter') {
-      event.preventDefault();
+      // event.preventDefault();
       // navigate({
       //   pathname: `/${searchApiUrl}`,
       //   search: `?keyword=${keyword}`
       // });
+      setIsEnterPressed(true);
     }
   };
+
+  const getKeyword = async () => {
+    const list = await axios.get();
+    const dataList = list.data
+
+    setBookList([...dataList]);
+  }
+
+  useEffect(() => {
+    getKeyword();
+    console.log("키워드 가져오기" + keyword)
+  }, [isEnterPressed])
 
   return (
     <SearchBox onKeyPress={onEnterPress}>

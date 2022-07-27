@@ -49,9 +49,9 @@ function Manager() {
     setViewMethod(e.target.value);
   }
 
-  const onCorrectClick = () => {
-    setCorrectData(!correctData);
-  }
+  // const onCorrectClick = () => {
+  //   setCorrectData(!correctData);
+  // }
 
   // const onDeleteClick = () => {
   //   setDeleteData(true);
@@ -83,6 +83,7 @@ function Manager() {
         onEquipmentClick={onEquipmentClick}
         viewMethod={viewMethod}
         onViewChange={onViewChange}
+        setBookList={setBookList}
       />
       {isBookActivated ? (
         <Box>
