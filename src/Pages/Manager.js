@@ -7,6 +7,7 @@ import ManagerBookInfoTitle from '../components/manager/ManagerBookInfoTitle';
 import ManagerEquipmentInfo from '../components/manager/ManagerEquipmentInfo';
 import ManagerEquipmentInfoTitle from '../components/manager/ManagerEquipmentInfoTitle';
 import ManagerBookForm from '../components/manager/ManagerBookForm';
+import ManagerInfoForm from '../components/manager/ManagerInfoForm';
 
 function Manager() {
 
@@ -99,7 +100,7 @@ function Manager() {
         </FormBox>
       ) : (
         <FormBox>
-          dd
+          <ManagerInfoForm />
         </FormBox>
       )}
     </Body>

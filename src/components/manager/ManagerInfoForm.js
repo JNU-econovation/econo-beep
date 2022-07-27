@@ -1,16 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function ManagerBookForm({correctData}) {
+function ManagerInfoForm({correctData}) {
   return (
     <Form>
       <InputImg >
         <input type="file" placeholder="이미지" id="thumbnailImg" />
       </InputImg>
       <InputTitle placeholder="제목" id="title" />
-      <InputAuthor placeholder="저자" id="authorName" />
-      <InputPublisher placeholder="출판사" id="publisherName" />
-      <InputPublishDate placeholder="출판일" id="publishDate" />
       <InputNote placeholder="비고" id="note" />
       {correctData ? (
         <InputButton>수정</InputButton>
@@ -39,16 +36,10 @@ const Form = styled.form`
   font-size: 0.8rem;
   
   background-color: ${(props) => props.theme.bgColor};
-  
-  input {
-    :focus {
-      border:none
-    }
-  }
 `;
 
 const InputImg = styled.div`
-  width: 20%;
+  width: 30%;
   height: 100%;
   
   padding-left: 5%;
@@ -61,7 +52,7 @@ const InputImg = styled.div`
   align-items: center;
 `;
 const InputTitle = styled.input`
-  width: 20%;
+  width: 30%;
   height: 100%;
   
   border: none;
@@ -70,38 +61,9 @@ const InputTitle = styled.input`
   text-align: center;
 `;
 
-const InputAuthor = styled.input`
-  width: 10%;
-  height: 100%;
-  
-  border: none;
-  border-radius: 10px;
-  
-  text-align: center;
-`;
-
-const InputPublisher = styled.input`
-  width: 10%;
-  height: 100%;
-  
-  border: none;
-  border-radius: 10px;
-  
-  text-align: center;
-`;
-
-const InputPublishDate = styled.input`
-  width: 10%;
-  height: 100%;
-  
-  border: none;
-  border-radius: 10px;
-  
-  text-align: center;
-`;
 
 const InputNote = styled.input`
-  width: 20%;
+  width: 30%;
   height: 100%;
   
   border: none;
@@ -129,4 +91,4 @@ const InputButton = styled.button`
   background-color: ${ props => props.state === true ? "#001AFF" : "#CACFFF"};
 `;
 
-export default ManagerBookForm;
+export default ManagerInfoForm;
