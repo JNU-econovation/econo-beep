@@ -6,21 +6,9 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 function Banners() {
-  const sliderSettings = {
-    dots: true,
-    arrows: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    pauseOnHover: true,
-  };
-
   const bannerInfos = [
-    { href: 'https://econovation.kr/about', bgColor: 'black', text: '에코노베이션 홈페이지' },
-    { href: 'https://econovation.kr/about', bgColor: '#2269fa', text: 'T-econo' },
+    { id:1, href: 'https://econovation.kr/about', bgColor: 'black', text: '에코노베이션 홈페이지' },
+    { id:2, href: 'https://econovation.kr/about', bgColor: '#2269fa', text: 'T-econo' },
   ];
 
   return (
