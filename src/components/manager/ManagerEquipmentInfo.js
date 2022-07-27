@@ -3,9 +3,13 @@ import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
 
-function ManagerEquipmentInfo({ id, src, title, type, note, onCorrectClick }) {
+function ManagerEquipmentInfo({ id, src, title, type, note, setCorrectData }) {
   const [deleteData, setDeleteData] = useState(false);
 
+  const onCorrectClick = () => {
+    setCorrectData(id);
+    console.log("연필 버튼 " + id);
+  }
   const onDeleteClick = () => {
     setDeleteData(true);
   }

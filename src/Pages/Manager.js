@@ -13,7 +13,7 @@ import axios from 'axios';
 function Manager() {
   const [isBookActivated, setIsBookActivated] = useState(true);
   const [viewMethod, setViewMethod] = useState(0);
-  const [correctData, setCorrectData] = useState(false);
+  const [correctData, setCorrectData] = useState(null);
   // const [deleteData, setDeleteData] = useState(false);
 
   const [lastBookId, setLastBookId] = useState(null);
@@ -97,7 +97,7 @@ function Manager() {
               publishDay={item.publishedDateEpochSecond}
               type={item.type}
               note={item.note}
-              onCorrectClick={onCorrectClick}
+              setCorrectData = {setCorrectData}
             />
           ))}
           <ManagerBookInfo
@@ -109,7 +109,7 @@ function Manager() {
             publishDay={book.publishDay}
             type={book.type}
             note={book.note}
-            onCorrectClick={onCorrectClick}
+            setCorrectData={setCorrectData}
           />
         </Box>
       ) : (
@@ -121,17 +121,17 @@ function Manager() {
             title={equipment.title}
             type={equipment.type}
             note={equipment.note}
-            onCorrectClick={onCorrectClick}
+            setCorrectData={setCorrectData}
           />
         </Box>
       )}
       {isBookActivated ? (
         <FormBox>
-          <ManagerBookForm correctData={correctData} onCorrectClick={onCorrectClick} />
+          <ManagerBookForm correctData={correctData} setCorrectData={setCorrectData} />
         </FormBox>
       ) : (
         <FormBox>
-          <ManagerEquipmentForm correctData={correctData} onCorrectClick={onCorrectClick} />
+          <ManagerEquipmentForm correctData={correctData} setCorrectData={setCorrectData} />
         </FormBox>
       )}
     </Body>

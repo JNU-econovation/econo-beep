@@ -4,8 +4,13 @@ import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
 import axios from 'axios';
 
-function ManagerBookInfo({ id, src, title, author, publisher, publishDay, type, note, onCorrectClick }) {
+function ManagerBookInfo({ id, src, title, author, publisher, publishDay, type, note, setCorrectData }) {
   const [deleteData, setDeleteData] = useState(false);
+
+  const onCorrectClick = () => {
+    setCorrectData(id);
+    console.log("연필 버튼 누름" + id);
+  }
 
   const onDeleteClick = () => {
     setDeleteData(true);
@@ -16,7 +21,7 @@ function ManagerBookInfo({ id, src, title, author, publisher, publishDay, type, 
     //   params: {id: id}
     // });
 
-    console.log('deleteData is' + deleteData)
+    console.log('delete ' + id)
   }
 
   useEffect(() => {

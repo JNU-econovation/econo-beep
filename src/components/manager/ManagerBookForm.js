@@ -1,57 +1,143 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FormControl, MenuItem, Select } from '@mui/material';
 import BOOK_TYPE_ICON from '../constant/BOOK_TYPE_ICON';
 
-function ManagerBookForm({ correctData, onCorrectClick }) {
+function ManagerBookForm({ correctData, setCorrectData }) {
   const [type, setType] = useState(0)
+  // const [data, setData] = useState({});
 
   const onTypeChange = (e) => {
     setType(e.target.value);
   }
 
+  const onCorrectClick = () => {
+    //correctData = id인 데이터 부르기, data를 폼에 뿌려줘야하는데 이거 어떻게 하냐 ㅠ
+
+    setCorrectData(null);
+  }
+
+  useEffect(() => {
+    if (correctData !== null) {
+      console.log("수정 데이터 전달 " +correctData);
+    }
+  }, [correctData])
+
   return (
-    <Form>
-      <InputImg >
-        <input type="file" placeholder="이미지" id="thumbnailImg" />
-      </InputImg>
-      <InputTitle placeholder="제목" id="title" />
-      <InputAuthor placeholder="저자" id="authorName" />
-      <InputPublisher placeholder="출판사" id="publisherName" />
-      <InputPublishDate placeholder="출판일" id="publishDate" />
-      <InputType placeholder="타입" id="type">
-        <FormControl fullWidth size="small">
-          <Select
-            labelId="SelectViewMethod"
-            id="Select"
-            value={type}
-            onChange={onTypeChange}
-          >
-            <MenuItem value={0}>{BOOK_TYPE_ICON.WEB.text}</MenuItem>
-            <MenuItem value={1}>{BOOK_TYPE_ICON.APP.text}</MenuItem>
-            <MenuItem value={2}>{BOOK_TYPE_ICON.LANGUAGE.text}</MenuItem>
-            <MenuItem value={3}>{BOOK_TYPE_ICON.AI.text}</MenuItem>
-            <MenuItem value={4}>{BOOK_TYPE_ICON.GAME.text}</MenuItem>
-            <MenuItem value={5}>{BOOK_TYPE_ICON.DEVELOPMENT.text}</MenuItem>
-            <MenuItem value={6}>{BOOK_TYPE_ICON.MAJOR.text}</MenuItem>
-          </Select>
-        </FormControl>
-      </InputType>
-      <InputNote placeholder="비고" id="note" />
-      {correctData ? (
-        <CorrectBox>
-          <InputButton>수정</InputButton>
-          <InputButton onClick={onCorrectClick}>취소</InputButton>
-        </CorrectBox>
-      ) : <AddButton>추가</AddButton>}
-    </Form>
+    <FormBody>
+    {correctData ? (
+        <Form>
+          <InputImg>
+            <input type="file" placeholder="이미지" id="thumbnailImg" />
+          </InputImg>
+          <InputTitle placeholder="제목" id="title"/>
+          <InputAuthor placeholder="저자" id="authorName" />
+          <InputPublisher placeholder="출판사" id="publisherName" />
+          <InputPublishDate placeholder="출판일" id="publishDate" />
+          <InputType placeholder="타입" id="type">
+            <FormControl fullWidth size="small">
+              <Select
+                labelId="SelectViewMethod"
+                id="Select"
+                value={type}
+                onChange={onTypeChange}
+              >
+                <MenuItem value={0}>{BOOK_TYPE_ICON.WEB.text}</MenuItem>
+                <MenuItem value={1}>{BOOK_TYPE_ICON.APP.text}</MenuItem>
+                <MenuItem value={2}>{BOOK_TYPE_ICON.LANGUAGE.text}</MenuItem>
+                <MenuItem value={3}>{BOOK_TYPE_ICON.AI.text}</MenuItem>
+                <MenuItem value={4}>{BOOK_TYPE_ICON.GAME.text}</MenuItem>
+                <MenuItem value={5}>{BOOK_TYPE_ICON.DEVELOPMENT.text}</MenuItem>
+                <MenuItem value={6}>{BOOK_TYPE_ICON.MAJOR.text}</MenuItem>
+              </Select>
+            </FormControl>
+          </InputType>
+          <InputNote placeholder="비고" id="note" />
+          <CorrectBox>
+            <InputButton>수정</InputButton>
+            <InputButton onClick={onCorrectClick}>취소</InputButton>
+          </CorrectBox>
+        </Form>
+    ) : (
+      <Form>
+        <InputImg>
+          <input type="file" placeholder="이미지" id="thumbnailImg" />
+        </InputImg>
+        <InputTitle placeholder="제목" id="title"/>
+        <InputAuthor placeholder="저자" id="authorName" />
+        <InputPublisher placeholder="출판사" id="publisherName" />
+        <InputPublishDate placeholder="출판일" id="publishDate" />
+        <InputType placeholder="타입" id="type">
+          <FormControl fullWidth size="small">
+            <Select
+              labelId="SelectViewMethod"
+              id="Select"
+              value={type}
+              onChange={onTypeChange}
+            >
+              <MenuItem value={0}>{BOOK_TYPE_ICON.WEB.text}</MenuItem>
+              <MenuItem value={1}>{BOOK_TYPE_ICON.APP.text}</MenuItem>
+              <MenuItem value={2}>{BOOK_TYPE_ICON.LANGUAGE.text}</MenuItem>
+              <MenuItem value={3}>{BOOK_TYPE_ICON.AI.text}</MenuItem>
+              <MenuItem value={4}>{BOOK_TYPE_ICON.GAME.text}</MenuItem>
+              <MenuItem value={5}>{BOOK_TYPE_ICON.DEVELOPMENT.text}</MenuItem>
+              <MenuItem value={6}>{BOOK_TYPE_ICON.MAJOR.text}</MenuItem>
+            </Select>
+          </FormControl>
+        </InputType>
+        <InputNote placeholder="비고" id="note" />
+        <AddButton>추가</AddButton>
+      </Form>
+    )}
+    </FormBody>
+
+
+    // <Form>
+    //   <InputImg>
+    //     <input type="file" placeholder="이미지" id="thumbnailImg" />
+    //   </InputImg>
+    //   <InputTitle placeholder="제목" id="title"/>
+    //   <InputAuthor placeholder="저자" id="authorName" />
+    //   <InputPublisher placeholder="출판사" id="publisherName" />
+    //   <InputPublishDate placeholder="출판일" id="publishDate" />
+    //   <InputType placeholder="타입" id="type">
+    //     <FormControl fullWidth size="small">
+    //       <Select
+    //         labelId="SelectViewMethod"
+    //         id="Select"
+    //         value={type}
+    //         onChange={onTypeChange}
+    //       >
+    //         <MenuItem value={0}>{BOOK_TYPE_ICON.WEB.text}</MenuItem>
+    //         <MenuItem value={1}>{BOOK_TYPE_ICON.APP.text}</MenuItem>
+    //         <MenuItem value={2}>{BOOK_TYPE_ICON.LANGUAGE.text}</MenuItem>
+    //         <MenuItem value={3}>{BOOK_TYPE_ICON.AI.text}</MenuItem>
+    //         <MenuItem value={4}>{BOOK_TYPE_ICON.GAME.text}</MenuItem>
+    //         <MenuItem value={5}>{BOOK_TYPE_ICON.DEVELOPMENT.text}</MenuItem>
+    //         <MenuItem value={6}>{BOOK_TYPE_ICON.MAJOR.text}</MenuItem>
+    //       </Select>
+    //     </FormControl>
+    //   </InputType>
+    //   <InputNote placeholder="비고" id="note" />
+  //     {correctData ? (
+  //       <CorrectBox>
+  //         <InputButton>수정</InputButton>
+  //         <InputButton onClick={onCorrectClick}>취소</InputButton>
+  //       </CorrectBox>
+  //     ) : <AddButton>추가</AddButton>}
+  //   </Form>
   );
 }
 
-const Form = styled.form`
+const FormBody = styled.div`
   width: 100%;
   height: 5vh;
-  
+`;
+
+const Form = styled.form`
+  width: 100%;
+  height: 100%;
+
   margin: 0.25% 0;
 
   display: flex;

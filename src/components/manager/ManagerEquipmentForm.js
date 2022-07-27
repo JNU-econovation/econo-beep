@@ -1,27 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FormControl, MenuItem, Select } from '@mui/material';
+import BOOK_TYPE_ICON from '../constant/BOOK_TYPE_ICON';
 
 function ManagerEquipmentForm({ correctData, onCorrectClick }) {
   return (
-    <Form>
-      <InputImg >
-        <input type="file" placeholder="이미지" id="thumbnailImg" />
-      </InputImg>
-      <InputTitle placeholder="제목" id="title" />
-      <InputNote placeholder="비고" id="note" />
+    <FormBody>
       {correctData ? (
-        <CorrectBox>
-          <InputButton>수정</InputButton>
-          <InputButton onClick={onCorrectClick}>취소</InputButton>
-        </CorrectBox>
-      ) : <AddButton>추가</AddButton>}
-    </Form>
+        <Form>
+          <InputImg>
+            <input type="file" placeholder="이미지" id="thumbnailImg" />
+          </InputImg>
+          <InputTitle placeholder="제목" id="title"/>
+          <InputNote placeholder="비고" id="note" />
+          <CorrectBox>
+            <InputButton>수정</InputButton>
+            <InputButton onClick={onCorrectClick}>취소</InputButton>
+          </CorrectBox>
+        </Form>
+      ) : (
+        <Form>
+          <InputImg>
+            <input type="file" placeholder="이미지" id="thumbnailImg" />
+          </InputImg>
+          <InputTitle placeholder="제목" id="title"/>
+          <InputNote placeholder="비고" id="note" />
+          <AddButton>추가</AddButton>
+        </Form>
+      )}
+    </FormBody>
   );
 }
 
-const Form = styled.form`
+const FormBody = styled.div`
   width: 100%;
   height: 5vh;
+`;
+
+const Form = styled.form`
+  width: 100%;
+  height: 100%;
   
   margin: 0.25% 0;
 
