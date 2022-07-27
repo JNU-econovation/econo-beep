@@ -1,28 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import DetailBox from '../components/detail/DetailBox';
 import RentBox from '../components/detail/RentBox';
 import RentButton from '../components/detail/RentButton';
 import Header from '../components/header/Header';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function EquipmentDetail() {
-  const EQUIPMENT_DUMMY = { to: '/555', src: 'https://www.lge.co.kr/kr/images/monitors/md08920891/gallery/medium01.jpg', id: 'e-555', title: '모니터', equipmentAvailable: '대여하기' };
-  const RENT_DUMMY = [
-    { renter: '이윤성', rentalDate: '2022.03.29', returnDate: '2022.04.08' },
-    { renter: '이윤성', rentalDate: '2022.03.29', returnDate: '2022.04.08' },
-    { renter: '이윤성', rentalDate: '2022.03.29', returnDate: '2022.04.08' },
-  ];
+  const { id } = useParams();
 
+  const [RENTEE_DUMMY, setRenteeDummy] = useState({});
+  const [RENTAL_RECORD, setRentalRecord] = useState([]);
+
+  const getRenteeDummy = async () => {
+    const list = await axios.get(process.env.REACT_APP_BEEP_API + "/rentee/" + id,
+      {params: {id: id}});
+    const dataList = list.data
+    const historyList = dataList.rentalHistories
+
+    setRenteeDummy(dataList);
+    setRentalRecord([...historyList]);
+  }
+
+  useEffect(() => {
+    getRenteeDummy();
+  }, [id]);
   return (
     <Body>
       <Header />
       <DetailMain>
-        <DetailBox rentee={EQUIPMENT_DUMMY} />
+        <DetailBox rentee={RENTEE_DUMMY} />
 
         <ContentBox>
-          <RentBox rent={RENT_DUMMY} />
+          <RentBox rent={RENTAL_RECORD} />
         </ContentBox>
-        <RentButton isAvailable={EQUIPMENT_DUMMY.equipmentAvailable} />
+        <RentButton isAvailable={RENTEE_DUMMY.rentState} />
       </DetailMain>
     </Body>
   );

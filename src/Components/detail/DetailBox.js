@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import BOOK_TYPE_ICON from '../constant/BOOK_TYPE_ICON';
+import epochSecondToDate from './epochSecondToDate';
 
 function DetailBox({ rentee }) {
-
   return (
     <Box>
       <CoverImg src={process.env.REACT_APP_BEEP_API + rentee.thumbnailUrl}/>
@@ -27,11 +27,11 @@ function DetailBox({ rentee }) {
             <AuthorText>{rentee.authorName}</AuthorText>
             <PublisherText>
               <Publisher>{rentee.publisherName}</Publisher>
-              <PublicationDay>{rentee.publishedDateEpochSecond}</PublicationDay>
+              <PublicationDay>{epochSecondToDate(rentee.publishedDateEpochSecond)}</PublicationDay>
             </PublisherText>
           </InfoTextHolder>
         </DetailInfoBox>
-      ) : null }
+      ) : (null)}
 
       <NoteBox>
         <NoteEmoji>💡</NoteEmoji>
