@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function ManagerInfoForm({correctData}) {
+function ManagerEquipmentForm({correctData, onCorrectClick}) {
   return (
     <Form>
       <InputImg >
@@ -10,8 +10,11 @@ function ManagerInfoForm({correctData}) {
       <InputTitle placeholder="제목" id="title" />
       <InputNote placeholder="비고" id="note" />
       {correctData ? (
-        <InputButton>수정</InputButton>
-      ) : <InputButton>추가</InputButton>}
+        <CorrectBox>
+          <InputButton>수정</InputButton>
+          <InputButton onClick={onCorrectClick}>취소</InputButton>
+        </CorrectBox>
+      ) : <AddButton>추가</AddButton>}
     </Form>
   );
 }
@@ -72,7 +75,7 @@ const InputNote = styled.input`
   text-align: center;
 `;
 
-const InputButton = styled.button`
+const AddButton = styled.button`
   width: 10%;
   height: 80%;
 
@@ -87,8 +90,47 @@ const InputButton = styled.button`
   font-size: 1rem;
   font-weight: 600;
 
-  color: ${ props => props.state === true ? "#FDFDFD" : "#001AFF"};
-  background-color: ${ props => props.state === true ? "#001AFF" : "#CACFFF"};
+  color: #001AFF;
+  background-color: #CACFFF;
+  
+  :hover {
+    color: #FDFDFD;
+    background-color: #001AFF;
+  }
 `;
 
-export default ManagerInfoForm;
+const CorrectBox = styled.div`
+  width: 10%;
+  height: 80%;
+
+  margin: 0 1vw;
+  padding: 0;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const InputButton = styled.button`
+  width: 45%;
+  height: 100%;
+
+  text-align: center;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  color: #001AFF;
+  background-color: #CACFFF;
+
+  :hover {
+    color: #FDFDFD;
+    background-color: #001AFF;
+  }
+`;
+
+
+export default ManagerEquipmentForm;

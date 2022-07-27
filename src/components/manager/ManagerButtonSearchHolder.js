@@ -1,13 +1,13 @@
 import React from 'react';
 import { FormControl, MenuItem, Select } from '@mui/material';
-import SearchAllBar from '../search/SearchAllBar';
 import styled from 'styled-components';
+import SearchManagerBar from '../search/SearchManagerBar';
 
-function ManagerButtonSearchHolder({ isActivated, onBookClick, onEquipmentClick, viewMethod, onViewChange}) {
+function ManagerButtonSearchHolder({ isBookActivated, onBookClick, onEquipmentClick, viewMethod, onViewChange}) {
   return (
     <ButtonSearchHolder>
-      <Button state={isActivated} onClick={onBookClick}>도서</Button>
-      <Button state={!isActivated} onClick={onEquipmentClick}>기자재</Button>
+      <Button state={isBookActivated} onClick={onBookClick}>도서</Button>
+      <Button state={!isBookActivated} onClick={onEquipmentClick}>기자재</Button>
       <SelectBox>
         <FormControl fullWidth size="small">
           <Select
@@ -23,7 +23,7 @@ function ManagerButtonSearchHolder({ isActivated, onBookClick, onEquipmentClick,
         </FormControl>
       </SelectBox>
       <ManagerSearchBarHolder>
-        <SearchAllBar />
+        <SearchManagerBar isBookActivated={isBookActivated} />
       </ManagerSearchBarHolder>
     </ButtonSearchHolder>
   )
@@ -71,17 +71,6 @@ const ManagerSearchBarHolder = styled.div`
   height: 100%;
   
   margin: 0 1vw;
-  
-  background-color: white;
-  border-radius: 20px;
-  
-  .edhUcD {
-    border: none;
-  }
-  
-  .gGPxXx {
-    color: #7280FF;
-  }
 `;
 
 export default ManagerButtonSearchHolder;

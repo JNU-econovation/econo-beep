@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
+import axios from 'axios';
 
-function ManagerBookInfo({ id, src, title, author, publisher, publishDay, type, note, onCorrectClick, onDeleteClick }) {
+function ManagerBookInfo({ id, src, title, author, publisher, publishDay, type, note, onCorrectClick }) {
+  const [deleteData, setDeleteData] = useState(false);
+
+  const onDeleteClick = () => {
+    setDeleteData(true);
+  }
+
+  const deleteBook = async () => {
+    // await axios.delete(process.env.REACT_APP_BEEP_API + 'management/book/', {
+    //   params: {id: id}
+    // });
+
+    console.log('deleteData is' + deleteData)
+  }
+
+  useEffect(() => {
+    if (deleteData === true) {
+      deleteBook();
+      setDeleteData(false);
+    }
+  }, [deleteData]);
+
   return (
     <ManagerInfoBox>
       <IdBox>{id}</IdBox>

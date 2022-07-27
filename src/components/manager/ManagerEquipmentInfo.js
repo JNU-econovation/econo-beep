@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
 
-function ManagerEquipmentInfo({ id, src, title, type, note, onCorrectClick, onDeleteClick }) {
+function ManagerEquipmentInfo({ id, src, title, type, note, onCorrectClick }) {
+  const [deleteData, setDeleteData] = useState(false);
+
+  const onDeleteClick = () => {
+    setDeleteData(true);
+  }
+
   return (
     <ManagerInfoBox>
       <IdBox>{id}</IdBox>

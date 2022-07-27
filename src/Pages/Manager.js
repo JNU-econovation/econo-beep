@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/header/Header';
 import ManagerButtonSearchHolder from '../components/manager/ManagerButtonSearchHolder';
@@ -7,14 +7,18 @@ import ManagerBookInfoTitle from '../components/manager/ManagerBookInfoTitle';
 import ManagerEquipmentInfo from '../components/manager/ManagerEquipmentInfo';
 import ManagerEquipmentInfoTitle from '../components/manager/ManagerEquipmentInfoTitle';
 import ManagerBookForm from '../components/manager/ManagerBookForm';
-import ManagerInfoForm from '../components/manager/ManagerInfoForm';
+import ManagerEquipmentForm from '../components/manager/ManagerEquipmentForm';
+import axios from 'axios';
 
 function Manager() {
 
-  const [isActivated, setIsActivated] = useState(true);
+  const [isBookActivated, setIsBookActivated] = useState(true);
   const [viewMethod, setViewMethod] = useState(0);
   const [correctData, setCorrectData] = useState(false);
-  const [deleteData, setDeleteData] = useState(false);
+  // const [deleteData, setDeleteData] = useState(false);
+
+  const [lastBookId, setLastBookId] = useState(null);
+  const [bookList, setBookList] = useState([]);
 
   const book = {
     id: 123,
@@ -35,11 +39,11 @@ function Manager() {
   }
 
   const onBookClick = () => {
-    setIsActivated(true);
+    setIsBookActivated(true);
   }
 
   const onEquipmentClick = () => {
-    setIsActivated(false);
+    setIsBookActivated(false);
   }
 
   const onViewChange = (e) => {
@@ -47,26 +51,56 @@ function Manager() {
   }
 
   const onCorrectClick = () => {
-    setCorrectData(true);
+    setCorrectData(!correctData);
   }
 
-  const onDeleteClick = () => {
-    setDeleteData(true);
+  // const onDeleteClick = () => {
+  //   setDeleteData(true);
+  // }
+
+  const getBookList = async () => {
+    const list = await axios.get(process.env.REACT_APP_BEEP_API + 'management/book/list/all/', {
+      params: {
+        pageSize: 8,
+        lastBookId: lastBookId
+      }
+    });
+
+    const dataList = list.data
+    setBookList((bookList) => [...bookList, ...dataList]);
   }
+
+  useEffect(() => {
+    getBookList();
+  }, [])
 
   return (
     <Body>
       <Header />
       <ManagerButtonSearchHolder
-        isActivated={isActivated}
+        isBookActivated={isBookActivated}
         onBookClick={onBookClick}
         onEquipmentClick={onEquipmentClick}
         viewMethod={viewMethod}
         onViewChange={onViewChange}
       />
-      {isActivated ? (
+      {isBookActivated ? (
         <Box>
           <ManagerBookInfoTitle />
+          {bookList.map((item) => (
+            <ManagerBookInfo
+              id={item.id}
+              src={process.env.REACT_APP_BEEP_API+item.thumbnailUrl}
+              title={item.title}
+              author={item.authorName}
+              publisher={item.publisherName}
+              publishDay={item.publishedDateEpochSecond}
+              type={item.type}
+              note={item.note}
+              onCorrectClick={onCorrectClick}
+              onDeleteClick={onDeleteClick}
+            />
+          ))}
           <ManagerBookInfo
             id={book.id}
             src={book.src}
@@ -76,8 +110,6 @@ function Manager() {
             publishDay={book.publishDay}
             type={book.type}
             note={book.note}
-            onCorrectClick={onCorrectClick}
-            onDeleteClick={onDeleteClick}
           />
         </Box>
       ) : (
@@ -90,17 +122,16 @@ function Manager() {
             type={equipment.type}
             note={equipment.note}
             onCorrectClick={onCorrectClick}
-            onDeleteClick={onDeleteClick}
           />
         </Box>
       )}
-      {isActivated ? (
+      {isBookActivated ? (
         <FormBox>
-          <ManagerBookForm correctData={correctData}/>
+          <ManagerBookForm correctData={correctData} onCorrectClick={onCorrectClick} />
         </FormBox>
       ) : (
         <FormBox>
-          <ManagerInfoForm />
+          <ManagerEquipmentForm correctData={correctData} onCorrectClick={onCorrectClick} />
         </FormBox>
       )}
     </Body>
