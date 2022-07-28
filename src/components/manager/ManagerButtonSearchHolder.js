@@ -36,10 +36,10 @@ function ManagerButtonSearchHolder({ isBookMode, onBookClick, onEquipmentClick, 
 const ButtonSearchHolder = styled.div`
   width: 90%;
   height: 42px;
-  
+
   margin: 2.5%;
   padding: 0;
-  
+
   display: flex;
   align-items: center;
 `;
@@ -49,13 +49,13 @@ const Button = styled.button`
   height: 100%;
   margin: 0 1vw;
   padding: 0;
-  
+
   border: none;
   border-radius: 20px;
-  
+
   color: ${ props => props.state === true ? "#FDFDFD" : "#001AFF"};
   background-color: ${ props => props.state === true ? "#001AFF" : "#CACFFF"};
-  
+
   text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
@@ -72,7 +72,7 @@ const SelectBox = styled.div`
 const ManagerSearchBarHolder = styled.div`
   width: 60%;
   height: 100%;
-  
+
   margin: 0 1vw;
 `;
 

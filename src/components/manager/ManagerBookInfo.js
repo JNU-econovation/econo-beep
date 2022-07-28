@@ -50,7 +50,7 @@ function ManagerBookInfo({ book, setIsEditMode, setEditingRentee, deleteBook }) 
 const IdBox = styled.div`
   width: 5%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,7 +59,7 @@ const IdBox = styled.div`
 const ImgBox = styled.div`
   width: 5%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,30 +68,30 @@ const ImgBox = styled.div`
 const Img = styled.img`
   max-width: 90%;
   max-height: 80%;
-  
+
   object-fit: cover;
 `;
 
 const TitleBox = styled.div`
   width: 25%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   font-size: 125%;
   font-weight: 500;
-  
+
   color: ${(props) => props.theme.black};
-  
+
   cursor: pointer;
 `;
 
 const AuthorNameBox = styled.div`
   width: 15%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,7 +100,7 @@ const AuthorNameBox = styled.div`
 const PublisherNameBox = styled.div`
   width: 15%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,7 +109,7 @@ const PublisherNameBox = styled.div`
 const PublishDayBox = styled.div`
   width: 7.5%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,7 +118,7 @@ const PublishDayBox = styled.div`
 const TypeBox = styled.div`
   width: 7.5%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,7 +127,7 @@ const TypeBox = styled.div`
 const NoteBox = styled.div`
   width: 10%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;

@@ -15,7 +15,7 @@ function ManagerEquipmentInfoTitle() {
 const TitleBox = styled.div`
   width: 50%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@ const TitleBox = styled.div`
 const TypeBox = styled.div`
   width: 25%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +33,7 @@ const TypeBox = styled.div`
 const NoteBox = styled.div`
   width: 25%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;

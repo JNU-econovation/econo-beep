@@ -6,6 +6,7 @@ import RENTEE_TYPE from '../constant/RENTEE_TYPE';
 import { useNavigate } from 'react-router-dom';
 
 function ManagerEquipmentInfo({ equipment, setIsEditMode, setEditingRentee, deleteEquipment }) {
+
   const navigate = useNavigate();
 
   const onEditClick = () => {
