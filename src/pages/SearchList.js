@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import BookInfo from '../components/list/BookInfo';
 import EquipmentInfo from '../components/list/EquipmentInfo'
-import SearchAllBar from '../components/search/SearchBookBar';
+import SearchAllBar from '../components/search/SearchAllBar';
 import Header from '../components/header/Header';
 import ListBody from '../components/list/ListBody';
 import ListSearchBarHolder from '../components/list/ListSearchBarHolder';
@@ -49,8 +49,8 @@ function SearchList() {
   const initSearchList = async () => {
     const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/`, {
       params: {
-        keyword: searchParams.get('keyword')
-        // pageSize: 8
+        keyword: searchParams.get('keyword'),
+        pageSize: 8
       }
     });
 
@@ -67,9 +67,9 @@ function SearchList() {
   const loadSearchList = async () => {
     const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/`, {
       params: {
-        keyword: searchParams.get('keyword')
-        // lastRenteeId: lastRenteeId,
-        // pageSize: 8
+        keyword: searchParams.get('keyword'),
+        lastRenteeId: lastRenteeId,
+        pageSize: 8
       }
     });
 

@@ -267,12 +267,3 @@ const InputButton = styled.button`
 `;
 
 export default ManagerEquipmentForm;
-
-
-:hover {
-    color: #FDFDFD;
-    background-color: #001AFF;
-  }
-`;
-
-export default ManagerEquipmentForm;
