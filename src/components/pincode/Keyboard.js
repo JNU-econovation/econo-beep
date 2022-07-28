@@ -31,10 +31,10 @@ function Keyboard({ addNumber, deleteAll, deleteNumber }) {
 const KeyboardBox = styled.div`
   width: 100%;
   height: 50%;
-  
+
   position: absolute;
   bottom: 0;
-  
+
   background-color: ${(props) => props.theme.bgColor};
   border-top: ${(props) => props.theme.borderTop};
 `;
@@ -47,14 +47,14 @@ const KeyboardColumn = styled.div`
 const KeyboardButton = styled.button`
   width: 33.33%;
   height: 100%;
-  
+
   padding: 0;
-  
+
   background-color: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.black};
-  
+
   border: none;
-  
+
   font-weight: 500;
   font-size: 1.5rem;
 `;
