@@ -1,23 +1,67 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button, Stack, TextField } from '@mui/material';
+import {
+  Alert,
+  Backdrop,
+  Button,
+  CircularProgress,
+  Snackbar,
+  Stack,
+  TextField
+} from '@mui/material';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import SESSION from '../constant/SESSION';
+import { wait } from '@testing-library/user-event/dist/utils';
+
 
 function Auth() {
-  const [id, setId] = useState('');
+  const navigate = useNavigate();
+  let sessionStorage = window.sessionStorage;
+
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoggingIng, setIsLoggingIng] = React.useState(false);
+  const [failAlert, setFailAlert] = React.useState(false);
+
+  const handleOpenFailAlert = () => {
+    setFailAlert(true);
+  };
+
+  const handleCloseFailAlert = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setFailAlert(false);
+  };
+
 
   const handleRegister = () => {
 
   }
 
   const handleLogin = async () => {
-    // MODIFY
-    const response = await axios.post(process.env.REACT_APP_BEEP_API + "login", {
-      userEmail: "",
-      password: ""
-    })
-    console.log(response);
+    setIsLoggingIng(true);
+
+    const loginFormData = new FormData();
+    loginFormData.append('userEmail', email);
+    loginFormData.append('password', password);
+
+    try {
+      const response = await axios.post(process.env.REACT_APP_TECONO_API + 'login', loginFormData);
+
+      sessionStorage.setItem(SESSION.IS_LOGGED_IN, true.toString());
+      sessionStorage.setItem(SESSION.USER_EMAIL, response.data[SESSION.USER_EMAIL]);
+      sessionStorage.setItem(SESSION.EMAIL_VERIFIED, response.data[SESSION.EMAIL_VERIFIED].toString());
+      sessionStorage.setItem(SESSION.USER_NAME, response.data[SESSION.USER_NAME]);
+
+      navigate('/');
+    } catch (e) {
+      handleOpenFailAlert();
+    } finally {
+      setIsLoggingIng(false);
+    }
   }
 
   return (
@@ -27,17 +71,31 @@ function Auth() {
       <Announcement>TECONO 계정 사용</Announcement>
 
         <TextField label="이메일" variant="outlined" type="email"
-                   style={{marginBottom: '4vh', width: '100%'}}
-                   value={id}
-                   onChange={(e) => setId(e.target.value)}/>
+                   style={{marginBottom: '2vh', width: '100%'}}
+                   value={email}
+                   onChange={(e) => setEmail(e.target.value)}/>
         <TextField label="비밀번호" variant="outlined" type="password"
                    style={{marginBottom: '4vh', width: '100%'}}
                    value={password}
                    onChange={(e) => setPassword(e.target.value)}/>
       <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} width={"100%"} marginBottom={"5vh"}>
-        <Button variant="text" disableRipple>계정 만들기</Button>
-        <Button variant="contained">로그인</Button>
+        <Button variant="text" disableRipple onClick={handleRegister}>계정 만들기</Button>
+        <Button variant="contained" onClick={handleLogin} >로그인</Button>
       </Stack>
+
+
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={isLoggingIng}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+
+      <Snackbar open={failAlert} autoHideDuration={3000} onClose={handleCloseFailAlert}>
+        <Alert onClose={handleCloseFailAlert} severity="error" sx={{ width: '100%' }}>
+          로그인에 실패했습니다
+        </Alert>
+      </Snackbar>
     </Body>
   );
 }

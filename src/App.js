@@ -32,13 +32,13 @@ function LoggedInRoutes() {
         <Route path="/pincode/:rentOrReturn/:renteeId" element={<PinCode/>}/>
         <Route path="/manager" element={<Manager/>}/>
 
-        {/* { */}
-        {/*   sessionStorage.getItem(SESSION.IS_LOGGED_IN) ? ( */}
-        {/*     <Route path="/profile" element={<Profile/>}/> */}
-        {/*   ) : ( */}
-        {/*     <Route path="/auth" element={<Auth/>}/> */}
-        {/*   ) */}
-        {/* } */}
+        {
+          sessionStorage.getItem(SESSION.IS_LOGGED_IN) === 'true' ? (
+            <Route path="/profile" element={<Profile/>}/>
+          ) : (
+            <Route path="/auth" element={<Auth/>}/>
+          )
+        }
         <Route path="/auth" element={<Auth/>}/>
         <Route path="/profile" element={<Profile/>}/>
       </Routes>

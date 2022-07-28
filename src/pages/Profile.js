@@ -2,11 +2,19 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { BiUserCircle } from 'react-icons/bi';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
-import { Stack } from '@mui/material';
+import { Button, Stack } from '@mui/material';
+import SESSION from '../constant/SESSION';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
-
+  const navigate = useNavigate();
   let sessionStorage = window.sessionStorage;
+
+  const logOut = () => {
+    sessionStorage.clear();
+
+    navigate('/');
+  }
 
   return (
     <Body>
@@ -14,12 +22,17 @@ function Profile() {
         <ProfileIcon>
           <BiUserCircle/>
         </ProfileIcon>
-        <Name>권순찬</Name>
-        <Stack direction={'row'} alignItems={'center'} >
-          <CheckCircleOutlinedIcon color={'success'} />
-          <Email>sckwon770@gmail.com</Email>
+        <Name>{sessionStorage.getItem(SESSION.USER_NAME)}</Name>
+        <Stack direction={'row'} alignItems={'center'}>
+          {
+            sessionStorage.getItem(SESSION.EMAIL_VERIFIED) === 'true' &&
+            <CheckCircleOutlinedIcon color={'success'}/>
+          }
+          <Email>{sessionStorage.getItem(SESSION.USER_EMAIL)}</Email>
         </Stack>
       </InfoBox>
+
+      <Button variant="outlined" color={'error'} size={'large'} onClick={logOut} style={{position: 'absolute', bottom: '5vh'}} >로그아웃</Button>
     </Body>
   );
 }
@@ -62,6 +75,8 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+  position: relative;
 `;
 
 export default Profile;
