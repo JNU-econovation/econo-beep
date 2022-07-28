@@ -14,6 +14,7 @@ function RenteeDetail() {
   const [RENTAL_RECORD, setRentalRecord] = useState([]);
 
   const getRenteeDummy = async () => {
+    console.log(id)
     const list = await axios.get(process.env.REACT_APP_BEEP_API + "/rentee/" + id,
       {params: {id: id}});
     const dataList = list.data

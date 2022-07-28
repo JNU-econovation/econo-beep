@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Keyboard from '../components/pincode/Keyboard';
 import Circle from '../components/pincode/Circle';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function PinCode() {
+  const navigate = useNavigate();
   const { rentOrReturn, renteeId } = useParams();
   const [number, setNumber] = useState([]);
 
@@ -26,23 +27,16 @@ function PinCode() {
   const sendReturn = async () => {
     const postNumber = number.join('');
 
-    await axios.put(process.env.REACT_APP_BEEP_API + '/rentee/' + renteeId + '/return', {
-      params: {
-        id: renteeId,
-        pinCode: number
-      }
-    });
+    const response = await axios.put(process.env.REACT_APP_BEEP_API + '/rentee/' + renteeId + '/return?pinCode=' + postNumber);
+    navigate('/rentee/' + renteeId);
   };
 
   const sendRent = async () => {
     const postNumber = number.join("");
 
-    await axios.put(process.env.REACT_APP_BEEP_API + '/rentee/' + renteeId + '/rent', {
-      params: {
-        id: renteeId,
-        pinCode: number
-      }
-    });
+    const response = await axios.put(process.env.REACT_APP_BEEP_API + '/rentee/' + renteeId + '/rent?pinCode=' + postNumber);
+    navigate('/rentee/' + renteeId);
+
   };
 
   useEffect(() => {
