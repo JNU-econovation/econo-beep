@@ -37,7 +37,7 @@ function DetailBox({ rentee }) {
       <NoteBox>
         <NoteEmoji>💡</NoteEmoji>
         <NoteText>
-          #{RENTEE_TYPE.KOREAN[rentee.type]} <br />
+          <TypeText>#{RENTEE_TYPE.KOREAN[rentee.type]}</TypeText>
           {rentee.note}
         </NoteText>
       </NoteBox>
@@ -173,6 +173,11 @@ const NoteText = styled.div`
 
   font-size: 0.9rem;
   text-align: center;
+`;
+
+const TypeText = styled.div`
+  width: 100%;
+  margin-bottom: 1vh;
 `;
 
 const Box = styled.div`
