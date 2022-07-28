@@ -1,3 +1,12 @@
+import WebImg from '../../image/WEB.png'
+import AppImg from '../../image/APP.png'
+import LanguageImg from '../../image/LANGUAGE.png'
+import AIImg from '../../image/AI.png'
+import GameImg from '../../image/GAME.png'
+import DevelopmentImg from '../../image/DEVELOPMENT.png'
+import MajorImg from '../../image/MAJOR.png'
+import EquipmentImg from '../../image/EQUIPMENT.png'
+
 const ARRAY = [
   'WEB',
   'APP',
@@ -32,24 +41,24 @@ const INDEX = {
 };
 
 const ICON_URL = {
-  WEB: 'https://cdn-icons-png.flaticon.com/512/2210/2210153.png',
-  APP: 'https://cdn-icons-png.flaticon.com/512/94/94225.png',
-  LANGUAGE: 'http://cdn.onlinewebfonts.com/svg/img_545245.png',
-  AI: 'https://cdn-icons-png.flaticon.com/512/1693/1693746.png',
-  GAME: 'https://toppng.com/uploads/preview/video-game-icon-online-multiplayer-icon-11553487532mjosxalbze.png',
-  DEVELOPMENT: 'https://cdn-icons-png.flaticon.com/512/4599/4599858.png',
-  MAJOR: 'https://cdn-icons-png.flaticon.com/512/3612/3612046.png',
-  EQUIPMENT: 'https://cdn-icons-png.flaticon.com/512/15/15094.png'
+  WEB: WebImg,
+  APP: AppImg,
+  LANGUAGE: LanguageImg,
+  AI: AIImg,
+  GAME: GameImg,
+  DEVELOPMENT: DevelopmentImg,
+  MAJOR: MajorImg,
+  EQUIPMENT: EquipmentImg
 };
 
 const KOREAN = {
   WEB: '웹',
   APP: '앱',
-  LANGUAGE: '프로그래밍 언어',
+  LANGUAGE: '언어',
   AI: '인공지능',
   GAME: '게임',
   DEVELOPMENT: '개발 교양',
-  MAJOR: '학교 전공',
+  MAJOR: '전공 서적',
   EQUIPMENT: '기자재',
 };
 

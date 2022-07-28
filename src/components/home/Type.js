@@ -37,7 +37,7 @@ const Img = styled.img`
 const Text = styled.div`
   text-align: center;
   color: ${(props) => props.theme.firstGray};
-  font-size: 0.8rem;
+  font-size: 12px;
   font-weight: ${(props) => props.theme.fontWeightRegular};
 `;
 

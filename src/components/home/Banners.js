@@ -36,6 +36,7 @@ export default Banners;
 const BannersSlider = styled(Slider)`
   height: 12.5vh;
   width: 90vw;
+  max-width: 500px;
 
   position: absolute;
   bottom: 4vh;
