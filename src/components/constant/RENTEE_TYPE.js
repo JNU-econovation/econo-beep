@@ -32,14 +32,14 @@ const INDEX = {
 };
 
 const ICON_URL = {
-  WEB: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png',
-  APP: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/488px-Apple_logo_black.svg.png',
-  LANGUAGE: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png',
-  AI: '',
-  GAME: '',
-  DEVELOPMENT: '',
-  MAJOR: '',
-  EQUIPMENT: ''
+  WEB: 'https://cdn-icons-png.flaticon.com/512/2210/2210153.png',
+  APP: 'https://cdn-icons-png.flaticon.com/512/94/94225.png',
+  LANGUAGE: 'http://cdn.onlinewebfonts.com/svg/img_545245.png',
+  AI: 'https://cdn-icons-png.flaticon.com/512/1693/1693746.png',
+  GAME: 'https://toppng.com/uploads/preview/video-game-icon-online-multiplayer-icon-11553487532mjosxalbze.png',
+  DEVELOPMENT: 'https://cdn-icons-png.flaticon.com/512/4599/4599858.png',
+  MAJOR: 'https://cdn-icons-png.flaticon.com/512/3612/3612046.png',
+  EQUIPMENT: 'https://cdn-icons-png.flaticon.com/512/15/15094.png'
 };
 
 const KOREAN = {
