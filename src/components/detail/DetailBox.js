@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import epochSecondToDate from './epochSecondToDate';
-import RENTEE_TYPE from '../constant/RENTEE_TYPE';
+import RENTEE_TYPE from '../../constant/RENTEE_TYPE';
 
 function DetailBox({ rentee }) {
 

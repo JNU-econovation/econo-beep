@@ -164,7 +164,6 @@ function Manager() {
   };
 
   const getListedBooks = async () => {
-
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
         params: {
@@ -362,6 +361,7 @@ const Body = styled.div`
 const Box = styled.div`
   width: 90%;
   margin-bottom: 3vh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;

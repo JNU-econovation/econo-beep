@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import RENT_STATE from '../constant/RENT_STATE';
+import RENT_STATE from '../../constant/RENT_STATE';
 
 function InfoText({ id, title, authorName, rent }) {
   return (

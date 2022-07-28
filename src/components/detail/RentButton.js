@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import RENT_STATE from '../constant/RENT_STATE';
+import RENT_STATE from '../../constant/RENT_STATE';
 
 function RentButton({ id, isAvailable }) {
   if (isAvailable === RENT_STATE.UNRENTABLE) {

@@ -189,7 +189,7 @@ const ThumbnailIcon = styled.div`
 
   border-radius: 4vh;
   background-color: ${(props) => props.theme.borderGray};
-
+  
   display: flex;
   justify-content: center;
   align-items: center;
