@@ -9,14 +9,14 @@ function HeaderPc() {
 
   return (
     <MenuBar>
-        <Logo />
+      <Logo />
       <Box>
         <MenuButtonsHolder>
           <MenuButton onClick={() => navigate('/search/books')}>도서</MenuButton>
           <MenuButton onClick={() => navigate('/search/equipments')}>기자재</MenuButton>
           <MenuButton onClick={() => navigate('/manager')}>관리자</MenuButton>
         </MenuButtonsHolder>
-      <ProfileButton />
+        <ProfileButton />
       </Box>
     </MenuBar>
   );
