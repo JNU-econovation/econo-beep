@@ -9,51 +9,91 @@ import SearchTypeBar from '../components/search/SearchTypeBar';
 import ListResultBox from '../components/list/ListResultBox';
 import BOOK_TYPE_ICON from '../components/constant/BOOK_TYPE_ICON';
 import EquipmentInfo from '../components/list/EquipmentInfo';
+import MoreRenteeButton from '../components/list/MoreRenteeButton';
 
 function TypesRenteeList() {
+  const [lastRenteeId, setLastRenteeId] = useState(null);
+  const [rentees , setRentees] = useState([]);
+
   const { to } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [lastRenteeId, setLastRenteeId] = useState(null);
-  const [renteeList , setRenteeList] = useState([]);
-
-  const getKeywordList = async () => {
-    const list = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/` + to, {
+  const initTypeList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/' + to, {
       params: {
         type: to,
-        keyword: searchParams.get('keyword')
+        pageSize: 8
       }
     });
-    console.log('getKeywordList');
-    console.log(list);
+    const newBookList = response.data;
 
-    const dataList = list.data
-    setRenteeList((renteeList) => [...dataList])
+    if (newBookList.length !== 0) {
+      setLastRenteeId(newBookList[newBookList.length - 1].id);
+      setRentees(newBookList);
+    }
   }
 
-  const getTypeList = async () => {
-    const list = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/' + to, {
+  const loadTypeList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/' + to, {
       params: {
         type: to,
         pageSize: 8,
         lastBookId: lastRenteeId
       }
     });
-    console.log('getTypeList');
-    console.log(list);
+    const newBookList = response.data;
 
-    const dataList = list.data
-    setRenteeList((renteeList) => [...dataList])
+    if (newBookList.length !== 0) {
+      setLastRenteeId(newBookList[newBookList.length - 1].id);
+      setRentees(newBookList);
+    }
+  }
+
+  const initSearchList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/` + to, {
+      params: {
+        type: to,
+        keyword: searchParams.get('keyword')
+        // pageSize: 8
+      }
+    });
+    const newSearchList = response.data;
+
+    setRentees(newSearchList);
+
+    if (newSearchList.length !== 0) {
+      setLastRenteeId(newSearchList[newSearchList.length - 1].id);
+      setRentees(newSearchList);
+    }
+  }
+
+  const loadSearchList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/` + to, {
+      params: {
+        type: to,
+        keyword: searchParams.get('keyword')
+        // pageSize: 8,
+        // lastRenteeId: lastRenteeId
+      }
+    });
+    const newSearchList = response.data;
+
+    setRentees(newSearchList);
+
+    if (newSearchList.length !== 0) {
+      setLastRenteeId(newSearchList[newSearchList.length - 1].id);
+      setRentees(newSearchList);
+    }
   }
 
   useEffect(() => {
-    console.log(to);
     if (searchParams.get('keyword') === null) {
-      getTypeList();
+      initTypeList();
+
     } else if (searchParams.get('keyword')) {
-      getKeywordList();
+      initSearchList();
     }
-  }, [searchParams.get('keyword'), to]);
+  }, [searchParams.get('keyword')]);
 
   return (
     <ListBody>
@@ -62,7 +102,7 @@ function TypesRenteeList() {
         <SearchTypeBar to={to}/>
       </ListSearchBarHolder>
       <ListResultBox>
-        {renteeList.map((item) => (
+        {rentees.map((item) => (
           item.type !== BOOK_TYPE_ICON.EQUIPMENT.text ? (
             <BookInfo
               key={item.id}
@@ -82,6 +122,11 @@ function TypesRenteeList() {
           />
           )
         ))}
+        { searchParams.get('keyword') ? (
+          <MoreRenteeButton onClick={loadSearchList}>MORE INFO</MoreRenteeButton>
+        ) : (
+          <MoreRenteeButton onClick={loadTypeList}>MORE INFO</MoreRenteeButton>
+        )}
       </ListResultBox>
     </ListBody>
   );
