@@ -31,31 +31,30 @@ function Home() {
 
 const Body = styled.div`
   width: 100vw;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   background-color: ${(props) => props.theme.bgColor};
 `;
 
 const MainPage = styled.div`
   width: 100vw;
   height: 100vh;
-
   position: relative;
 `;
 
 const SearchBarHolder = styled.div`
   position: absolute;
   top: 35vh;
-  
+
   @media screen and (max-width: 767px) {
     left: 10vw;
     width: 80vw;
   }
-  
+
   @media screen and (min-width: 768px) {
     left: 20vw;
     width: 60vw;
@@ -65,9 +64,9 @@ const SearchBarHolder = styled.div`
 const LogoText = styled.div`
   display: flex;
   justify-content: center;
-  
+
   margin: 0.75rem;
-  
+
   font-size: 2.75rem;
   font-family: ${(props) => props.theme.fontFamilyLogo};
   color: ${(props) => props.theme.blue};
@@ -77,11 +76,10 @@ const ExpendPage = styled.div`
   width: 100vw;
   min-height: 100vh;
   padding-top: 50px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   position: relative;
 `;
 

@@ -43,29 +43,26 @@ function BookDetail() {
 
 const ContentBox = styled.div`
   background-color: ${(props) => props.theme.bgColor};
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   margin: 0.5rem 0;
   padding: 1rem 0;
-  
+
   border-radius: 30px;
 `;
 
 const Body = styled.div`
   width: 100vw;
   height: 100vh;
-  
+
   background-color: ${(props) => props.theme.bgColor};
 `;
 
 const DetailMain = styled.div`
   width: 100%;
   height: 100%;
-
   background-color: #f2f2f2;
 `;
 export default BookDetail;

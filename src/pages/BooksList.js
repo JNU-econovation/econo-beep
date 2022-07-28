@@ -1,91 +1,116 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import BookInfo from '../components/list/BookInfo';
 import SearchBookBar from '../components/search/SearchBookBar';
 import Header from '../components/header/Header';
 import ListBody from '../components/list/ListBody';
 import ListSearchBarHolder from '../components/list/ListSearchBarHolder';
 import ListResultBox from '../components/list/ListResultBox';
+import MoreRenteeButton from '../components/list/MoreRenteeButton';
 import axios from 'axios';
-import { useSearchParams } from 'react-router-dom';
+
 
 function BooksList() {
-  const [lastBookId] = useState(null);
-  const [bookList , setBookList] = useState([]);
+  const [lastRenteeId, setLastRenteeId] = useState(null);
+  const [rentees, setRentees] = useState([]);
+
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const getBookList = async () => {
-    const list = await axios.get(process.env.REACT_APP_BEEP_API + 'book/list/all/', {
+  const initBookList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/book/', {
       params: {
         pageSize: 8,
-        lastBookId: lastBookId
       }
     });
+    const newBookList = response.data;
 
-    const dataList = list.data
-    setBookList((bookList) => [...bookList, ...dataList]);
-  }
+    if (newBookList.length !== 0) {
+      setLastRenteeId(newBookList[newBookList.length - 1].id);
+      setRentees(newBookList);
+    }
+  };
 
-  const getKeywordList = async () => {
-    const list = await axios.get(process.env.REACT_APP_BEEP_API + `book/search/`, {
+  const loadBookList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/book/', {
+      params: {
+        pageSize: 8,
+        lastRenteeId: lastRenteeId,
+      }
+    });
+    const newBookList = response.data;
+
+    if (newBookList.length !== 0) {
+      setLastRenteeId(newBookList[newBookList.length - 1].id);
+      setRentees((oldBookList) => [...oldBookList, ...newBookList]);
+    }
+  };
+
+  const initSearchList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/book`, {
       params: {
         keyword: searchParams.get('keyword')
+        // pageSize: 8
       }
     });
 
-    const dataList = list.data
-    setBookList((bookList) => [...dataList])
-  }
+    const newSearchList = response.data;
 
-  const getTypeList = async () => {
-    const list = await axios.get(process.env.REACT_APP_BEEP_API + 'book/list/' + searchParams.get('type'), {
+    setRentees(newSearchList);
+
+    if (newSearchList.length !== 0) {
+      setLastRenteeId(newSearchList[newSearchList.length - 1].id);
+      setRentees(newSearchList);
+    }
+  };
+
+  const loadSearchList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/book`, {
       params: {
-        type: searchParams.get('type'),
-        pageSize: 8,
-        lastBookId: lastBookId
+        keyword: searchParams.get('keyword')
+        // lastRenteeId: lastRenteeId,
+        // pageSize: 8
       }
     });
 
-    const dataList = list.data
-    console.log(dataList);
-    setBookList((bookList) => [...dataList])
-  }
+    const newSearchList = response.data;
+
+    if (newSearchList.length !== 0) {
+      setLastRenteeId(newSearchList[newSearchList.length - 1].id);
+      setRentees((oldSearchList) => [...oldSearchList, ...newSearchList]);
+    }
+  };
 
   useEffect(() => {
-    // console.log(searchParams.get('keyword'));
     if (searchParams.get('keyword') === null) {
-      getBookList();
+      initBookList();
+
     } else if (searchParams.get('keyword')) {
-      getKeywordList();
+      initSearchList();
     }
-
-    if (searchParams.get('type')) {
-      getTypeList();
-    }
-
-    console.log(searchParams.get('type'));
-    // if (searchParams.get('type')) {
-    //   getTypeList();
-    // }
-  }, [searchParams.get('keyword'), searchParams.get('type')]);
+  }, [searchParams.get('keyword')]);
 
   return (
     <ListBody>
-      <Header />
+      <Header/>
       <ListSearchBarHolder>
-        <SearchBookBar />
+        <SearchBookBar/>
       </ListSearchBarHolder>
       <ListResultBox>
-        {bookList.map((item) => (
+        {rentees.map((item) => (
           <BookInfo
             key={item.id}
-            to={item.id}
-            src={process.env.REACT_APP_BEEP_API + item.bookCoverImageUrl}
-            bookId={item.id}
-            bookTitle={item.title}
-            bookAuthorName={item.authorName}
-            bookRent={item.rentState}
+            id={item.id}
+            src={process.env.REACT_APP_BEEP_API + item.thumbnailUrl}
+            title={item.title}
+            authorName={item.authorName}
+            rentState={item.rentState}
           />
         ))}
+        { searchParams.get('keyword') ? (
+          <MoreRenteeButton onClick={loadSearchList}>MORE BOOK</MoreRenteeButton>
+        ) : (
+          <MoreRenteeButton onClick={loadBookList}>MORE BOOK</MoreRenteeButton>
+        )}
       </ListResultBox>
     </ListBody>
   );

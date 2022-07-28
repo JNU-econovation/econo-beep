@@ -7,9 +7,9 @@ import ListBody from '../components/list/ListBody';
 import ListSearchBarHolder from '../components/list/ListSearchBarHolder';
 import SearchTypeBar from '../components/search/SearchTypeBar';
 import ListResultBox from '../components/list/ListResultBox';
-import BOOK_TYPE_ICON from '../components/constant/BOOK_TYPE_ICON';
 import EquipmentInfo from '../components/list/EquipmentInfo';
 import MoreRenteeButton from '../components/list/MoreRenteeButton';
+import RENTEE_TYPE from '../components/constant/RENTEE_TYPE';
 
 function TypesRenteeList() {
   const [lastRenteeId, setLastRenteeId] = useState(null);
@@ -103,7 +103,7 @@ function TypesRenteeList() {
       </ListSearchBarHolder>
       <ListResultBox>
         {rentees.map((item) => (
-          item.type !== BOOK_TYPE_ICON.EQUIPMENT.text ? (
+          item.type !== RENTEE_TYPE.EQUIPMENT ? (
             <BookInfo
               key={item.id}
               id={item.id}
@@ -113,13 +113,13 @@ function TypesRenteeList() {
               rentState={item.rentState}
             />
           ) : (
-          <EquipmentInfo
-            key={item.id}
-            id={item.id}
-            src={process.env.REACT_APP_BEEP_API + item.thumbnailUrl}
-            title={item.title}
-            rentState={item.rentState}
-          />
+            <EquipmentInfo
+              key={item.id}
+              id={item.id}
+              src={process.env.REACT_APP_BEEP_API + item.thumbnailUrl}
+              title={item.title}
+              rentState={item.rentState}
+            />
           )
         ))}
         { searchParams.get('keyword') ? (

@@ -75,11 +75,9 @@ function PinCode() {
 const Body = styled.div`
   width: 100vw;
   height: 100vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: ${(props) => props.theme.bgColor};
 `;
 
@@ -88,14 +86,12 @@ const PinCodeBox = styled.div`
   max-width: 500px;
   height: 100%;
   max-height: 1000px;
-
   position: relative;
 `;
 
 const ResultBox = styled.div`
   width: 100%;
   height: 50%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
