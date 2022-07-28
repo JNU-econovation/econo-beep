@@ -6,8 +6,8 @@ function ManagerBookInfoTitle() {
   return (
     <InfoTitle>
       <TitleBox>제목</TitleBox>
-      <AuthorBox>저자</AuthorBox>
-      <PublisherBox>출판사</PublisherBox>
+      <AuthorNameBox>저자</AuthorNameBox>
+      <PublisherNameBox>출판사</PublisherNameBox>
       <PublishDayBox>출판일</PublishDayBox>
       <TypeBox>분야</TypeBox>
       <NoteBox>비고</NoteBox>
@@ -24,7 +24,7 @@ const TitleBox = styled.div`
   align-items: center;
 `;
 
-const AuthorBox = styled.div`
+const AuthorNameBox = styled.div`
   width: 18.75%;
   height: 100%;
   
@@ -33,7 +33,7 @@ const AuthorBox = styled.div`
   align-items: center;
 `;
 
-const PublisherBox = styled.div`
+const PublisherNameBox = styled.div`
   width: 18.75%;
   height: 100%;
   

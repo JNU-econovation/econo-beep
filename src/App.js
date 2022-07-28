@@ -14,6 +14,7 @@ import Manager from './pages/Manager';
 import PinCode from './pages/PinCode';
 import TypeRenteesList from './pages/TypeRenteesList';
 
+
 function LoggedInRoutes() {
   return (
     <Router>
@@ -42,6 +43,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  i {
+    color: ${styledTheme.placeholderColor};
   }
 
   * {

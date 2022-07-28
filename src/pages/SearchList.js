@@ -1,127 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import BookInfo from '../components/list/BookInfo';
-import EquipmentInfo from '../components/list/EquipmentInfo'
-import SearchAllBar from '../components/search/SearchBookBar';
-import Header from '../components/header/Header';
+import React from 'react';
+// import BookInfo from '../components/list/BookInfo';
+import EquipmentInfo from '../components/list/EquipmentInfo';
 import ListBody from '../components/list/ListBody';
+import Header from '../components/header/Header';
 import ListSearchBarHolder from '../components/list/ListSearchBarHolder';
+import SearchEquipmentBar from '../components/search/SearchEquipmentBar';
 import ListResultBox from '../components/list/ListResultBox';
-import MoreRenteeButton from '../components/list/MoreRenteeButton';
-import BOOK_TYPE_ICON from '../components/constant/BOOK_TYPE_ICON';
-import axios from 'axios';
 
 function SearchList() {
-  const [lastRenteeId, setLastRenteeId] = useState(null);
-  const [rentees, setRentees] = useState([]);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const initAllList = async () => {
-    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/all/', {
-      params: {
-        pageSize: 8,
-      }
-    });
-    const newRenteeList = response.data;
-
-    if (newRenteeList.length !== 0) {
-      setLastRenteeId(newRenteeList[newRenteeList.length - 1].id);
-      setRentees(newRenteeList);
-    }
-  };
-
-  const loadAllList = async () => {
-    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/all/', {
-      params: {
-        pageSize: 8,
-        lastRenteeId: lastRenteeId,
-      }
-    });
-    const newRenteeList = response.data;
-
-    if (newRenteeList.length !== 0) {
-      setLastRenteeId(newRenteeList[newRenteeList.length - 1].id);
-      setRentees((oldBookList) => [...oldBookList, ...newRenteeList]);
-    }
-  };
-
-  const initSearchList = async () => {
-    const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/`, {
-      params: {
-        keyword: searchParams.get('keyword')
-        // pageSize: 8
-      }
-    });
-
-    const newRenteeList = response.data;
-
-    setRentees(newRenteeList);
-
-    if (newRenteeList.length !== 0) {
-      setLastRenteeId(newRenteeList[newRenteeList.length - 1].id);
-      setRentees(newRenteeList);
-    }
-  };
-
-  const loadSearchList = async () => {
-    const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/`, {
-      params: {
-        keyword: searchParams.get('keyword')
-        // lastRenteeId: lastRenteeId,
-        // pageSize: 8
-      }
-    });
-
-    const newRenteeList = response.data;
-
-    if (newRenteeList.length !== 0) {
-      setLastRenteeId(newRenteeList[newRenteeList.length - 1].id);
-      setRentees((oldSearchList) => [...oldSearchList, ...newRenteeList]);
-    }
-  };
-
-  useEffect(() => {
-    if (searchParams.get('keyword') === "") {
-      initAllList();
-
-    } else if (searchParams.get('keyword')) {
-      initSearchList();
-    }
-  }, [searchParams.get('keyword')]);
+  const ResultList = [
+    { to: '/555', src: 'https://www.lge.co.kr/kr/images/monitors/md08920891/gallery/medium01.jpg', equipmentId: 'e-555', equipmentName: '모니터', equipmentRent: '대여 가능' },
+    { to: '/555', src: 'https://i.dell.com/is/image/DellContent//content/dam/ss2/product-images/dell-multiple-products/monitor/dell-gen-snp-all-monitors-accessories-p3421w-800x620-right-facing.png?fmt=png-alpha&wid=800&hei=620', equipmentId: 'e-555', equipmentName: '모니터', equipmentRent: '대여 가능' },
+    { to: '/555', src: 'https://blog.kakaocdn.net/dn/bffERm/btrCdIiYwHi/YKDnATjkwCKvYRv18POBc1/img.jpg', equipmentId: 'e-555', equipmentName: '모니터', equipmentRent: '대여 가능' },
+    { to: '/555', src: 'https://www.lge.co.kr/kr/images/monitors/md08920891/gallery/medium01.jpg', equipmentId: 'e-555', equipmentName: '모니터', equipmentRent: '대여 가능' },
+  ];
 
   return (
     <ListBody>
       <Header />
       <ListSearchBarHolder>
-        <SearchAllBar />
+        <SearchEquipmentBar />
       </ListSearchBarHolder>
       <ListResultBox>
-        {rentees.map((item) => (
-          item.type !== BOOK_TYPE_ICON.EQUIPMENT.text ? (
-            <BookInfo
-              key={item.id}
-              id={item.id}
-              src={process.env.REACT_APP_BEEP_API + item.thumbnailUrl}
-              title={item.title}
-              authorName={item.authorName}
-              rentState={item.rentState}
-            />
-          ) : (
-            <EquipmentInfo
-              key={item.id}
-              id={item.id}
-              src={process.env.REACT_APP_BEEP_API + item.thumbnailUrl}
-              title={item.title}
-              rentState={item.rentState}
-            />
-          )
+        {ResultList.map((item) => (
+          <EquipmentInfo
+            key={item.id}
+            to={item.to}
+            src={item.src}
+            equipmentId={item.equipmentId}
+            equipmentName={item.equipmentName}
+            equipmentRent={item.equipmentRent}
+          />
         ))}
-        { searchParams.get('keyword') !== "" ? (
-          <MoreRenteeButton onClick={loadSearchList}>MORE INFO</MoreRenteeButton>
-        ) : (
-          <MoreRenteeButton onClick={loadAllList}>MORE INFO</MoreRenteeButton>
-        )}
       </ListResultBox>
     </ListBody>
   );

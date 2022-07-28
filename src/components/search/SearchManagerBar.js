@@ -3,44 +3,24 @@ import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
 import axios from 'axios';
 
-function SearchManagerBar({ isBookActivated, setBookList }) {
+function SearchManagerBar({isBookMode, onSearchPress}) {
   const [keyword, setKeyword] = useState('');
-  const [isEnterPressed, setIsEnterPressed] = useState(false);
 
   const onChange = (event) => {
     setKeyword(event.target.value);
   };
 
-  const onEnterPress = (event) => {
-    if (event.key === 'Enter') {
-      // event.preventDefault();
-      // navigate({
-      //   pathname: `/${searchApiUrl}`,
-      //   search: `?keyword=${keyword}`
-      // });
-      setIsEnterPressed(true);
-    }
-  };
-
-  const getKeyword = async () => {
-    //isBookActivated === true => 책 검색 : false => 기자재 검색
-    const list = await axios.get();
-    const dataList = list.data
-
-    setBookList([...dataList]);
-  }
-
-  useEffect(() => {
-    getKeyword();
-    console.log("키워드 가져오기" + keyword)
-  }, [isEnterPressed])
-
   return (
-    <SearchBox onKeyPress={onEnterPress}>
+    <SearchBox onKeyPress={(event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault()
+        onSearchPress(keyword)
+      }
+    }}>
       <Icon>
         <BiSearch />
       </Icon>
-      <Search type="text" placeholder={isBookActivated ? "도서" : "기자재"} value={keyword} onChange={onChange} />
+      <Search type="text" placeholder={isBookMode ? "도서" : "기자재"} value={keyword} onChange={onChange} />
     </SearchBox>
   );
 }

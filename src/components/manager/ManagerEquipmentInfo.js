@@ -2,30 +2,35 @@ import React, { useState } from 'react';
 import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
+import RENTEE_TYPE from '../constant/RENTEE_TYPE';
 
-function ManagerEquipmentInfo({ id, src, title, type, note, setCorrectData }) {
-  const [deleteData, setDeleteData] = useState(false);
+function ManagerEquipmentInfo({ equipment, setIsEditMode, setEditingRentee, deleteEquipment }) {
 
-  const onCorrectClick = () => {
-    setCorrectData(id);
-    console.log("연필 버튼 " + id);
+  const onEditClick = () => {
+    setIsEditMode(true);
+    setEditingRentee(equipment);
   }
+
   const onDeleteClick = () => {
-    setDeleteData(true);
+    if (!confirm("정말로 삭제하시겠습니까?")) {
+      return;
+    }
+
+    deleteEquipment(equipment.id);
   }
 
   return (
     <ManagerInfoBox>
-      <IdBox>{id}</IdBox>
+      <IdBox>{equipment.id}</IdBox>
       <ImgBox>
-        <Img src={src} />
+        <Img src={equipment.thumbnailUrl} />
       </ImgBox>
-      <TitleBox>{title}</TitleBox>
-      <TypeBox>{type}</TypeBox>
-      <NoteBox>{note}</NoteBox>
-      <ChangeButton onClick={onCorrectClick}>
+      <TitleBox>{equipment.title}</TitleBox>
+      <TypeBox>{RENTEE_TYPE.KOREAN[equipment.type]}</TypeBox>
+      <NoteBox>{equipment.note}</NoteBox>
+      <EditButton onClick={onEditClick}>
         <RiPencilFill />
-      </ChangeButton>
+      </EditButton>
       <DeleteButton onClick={onDeleteClick}>
         <RiDeleteBinLine />
       </DeleteButton>
@@ -105,13 +110,15 @@ const OriginButton = styled.button`
   font-size: 1.4rem;
 `;
 
-const ChangeButton = styled(OriginButton)`
+const EditButton = styled(OriginButton)`
+  cursor: pointer;
   :hover {
     color: ${(props) => props.theme.rentBlue};
   }
 `;
 
 const DeleteButton = styled(OriginButton)`
+  cursor: pointer;
   :hover {
     color: ${(props) => props.theme.rentRed};
   }
