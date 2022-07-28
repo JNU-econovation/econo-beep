@@ -1,51 +1,90 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
-import axios from 'axios';
-import BookInfo from '../components/list/BookInfo';
+import { useSearchParams } from 'react-router-dom';
+import EquipmentInfo from '../components/list/EquipmentInfo'
+import SearchAllBar from '../components/search/SearchBookBar';
 import Header from '../components/header/Header';
 import ListBody from '../components/list/ListBody';
 import ListSearchBarHolder from '../components/list/ListSearchBarHolder';
 import ListResultBox from '../components/list/ListResultBox';
-import BOOK_TYPE_ICON from '../components/constant/BOOK_TYPE_ICON';
-import EquipmentInfo from '../components/list/EquipmentInfo';
-import SearchAllBar from '../components/search/SearchAllBar';
+import MoreRenteeButton from '../components/list/MoreRenteeButton';
+import axios from 'axios';
 
 function SearchList() {
-  const { to } = useParams();
+  const [lastRenteeId, setLastRenteeId] = useState(null);
+  const [rentees, setRentees] = useState([]);
+
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [lastRenteeId, setLastRenteeId] = useState(null);
-  const [renteeList , setRenteeList] = useState([]);
-
-  const getKeywordList = async () => {
-    const list = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/`, {
-      params: {
-        keyword: searchParams.get('keyword')
-      }
-    });
-    const dataList = list.data
-    setRenteeList((renteeList) => [...renteeList, ...dataList])
-  }
-
-  const getAllList = async () => {
-    const list = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/all', {
+  const initEquipmentList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/equipment/', {
       params: {
         pageSize: 8,
-        lastRenteeId: lastRenteeId
       }
     });
-    const dataList = list.data
-    setRenteeList((renteeList) => [...renteeList, ...dataList])
-  }
+    const newBookList = response.data;
+
+    if (newBookList.length !== 0) {
+      setLastRenteeId(newBookList[newBookList.length - 1].id);
+      setRentees(newBookList);
+    }
+  };
+
+  const loadEquipmentList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/equipment/', {
+      params: {
+        pageSize: 1,
+        lastRenteeId: lastRenteeId,
+      }
+    });
+    const newBookList = response.data;
+
+    if (newBookList.length !== 0) {
+      setLastRenteeId(newBookList[newBookList.length - 1].id);
+      setRentees((oldBookList) => [...oldBookList, ...newBookList]);
+    }
+  };
+
+  const initSearchList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/equipment`, {
+      params: {
+        keyword: searchParams.get('keyword')
+        // pageSize: 8
+      }
+    });
+
+    const newSearchList = response.data;
+
+    setRentees(newSearchList);
+
+    if (newSearchList.length !== 0) {
+      setLastRenteeId(newSearchList[newSearchList.length - 1].id);
+      setRentees(newSearchList);
+    }
+  };
+
+  const loadSearchList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/equipment`, {
+      params: {
+        keyword: searchParams.get('keyword')
+        // lastRenteeId: lastRenteeId,
+        // pageSize: 8
+      }
+    });
+
+    const newSearchList = response.data;
+
+    if (newSearchList.length !== 0) {
+      setLastRenteeId(newSearchList[newSearchList.length - 1].id);
+      setRentees((oldSearchList) => [...oldSearchList, ...newSearchList]);
+    }
+  };
 
   useEffect(() => {
-    console.log(searchParams);
-    if (searchParams.get('keyword')) {
-      setRenteeList([]);
-      getKeywordList();
-    } else {
-      setRenteeList([]);
-      getAllList()
+    if (searchParams.get('keyword') === null) {
+      initEquipmentList();
+
+    } else if (searchParams.get('keyword')) {
+      initSearchList();
     }
   }, [searchParams.get('keyword')]);
 
@@ -56,7 +95,7 @@ function SearchList() {
         <SearchAllBar />
       </ListSearchBarHolder>
       <ListResultBox>
-        {renteeList.map((item) => (
+        {rentees.map((item) => (
           item.type !== BOOK_TYPE_ICON.EQUIPMENT.text ? (
             <BookInfo
               key={item.id}
@@ -76,6 +115,11 @@ function SearchList() {
             />
           )
         ))}
+        { searchParams.get('keyword') ? (
+          <MoreRenteeButton onClick={loadSearchList}>MORE INFO</MoreRenteeButton>
+        ) : (
+          <MoreRenteeButton onClick={loadEquipmentList}>MORE INFO</MoreRenteeButton>
+        )}
       </ListResultBox>
     </ListBody>
   );
