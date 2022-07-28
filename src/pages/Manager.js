@@ -35,9 +35,9 @@ function Manager() {
 
   useEffect(() => {
     if (isBookMode) {
-      initBookList();
+      initListBook();
     } else {
-      initEquipmentList();
+      initListEquipment();
     }
   }, [isBookMode, sortOrder]);
 
@@ -145,7 +145,7 @@ function Manager() {
     }
   };
 
-  const initBookList = async () => {
+  const initListBook = async () => {
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
         params: {
@@ -181,7 +181,7 @@ function Manager() {
     }
   }
 
-  const loadBookList = async () => {
+  const loadListBook = async () => {
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
         params: {
@@ -298,7 +298,7 @@ function Manager() {
     }
   };
 
-  const initEquipmentList = async () => {
+  const initListEquipment = async () => {
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
         params: {
@@ -334,7 +334,7 @@ function Manager() {
     }
   }
 
-  const loadEquipmentList = async () => {
+  const loadListEquipment = async () => {
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
         params: {
@@ -379,9 +379,9 @@ function Manager() {
       },
     });
     if (searchKeyword === true) {
-      getSearchedBooks();
+      initSearchBooks();
     } else {
-      getListedBooks();
+      initListBook();
     }
   };
 
@@ -392,9 +392,9 @@ function Manager() {
       },
     });
     if (searchKeyword === true) {
-      getSearchedBooks();
+      initSearchEquipments();
     } else {
-      getListedBooks();
+      initListEquipment();
     }
   };
 
@@ -405,9 +405,9 @@ function Manager() {
       },
     });
     if (searchKeyword === true) {
-      getSearchedBooks();
+      initSearchBooks();
     } else {
-      getListedBooks();
+      initListBook();
     }
   };
 
@@ -417,14 +417,29 @@ function Manager() {
         'Content-Type': 'multipart/form-data',
       },
     });
+    if (searchKeyword === true) {
+      initSearchEquipments();
+    } else {
+      initListEquipment();
+    }
   };
 
   const deleteBook = async (bookId) => {
     await axios.delete(process.env.REACT_APP_BEEP_API + '/management/book/' + bookId);
+    if (searchKeyword === true) {
+      initSearchBooks();
+    } else {
+      initListBook();
+    }
   };
 
   const deleteEquipment = async (equipmentId) => {
     await axios.delete(process.env.REACT_APP_BEEP_API + '/management/equipment/' + equipmentId);
+    if (searchKeyword === true) {
+      initSearchEquipments();
+    } else {
+      initListEquipment();
+    }
   };
 
   return (
@@ -452,7 +467,7 @@ function Manager() {
           { searchKeyword !== null ? (
             <button onClick={loadSearchedBooks}>검색 결과 더보기</button>
           ) : (
-            <button onClick={loadBookList}>리스트 더 보기</button>
+            <button onClick={loadListBook}>리스트 더 보기</button>
           )}
         </Box>
       ) : (
@@ -468,7 +483,7 @@ function Manager() {
           { searchKeyword !== null ? (
             <button onClick={loadSearchEquipments}>검색 결과 더보기</button>
           ) : (
-            <button onClick={loadEquipmentList}>리스트 더 보기</button>
+            <button onClick={loadListEquipment}>리스트 더 보기</button>
           )}
         </Box>
       )}
