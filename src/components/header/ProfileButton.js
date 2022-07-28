@@ -42,4 +42,5 @@ const Box = styled.div`
 
   cursor: pointer;
 `;
+
 export default ProfileButton;
