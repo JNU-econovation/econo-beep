@@ -10,6 +10,9 @@ import ManagerBookForm from '../components/manager/ManagerBookForm';
 import ManagerEquipmentForm from '../components/manager/ManagerEquipmentForm';
 import axios from 'axios';
 
+// test를 위해 pageSize = 1로 진행
+// 추후에 pageSize = 8로 변경할 것!
+
 const idForSortOrder = [
   { isIdAsc: false, isIdDesc: true, isRecentRentDesc: false }, // 최근에 추가된 순
   { isIdAsc: true, isIdDesc: false, isRecentRentDesc: false }, // 이전에 추가된 순
@@ -19,7 +22,7 @@ const idForSortOrder = [
 function Manager() {
   const [isBookMode, setIsBookMode] = useState(true);
   const [isEditMode, setIsEditMode] = useState(false);
-  const [isSearch, setIsSearch] = useState(false);
+  const [searchKeyword, setSearchKeyword] = useState(null);
 
   const [sortOrder, setSortOrder] = useState(0);
   const [editingRentee, setEditingRentee] = useState(null);
@@ -37,92 +40,108 @@ function Manager() {
   }, [isBookMode, sortOrder]);
 
   const onBookClick = () => {
-    setIsSearch(false);
+    setSearchKeyword(null);
     setIsBookMode(true);
     setLastRenteeId(null);
     setOffset(0);
   };
 
   const onEquipmentClick = () => {
-    setIsSearch(false);
+    setSearchKeyword(null);
     setIsBookMode(false);
     setLastRenteeId(null);
     setOffset(0);
   };
 
-  const onSearchPress = (keyword) => {
-    setIsSearch(true);
+  const onSearchPress = () => {
+    console.log(searchKeyword);
     setLastRenteeId(null);
     setOffset(null);
     if (isBookMode) {
-      getSearchedBooks(keyword);
+      initSearchBooks();
     } else {
-      getSearchedEquipments(keyword);
+      getSearchedEquipments(searchKeyword);
     }
   };
 
-  const getSearchedBooks = async (keyword) => {
-    console.log(keyword);
-
-    axios({
-      url: process.env.REACT_APP_BEEP_API + '/management/search/book',
-      method: 'GET',
-      params: {
-        keyword: 'j',
-        pageSize: 8,
-        lastRenteeId: lastRenteeId,
-        isIdAsc: idForSortOrder[sortOrder].isIdAsc,
-        isIdDesc: idForSortOrder[sortOrder].isIdDesc,
-        isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
-      }
-    })
-      .then((res) => {
-        console.log(res);
-        setRentees(res.data);
-        if (res.data.length !== 0) {
-          setLastRenteeId(res.data[res.data.length - 1].id);
+  const initSearchBooks = async () => {
+    if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/book', {
+        params: {
+          keyword: searchKeyword,
+          pageSize: 1,
+          // offset: 0, //아예 없애기?
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
         }
       });
 
-    // if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
-    //   const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
-    //     params: {
-    //       keyword: keyword,
-    //       pageSize: 8,
-    //       offset: offset,
-    //       isIdAsc: idForSortOrder[sortOrder].isIdAsc,
-    //       isIdDesc: idForSortOrder[sortOrder].isIdDesc,
-    //       isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
-    //     }
-    //   });
-    //
-    //   const dataList = response.data;
-    //   console.log(response);
-    //   setRentees(dataList);
-    //   if (dataList.length !== 0) {
-    //     setOffset(offset + dataList.length);
-    //     console.log(offset);
-    //   }
-    //
-    // } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
-    //   const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
-    //     params: {
-    //       keyword: keyword,
-    //       pageSize: 8,
-    //       lastRenteeId: lastRenteeId,
-    //       isIdAsc: idForSortOrder[sortOrder].isIdAsc,
-    //       isIdDesc: idForSortOrder[sortOrder].isIdDesc,
-    //       isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
-    //     }
-    //   });
-    //
-    //   const dataList = response.data;
-    //   console.log(response);
-    //   setRentees(dataList);
-    //   if (dataList.length !== 0) {
-    //     setLastRenteeId(dataList[dataList.length - 1].id);
-    //   }
-    // }
+      const dataList = response.data;
+      console.log(response);
+      setRentees(dataList);
+      if (dataList.length !== 0) {
+        setOffset(offset + dataList.length);
+      }
+
+    } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/book', {
+        params: {
+          keyword: searchKeyword,
+          pageSize: 1,
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
+        }
+      });
+
+      const dataList = response.data;
+      console.log(response);
+      setRentees(dataList);
+      if (dataList.length !== 0) {
+        setLastRenteeId(dataList[dataList.length - 1].id);
+      }
+    }
+  }
+
+  const loadSearchedBooks = async () => {
+
+    if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
+        params: {
+          keyword: searchKeyword,
+          pageSize: 1,
+          offset: offset,
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
+        }
+      });
+
+      const dataList = response.data;
+      setRentees(rentees => [...rentees, ...dataList]);
+      if (dataList.length !== 0) {
+        setOffset(offset + dataList.length);
+      }
+
+    } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
+        params: {
+          keyword: searchKeyword,
+          pageSize: 1,
+          lastRenteeId: lastRenteeId,
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
+        }
+      });
+
+      const dataList = response.data;
+      setRentees(rentees => [...rentees, ...dataList]);
+      if (dataList.length !== 0) {
+        setLastRenteeId(dataList[dataList.length - 1].id);
+      }
+    }
   };
 
   const getSearchedEquipments = async (keyword) => {
@@ -249,7 +268,7 @@ function Manager() {
         'Content-Type': 'multipart/form-data',
       },
     });
-    if (isSearch === true) {
+    if (searchKeyword === true) {
       getSearchedBooks();
     } else {
       getListedBooks();
@@ -262,7 +281,7 @@ function Manager() {
         'Content-Type': 'multipart/form-data',
       },
     });
-    if (isSearch === true) {
+    if (searchKeyword === true) {
       getSearchedBooks();
     } else {
       getListedBooks();
@@ -275,7 +294,7 @@ function Manager() {
         'Content-Type': 'multipart/form-data',
       },
     });
-    if (isSearch === true) {
+    if (searchKeyword === true) {
       getSearchedBooks();
     } else {
       getListedBooks();
@@ -309,6 +328,7 @@ function Manager() {
         setSortOrder={setSortOrder}
         setLastRenteeId={setLastRenteeId}
         onSearchPress={onSearchPress}
+        setSearchKeyword={setSearchKeyword}
       />
       {isBookMode ? (
         <Box>
@@ -319,6 +339,11 @@ function Manager() {
                              setEditingRentee={setEditingRentee}
                              deleteBook={deleteBook}/>
           ))}
+          { searchKeyword !== null ? (
+            <button onClick={loadSearchedBooks}>검색 결과 더보기</button>
+          ) : (
+            <button>리스트 더 보기</button>
+          )}
         </Box>
       ) : (
         <Box>

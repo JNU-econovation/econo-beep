@@ -3,7 +3,7 @@ import { FormControl, MenuItem, Select } from '@mui/material';
 import styled from 'styled-components';
 import SearchManagerBar from '../search/SearchManagerBar';
 
-function ManagerButtonSearchHolder({ isBookMode, onBookClick, onEquipmentClick, sortOrder, setSortOrder, setLastRenteeId, onSearchPress}) {
+function ManagerButtonSearchHolder({ isBookMode, onBookClick, onEquipmentClick, sortOrder, setSortOrder, setLastRenteeId, setSearchKeyword, onSearchPress}) {
   return (
     <ButtonSearchHolder>
       <Button state={isBookMode} onClick={onBookClick}>도서</Button>
@@ -27,7 +27,7 @@ function ManagerButtonSearchHolder({ isBookMode, onBookClick, onEquipmentClick, 
         </FormControl>
       </SelectBox>
       <ManagerSearchBarHolder>
-        <SearchManagerBar isBookMode={isBookMode} onSearchPress={onSearchPress} />
+        <SearchManagerBar isBookMode={isBookMode} onSearchPress={onSearchPress} setSearchKeyword={setSearchKeyword}/>
       </ManagerSearchBarHolder>
     </ButtonSearchHolder>
   )
