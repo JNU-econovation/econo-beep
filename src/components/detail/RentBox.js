@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import epochSecondToDate from './epochSecondToDate';
 
 function RentBox({ rent }) {
+  useEffect(() => {
+    rent.map(r => {
+      console.log(r);
+    })
+  }, [rent]);
   if (rent.length === 0) {
     return (
       <RentInfo>
@@ -11,6 +17,7 @@ function RentBox({ rent }) {
           <Title>반납일</Title>
         </TitleBox>
       </RentInfo>)
+
   } else {
     return (
       <RentInfo>
