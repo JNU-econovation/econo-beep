@@ -4,23 +4,24 @@ import { BiSearch } from 'react-icons/bi';
 import axios from 'axios';
 
 function SearchManagerBar({isBookMode, onSearchPress}) {
-  const [keyword, setKeyword] = useState('');
+  const [inputKeyword, setInputKeyword] = useState('');
 
   const onChange = (event) => {
-    setKeyword(event.target.value);
+    setInputKeyword(event.target.value);
   };
 
   return (
     <SearchBox onKeyPress={(event) => {
       if (event.key === 'Enter') {
-        event.preventDefault()
-        onSearchPress(keyword)
+        event.preventDefault();
+        const keyword = inputKeyword.replace(/(\s*)/gi, "");
+        onSearchPress(keyword);
       }
     }}>
       <Icon>
         <BiSearch />
       </Icon>
-      <Search type="text" placeholder={isBookMode ? "도서" : "기자재"} value={keyword} onChange={onChange} />
+      <Search type="text" placeholder={isBookMode ? "도서" : "기자재"} value={inputKeyword} onChange={onChange} />
     </SearchBox>
   );
 }

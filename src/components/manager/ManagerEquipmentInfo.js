@@ -3,8 +3,11 @@ import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
 import RENTEE_TYPE from '../constant/RENTEE_TYPE';
+import { useNavigate } from 'react-router-dom';
 
 function ManagerEquipmentInfo({ equipment, setIsEditMode, setEditingRentee, deleteEquipment }) {
+
+  const navigate = useNavigate();
 
   const onEditClick = () => {
     setIsEditMode(true);
@@ -14,18 +17,19 @@ function ManagerEquipmentInfo({ equipment, setIsEditMode, setEditingRentee, dele
   const onDeleteClick = () => {
     if (!confirm("정말로 삭제하시겠습니까?")) {
       return;
+    } else {
+      deleteEquipment(equipment.id);
     }
 
-    deleteEquipment(equipment.id);
   }
 
   return (
     <ManagerInfoBox>
       <IdBox>{equipment.id}</IdBox>
       <ImgBox>
-        <Img src={equipment.thumbnailUrl} />
+        <Img src={process.env.REACT_APP_BEEP_API + equipment.thumbnailUrl} />
       </ImgBox>
-      <TitleBox>{equipment.title}</TitleBox>
+      <TitleBox onClick={() => navigate(`/rentee/${equipment.id}`)}>{equipment.title}</TitleBox>
       <TypeBox>{RENTEE_TYPE.KOREAN[equipment.type]}</TypeBox>
       <NoteBox>{equipment.note}</NoteBox>
       <EditButton onClick={onEditClick}>
@@ -41,7 +45,7 @@ function ManagerEquipmentInfo({ equipment, setIsEditMode, setEditingRentee, dele
 const IdBox = styled.div`
   width: 5%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +54,7 @@ const IdBox = styled.div`
 const ImgBox = styled.div`
   width: 5%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,28 +63,30 @@ const ImgBox = styled.div`
 const Img = styled.img`
   max-width: 90%;
   max-height: 80%;
-  
+
   object-fit: cover;
 `;
 
 const TitleBox = styled.div`
   width: 40%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  font-size: 1rem;
+
+  font-size: 125%;
   font-weight: 500;
-  
+
   color: ${(props) => props.theme.black};
+
+  cursor: pointer;
 `;
 
 const TypeBox = styled.div`
   width: 20%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,7 +95,7 @@ const TypeBox = styled.div`
 const NoteBox = styled.div`
   width: 20%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;

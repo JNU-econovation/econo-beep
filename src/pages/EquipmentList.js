@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import EquipmentInfo from '../components/list/EquipmentInfo'
-import SearchEquipmentBar from '../components/search/SearchBookBar';
+import SearchEquipmentBar from '../components/search/SearchEquipmentBar';
 import Header from '../components/header/Header';
 import ListBody from '../components/list/ListBody';
 import ListSearchBarHolder from '../components/list/ListSearchBarHolder';
@@ -17,7 +17,7 @@ function EquipmentList() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const initEquipmentList = async () => {
-    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/equipment/', {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/search/equipment/', {
       params: {
         pageSize: 8,
       }
@@ -31,7 +31,7 @@ function EquipmentList() {
   };
 
   const loadEquipmentList = async () => {
-    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/equipment/', {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/search/equipment/', {
       params: {
         pageSize: 1,
         lastRenteeId: lastRenteeId,
@@ -48,8 +48,8 @@ function EquipmentList() {
   const initSearchList = async () => {
     const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/equipment`, {
       params: {
-        keyword: searchParams.get('keyword')
-        // pageSize: 8
+        keyword: searchParams.get('keyword'),
+        pageSize: 8
       }
     });
 
@@ -66,9 +66,9 @@ function EquipmentList() {
   const loadSearchList = async () => {
     const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/equipment`, {
       params: {
-        keyword: searchParams.get('keyword')
-        // lastRenteeId: lastRenteeId,
-        // pageSize: 8
+        keyword: searchParams.get('keyword'),
+        lastRenteeId: lastRenteeId,
+        pageSize: 8
       }
     });
 

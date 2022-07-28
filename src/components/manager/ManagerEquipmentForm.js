@@ -13,6 +13,7 @@ function ManagerEquipmentForm({
   updateEquipment
 }) {
 
+  const [id, setId] = useState(null);
   const [thumbnail, setThumbnail] = useState('');
   const [thumbnailPreview, setThumbnailPreview] = useState('');
   const [title, setTitle] = useState('');
@@ -23,10 +24,20 @@ function ManagerEquipmentForm({
       return;
     }
 
-    setThumbnail('');
-    setThumbnailPreview(editingRentee?.thumbnailUrl);
-    setTitle(editingRentee?.title);
-    setNote(editingRentee?.note);
+    async function loadEditData() {
+      setId(editingRentee?.id);
+
+      const thumbnailUrl = process.env.REACT_APP_BEEP_API + editingRentee?.thumbnailUrl;
+      const response = await fetch(thumbnailUrl);
+      const blob = await response.blob();
+      setThumbnail(new File([blob], 'image.jpg', {type: blob.type}));
+      setThumbnailPreview(thumbnailUrl);
+
+      setTitle(editingRentee?.title);
+      setNote(editingRentee?.note);
+    }
+
+    loadEditData();
   }, [isEditMode]);
 
   useEffect(() => {
@@ -45,7 +56,6 @@ function ManagerEquipmentForm({
     setThumbnail('');
     setThumbnailPreview('');
     setTitle('');
-    setType(-1);
     setNote('');
   };
 
@@ -54,6 +64,36 @@ function ManagerEquipmentForm({
     setIsEditMode(false);
     setEditingRentee(null);
   };
+
+  const onUpdateButtonClick = () => {
+    const newEquipmentForm = new FormData();
+
+    newEquipmentForm.append('thumbnail', thumbnail);
+    newEquipmentForm.append('title', title);
+    newEquipmentForm.append('type', RENTEE_TYPE.EQUIPMENT);
+    newEquipmentForm.append('note', note);
+
+    if (!confirm("정말로 수정하시겠습니까?")) {
+      return;
+    } else {
+      updateEquipment(newEquipmentForm, id);
+    }
+  }
+
+  const onCreateButtonClick = () => {
+    const newEquipmentForm = new FormData();
+
+    newEquipmentForm.append('thumbnail', thumbnail);
+    newEquipmentForm.append('title', title);
+    newEquipmentForm.append('type', RENTEE_TYPE.EQUIPMENT);
+    newEquipmentForm.append('note', note);
+
+    if (!confirm("정말로 삭제하시겠습니까?")) {
+      return;
+    } else{
+      createEquipment(newEquipmentForm);
+    }
+  }
 
   return (
     <Form>
@@ -80,7 +120,19 @@ function ManagerEquipmentForm({
         <TextField placeholder="제목" id="title" size="small" value={title}
                    onChange={(e) => setTitle(e.target.value)}/>
 
-        <MenuItem value={RENTEE_TYPE.KOREAN.EQUIPMENT}>{RENTEE_TYPE.KOREAN.EQUIPMENT}</MenuItem>
+        <Select
+          labelId="SelectSortOrder"
+          id="Select"
+          size="small"
+          value={7}
+        >
+          <MenuItem disabled value={-1}><i>종류</i></MenuItem>
+          {
+            RENTEE_TYPE.ARRAY.map((element, index) => (
+              <MenuItem key={index} value={index}>{RENTEE_TYPE.KOREAN[element]}</MenuItem>
+            ))
+          }
+        </Select>
 
         <TextField placeholder="비고" id="note" size="small" value={note}
                    onChange={(e) => setNote(e.target.value)}/>
@@ -89,11 +141,11 @@ function ManagerEquipmentForm({
         {
           isEditMode ? (
             <EditBox>
-              <InputButton onClick={updateEquipment}>수정</InputButton>
+              <InputButton onClick={onUpdateButtonClick}>수정</InputButton>
               <InputButton onClick={onCancelButtonClick}>취소</InputButton>
             </EditBox>
           ) : (
-            <AddButton onClick={createEquipment}>추가</AddButton>
+            <AddButton onClick={onCreateButtonClick}>추가</AddButton>
           )
         }
       </Grid>
@@ -116,7 +168,7 @@ const Grid = styled.div`
   padding: 0 2vw;
 
   display: grid;
-  grid-template-columns: 1fr 5fr 2fr 5fr 2fr;
+  grid-template-columns: 1fr 5fr 1.5fr 3fr 2fr;
   column-gap: 1vw;
   align-items: center;
 

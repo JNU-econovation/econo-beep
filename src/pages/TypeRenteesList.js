@@ -19,7 +19,7 @@ function TypesRenteeList() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const initTypeList = async () => {
-    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/' + to, {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/search/' + to, {
       params: {
         type: to,
         pageSize: 8
@@ -34,7 +34,7 @@ function TypesRenteeList() {
   }
 
   const loadTypeList = async () => {
-    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/' + to, {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/search/' + to, {
       params: {
         type: to,
         pageSize: 8,
@@ -53,8 +53,8 @@ function TypesRenteeList() {
     const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/` + to, {
       params: {
         type: to,
-        keyword: searchParams.get('keyword')
-        // pageSize: 8
+        keyword: searchParams.get('keyword'),
+        pageSize: 8
       }
     });
     const newSearchList = response.data;
@@ -71,9 +71,9 @@ function TypesRenteeList() {
     const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/` + to, {
       params: {
         type: to,
-        keyword: searchParams.get('keyword')
-        // pageSize: 8,
-        // lastRenteeId: lastRenteeId
+        keyword: searchParams.get('keyword'),
+        pageSize: 8,
+        lastRenteeId: lastRenteeId
       }
     });
     const newSearchList = response.data;

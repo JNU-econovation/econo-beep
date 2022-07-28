@@ -6,7 +6,7 @@ import InfoText from './InfoText';
 
 function BookInfo({ src, id, title, authorName, rentState }) {
   return (
-    <Link to={`/book/${id}`}>
+    <Link to={`/rentee/${id}`}>
       <InfoBox>
         <InfoImg src={src} />
         <InfoText id={id} title={title} authorName={authorName} rent={rentState} />

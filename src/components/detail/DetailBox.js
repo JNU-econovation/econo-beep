@@ -1,42 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import BOOK_TYPE_ICON from '../constant/BOOK_TYPE_ICON';
 import epochSecondToDate from './epochSecondToDate';
+import RENTEE_TYPE from '../constant/RENTEE_TYPE';
 
 function DetailBox({ rentee }) {
-  let typeSrc;
-  if (rentee.type === BOOK_TYPE_ICON.APP.text) {
-    typeSrc = BOOK_TYPE_ICON.APP.src;
-  } else if (rentee.type === BOOK_TYPE_ICON.WEB.text) {
-    typeSrc = BOOK_TYPE_ICON.WEB.src;
-  } else if (rentee.type === BOOK_TYPE_ICON.LANGUAGE.text) {
-    typeSrc = BOOK_TYPE_ICON.LANGUAGE.src;
-  } else if (rentee.type === BOOK_TYPE_ICON.AI.text) {
-    typeSrc = BOOK_TYPE_ICON.AI.src;
-  } else if (rentee.type === BOOK_TYPE_ICON.GAME.text) {
-    typeSrc = BOOK_TYPE_ICON.GAME.src;
-  } else if (rentee.type === BOOK_TYPE_ICON.DEVELOPMENT.text) {
-    typeSrc = BOOK_TYPE_ICON.DEVELOPMENT.src;
-  } else if (rentee.type === BOOK_TYPE_ICON.MAJOR.text) {
-    typeSrc = BOOK_TYPE_ICON.MAJOR.src;
-  } else if (rentee.type === BOOK_TYPE_ICON.EQUIPMENT.text) {
-    typeSrc = BOOK_TYPE_ICON.EQUIPMENT.src;
-  }
-
 
   return (
     <Box>
       <CoverImg src={process.env.REACT_APP_BEEP_API + rentee.thumbnailUrl}/>
 
       <TitleHolder>
-        <TypeIcon src={typeSrc}/>
+        <TypeIcon src={RENTEE_TYPE.ICON_URL[rentee.type]}/>
         <TextHolder>
           <Id>{rentee.id}</Id>
           <Title>{rentee.title}</Title>
         </TextHolder>
       </TitleHolder>
 
-      { rentee.type != 'EQUIPMENT' ? (
+      { rentee.type != RENTEE_TYPE.EQUIPMENT ? (
         <DetailInfoBox>
           <InfoTitleHolder>
             <InfoTitle>저자</InfoTitle>
@@ -56,7 +37,7 @@ function DetailBox({ rentee }) {
       <NoteBox>
         <NoteEmoji>💡</NoteEmoji>
         <NoteText>
-          #{rentee.type} <br />
+          #{RENTEE_TYPE.KOREAN[rentee.type]} <br />
           {rentee.note}
         </NoteText>
       </NoteBox>

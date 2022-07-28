@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 import DetailBox from '../components/detail/DetailBox';
 import RentBox from '../components/detail/RentBox';
 import RentButton from '../components/detail/RentButton';
 import Header from '../components/header/Header';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
 
-function EquipmentDetail() {
+function RenteeDetail() {
   const { id } = useParams();
 
   const [RENTEE_DUMMY, setRenteeDummy] = useState({});
@@ -26,12 +26,12 @@ function EquipmentDetail() {
   useEffect(() => {
     getRenteeDummy();
   }, [id]);
+
   return (
     <Body>
       <Header />
       <DetailMain>
         <DetailBox rentee={RENTEE_DUMMY} />
-
         <ContentBox>
           <RentBox rent={RENTAL_RECORD} />
         </ContentBox>
@@ -49,14 +49,14 @@ const ContentBox = styled.div`
   align-items: center;
   margin: 0.5rem 0;
   padding: 1rem 0;
-  
+
   border-radius: 30px;
 `;
 
 const Body = styled.div`
   width: 100vw;
   height: 100vh;
-  
+
   background-color: ${(props) => props.theme.bgColor};
 `;
 
@@ -65,5 +65,4 @@ const DetailMain = styled.div`
   height: 100%;
   background-color: #f2f2f2;
 `;
-
-export default EquipmentDetail;
+export default RenteeDetail;

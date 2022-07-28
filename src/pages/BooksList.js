@@ -17,7 +17,7 @@ function BooksList() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const initBookList = async () => {
-    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/book/', {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/search/book/', {
       params: {
         pageSize: 8,
       }
@@ -31,7 +31,7 @@ function BooksList() {
   };
 
   const loadBookList = async () => {
-    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/book/', {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/search/book/', {
       params: {
         pageSize: 8,
         lastRenteeId: lastRenteeId,
@@ -48,8 +48,8 @@ function BooksList() {
   const initSearchList = async () => {
     const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/book`, {
       params: {
-        keyword: searchParams.get('keyword')
-        // pageSize: 8
+        keyword: searchParams.get('keyword'),
+        pageSize: 8
       }
     });
 
@@ -66,9 +66,9 @@ function BooksList() {
   const loadSearchList = async () => {
     const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/book`, {
       params: {
-        keyword: searchParams.get('keyword')
-        // lastRenteeId: lastRenteeId,
-        // pageSize: 8
+        keyword: searchParams.get('keyword'),
+        lastRenteeId: lastRenteeId,
+        pageSize: 8
       }
     });
 
