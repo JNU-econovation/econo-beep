@@ -7,7 +7,7 @@ const ListBody = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   position: relative;
 
   background-color: ${(props) => props.theme.bgColor};
