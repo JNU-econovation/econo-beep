@@ -7,8 +7,6 @@ X
 (src/components/manager/ManagerInfoBox.js,3/0/306a84dd9c312cd8326d68a0fc38a856b4848a53
 Y
 )src/components/search/SearchManagerBar.js,3/1/313d19bc7d8739bcef124bb4b55850e14cf36bc4
-G
-src/pages/BookDetail.js,9/a/9a9008c1e90947f00bbd72df5739e0bbb314f074
 c
 3src/components/manager/ManagerButtonSearchHolder.js,9/6/96ba106f446a7bdf0b17ece32a3378bbd34f3c92
 <
