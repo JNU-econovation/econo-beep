@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { MenuItem, Select, TextField } from '@mui/material';
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import { DatePicker } from '@mui/x-date-pickers-pro';
-import RENTEE_TYPE from '../constant/RENTEE_TYPE';
+import RENTEE_TYPE from '../../constant/RENTEE_TYPE';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DateObjectToEpochSecond, EpochSecondToDateObject } from '../EpochConverter';

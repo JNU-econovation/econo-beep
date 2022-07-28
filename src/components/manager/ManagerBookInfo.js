@@ -3,7 +3,7 @@ import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
 import axios from 'axios';
-import RENTEE_TYPE from '../constant/RENTEE_TYPE';
+import RENTEE_TYPE from '../../constant/RENTEE_TYPE';
 import { EpochSecondToDateObject } from '../EpochConverter';
 
 function ManagerBookInfo({ book, setIsEditMode, setEditingRentee, deleteBook }) {

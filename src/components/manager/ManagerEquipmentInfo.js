@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
-import RENTEE_TYPE from '../constant/RENTEE_TYPE';
+import RENTEE_TYPE from '../../constant/RENTEE_TYPE';
 
 function ManagerEquipmentInfo({ equipment, setIsEditMode, setEditingRentee, deleteEquipment }) {
 

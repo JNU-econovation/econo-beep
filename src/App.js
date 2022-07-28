@@ -13,31 +13,42 @@ import EquipmentDetail from './pages/EquipmentDetail';
 import Manager from './pages/Manager';
 import PinCode from './pages/PinCode';
 import Theme from './styles/Theme';
+import Auth from './pages/Auth';
+import Profile from './pages/Profile';
+import SESSION from './constant/SESSION';
+
+let sessionStorage = window.sessionStorage;
 
 function LoggedInRoutes() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search/books" element={<BooksList />} />
-        <Route path="/search/equipments" element={<EquipmentList />} />
-        <Route path="/search/all" element={<SearchList />} />
-        <Route path="/book/:id" element={<BookDetail />} />
-        <Route path="/equipment/:id" element={<EquipmentDetail />} />
-        <Route path="/pincode/:rentOrReturn/:renteeId" element={<PinCode />} />
-        <Route path="/manager" element={<Manager />} />
+        <Route path="/" element={<Home/>}/>
+        <Route path="/search/books" element={<BooksList/>}/>
+        <Route path="/search/equipments" element={<EquipmentList/>}/>
+        <Route path="/search/all" element={<SearchList/>}/>
+        <Route path="/book/:id" element={<BookDetail/>}/>
+        <Route path="/equipment/:id" element={<EquipmentDetail/>}/>
+        <Route path="/pincode/:rentOrReturn/:renteeId" element={<PinCode/>}/>
+        <Route path="/manager" element={<Manager/>}/>
+        {
+          sessionStorage.getItem(SESSION.IS_LOGGED_IN) ? (
+            <Route path="/profile" element={<Profile/>}/>
+          ) : (
+            <Route path="/auth" element={<Auth/>}/>
+          )
+        }
       </Routes>
     </Router>
   );
 }
 
 function AppRouter() {
-  return <LoggedInRoutes />;
+  return <LoggedInRoutes/>;
 }
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
-  
   a {
     text-decoration: none;
     color: inherit;
@@ -53,7 +64,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     text-decoration: none;
   }
-  
+
   body {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
@@ -81,8 +92,8 @@ function App() {
   return (
     <StyledThemeProvider theme={styledTheme}>
       <MuiThemeProvider theme={muiTheme}>
-        <GlobalStyle />
-        <AppRouter />
+        <GlobalStyle/>
+        <AppRouter/>
       </MuiThemeProvider>
     </StyledThemeProvider>
   );
