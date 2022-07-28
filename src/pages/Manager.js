@@ -13,6 +13,8 @@ import axios from 'axios';
 // test를 위해 pageSize = 1로 진행
 // 추후에 pageSize = 8로 변경할 것!
 
+const pageSize = 1;
+
 const idForSortOrder = [
   { isIdAsc: false, isIdDesc: true, isRecentRentDesc: false }, // 최근에 추가된 순
   { isIdAsc: true, isIdDesc: false, isRecentRentDesc: false }, // 이전에 추가된 순
@@ -33,9 +35,9 @@ function Manager() {
 
   useEffect(() => {
     if (isBookMode) {
-      getListedBooks();
+      initBookList();
     } else {
-      getListedEquipments();
+      initEquipmentList();
     }
   }, [isBookMode, sortOrder]);
 
@@ -60,7 +62,7 @@ function Manager() {
     if (isBookMode) {
       initSearchBooks();
     } else {
-      getSearchedEquipments(searchKeyword);
+      initSearchEquipments();
     }
   };
 
@@ -69,8 +71,7 @@ function Manager() {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/book', {
         params: {
           keyword: searchKeyword,
-          pageSize: 1,
-          // offset: 0, //아예 없애기?
+          pageSize: pageSize,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
           isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
@@ -88,7 +89,7 @@ function Manager() {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/book', {
         params: {
           keyword: searchKeyword,
-          pageSize: 1,
+          pageSize: pageSize,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
           isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
@@ -110,7 +111,7 @@ function Manager() {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
         params: {
           keyword: searchKeyword,
-          pageSize: 1,
+          pageSize: pageSize,
           offset: offset,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
@@ -119,7 +120,7 @@ function Manager() {
       });
 
       const dataList = response.data;
-      setRentees(rentees => [...rentees, ...dataList]);
+      setRentees(dataList);
       if (dataList.length !== 0) {
         setOffset(offset + dataList.length);
       }
@@ -128,7 +129,7 @@ function Manager() {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
         params: {
           keyword: searchKeyword,
-          pageSize: 1,
+          pageSize: pageSize,
           lastRenteeId: lastRenteeId,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
@@ -137,20 +138,18 @@ function Manager() {
       });
 
       const dataList = response.data;
-      setRentees(rentees => [...rentees, ...dataList]);
+      setRentees(dataList);
       if (dataList.length !== 0) {
         setLastRenteeId(dataList[dataList.length - 1].id);
       }
     }
   };
 
-  const getSearchedEquipments = async (keyword) => {
+  const initBookList = async () => {
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
         params: {
-          keyword: keyword,
-          pageSize: 8,
-          offset: offset,
+          pageSize: pageSize,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
           isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
@@ -165,11 +164,9 @@ function Manager() {
       }
 
     } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
         params: {
-          keyword: keyword,
-          pageSize: 8,
-          lastRenteeId: lastRenteeId,
+          pageSize: pageSize,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
           isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
@@ -182,14 +179,13 @@ function Manager() {
         setLastRenteeId(dataList[dataList.length - 1].id);
       }
     }
-  };
+  }
 
-  const getListedBooks = async () => {
-
+  const loadBookList = async () => {
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
         params: {
-          pageSize: 8,
+          pageSize: pageSize,
           offset: offset,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
@@ -221,14 +217,128 @@ function Manager() {
         setLastRenteeId(dataList[dataList.length - 1].id);
       }
     }
-  };
+  }
 
-  const getListedEquipments = async () => {
+  const initSearchEquipments = async () => {
+    if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/equipment', {
+        params: {
+          keyword: searchKeyword,
+          pageSize: pageSize,
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
+        }
+      });
+
+      const dataList = response.data;
+      console.log(response);
+      setRentees(dataList);
+      if (dataList.length !== 0) {
+        setOffset(offset + dataList.length);
+      }
+
+    } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/equipment', {
+        params: {
+          keyword: searchKeyword,
+          pageSize: pageSize,
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
+        }
+      });
+
+      const dataList = response.data;
+      console.log(response);
+      setRentees(dataList);
+      if (dataList.length !== 0) {
+        setLastRenteeId(dataList[dataList.length - 1].id);
+      }
+    }
+  }
+
+  const loadSearchEquipments = async () => {
 
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
         params: {
-          pageSize: 8,
+          keyword: searchKeyword,
+          pageSize: pageSize,
+          offset: offset,
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
+        }
+      });
+
+      const dataList = response.data;
+      setRentees(dataList);
+      if (dataList.length !== 0) {
+        setOffset(offset + dataList.length);
+      }
+
+    } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+        params: {
+          keyword: searchKeyword,
+          pageSize: pageSize,
+          lastRenteeId: lastRenteeId,
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
+        }
+      });
+
+      const dataList = response.data;
+      setRentees(dataList);
+      if (dataList.length !== 0) {
+        setLastRenteeId(dataList[dataList.length - 1].id);
+      }
+    }
+  };
+
+  const initEquipmentList = async () => {
+    if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+        params: {
+          pageSize: pageSize,
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
+        }
+      });
+
+      const dataList = response.data;
+      setRentees(dataList);
+      if (dataList.length !== 0) {
+        setOffset(offset + dataList.length);
+        console.log(offset);
+      }
+
+    } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+        params: {
+          pageSize: pageSize,
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
+        }
+      });
+
+      const dataList = response.data;
+      setRentees(dataList);
+      if (dataList.length !== 0) {
+        setLastRenteeId(dataList[dataList.length - 1].id);
+      }
+    }
+  }
+
+  const loadEquipmentList = async () => {
+    if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+        params: {
+          pageSize: pageSize,
           offset: offset,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
@@ -260,7 +370,7 @@ function Manager() {
         setLastRenteeId(dataList[dataList.length - 1].id);
       }
     }
-  };
+  }
 
   const createBook = async (newBookForm) => {
     await axios.post(process.env.REACT_APP_BEEP_API + '/management/book', newBookForm, {
@@ -342,7 +452,7 @@ function Manager() {
           { searchKeyword !== null ? (
             <button onClick={loadSearchedBooks}>검색 결과 더보기</button>
           ) : (
-            <button>리스트 더 보기</button>
+            <button onClick={loadBookList}>리스트 더 보기</button>
           )}
         </Box>
       ) : (
@@ -354,8 +464,12 @@ function Manager() {
                                     setIsEditMode={setIsEditMode}
                                     setEditingRentee={setEditingRentee}
                                     deleteEquipment={deleteEquipment}/>
-            ))
-          }
+            ))}
+          { searchKeyword !== null ? (
+            <button onClick={loadSearchEquipments}>검색 결과 더보기</button>
+          ) : (
+            <button onClick={loadEquipmentList}>리스트 더 보기</button>
+          )}
         </Box>
       )}
 
