@@ -52,6 +52,9 @@ function Manager() {
 
   const onSearchPress = async (keyword) => {
     setIsSearch(true);
+    setLastRenteeId(null);
+    setOffset(0);
+
     if (isBookMode) {
       getSearchedBooks(keyword);
     } else {
@@ -60,71 +63,48 @@ function Manager() {
   };
 
   const getSearchedBooks = async (keyword) => {
-    console.log(keyword);
-
-    axios({
-      url: process.env.REACT_APP_BEEP_API + '/management/search/book',
-      method: 'GET',
-      params: {
-        keyword: 'j',
-        pageSize: 8,
-        lastRenteeId: lastRenteeId,
-        isIdAsc: idForSortOrder[sortOrder].isIdAsc,
-        isIdDesc: idForSortOrder[sortOrder].isIdDesc,
-        isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
-      }
-    })
-      .then((res) => {
-        console.log(res);
-        setRentees(res.data);
-        if (res.data.length !== 0) {
-          setLastRenteeId(res.data[res.data.length - 1].id);
+    if (idForSortOrder[sortOrder].isRecentRentDesc === true) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
+        params: {
+          keyword: keyword,
+          pageSize: 8,
+          offset: offset,
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
         }
       });
 
-    // if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
-    //   const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
-    //     params: {
-    //       keyword: keyword,
-    //       pageSize: 8,
-    //       offset: offset,
-    //       isIdAsc: idForSortOrder[sortOrder].isIdAsc,
-    //       isIdDesc: idForSortOrder[sortOrder].isIdDesc,
-    //       isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
-    //     }
-    //   });
-    //
-    //   const dataList = response.data;
-    //   console.log(response);
-    //   setRentees(dataList);
-    //   if (dataList.length !== 0) {
-    //     setOffset(offset + dataList.length);
-    //     console.log(offset);
-    //   }
-    //
-    // } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
-    //   const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
-    //     params: {
-    //       keyword: keyword,
-    //       pageSize: 8,
-    //       lastRenteeId: lastRenteeId,
-    //       isIdAsc: idForSortOrder[sortOrder].isIdAsc,
-    //       isIdDesc: idForSortOrder[sortOrder].isIdDesc,
-    //       isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
-    //     }
-    //   });
-    //
-    //   const dataList = response.data;
-    //   console.log(response);
-    //   setRentees(dataList);
-    //   if (dataList.length !== 0) {
-    //     setLastRenteeId(dataList[dataList.length - 1].id);
-    //   }
-    // }
+      const dataList = response.data;
+      console.log(response);
+      setRentees(dataList);
+      if (dataList.length !== 0) {
+        setOffset(offset + dataList.length);
+      }
+
+    } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
+        params: {
+          keyword: keyword,
+          pageSize: 8,
+          lastRenteeId: lastRenteeId,
+          isIdAsc: idForSortOrder[sortOrder].isIdAsc,
+          isIdDesc: idForSortOrder[sortOrder].isIdDesc,
+          isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
+        }
+      });
+      console.log(lastRenteeId);
+
+      const dataList = response.data;
+      setRentees(dataList);
+      if (dataList.length !== 0) {
+        setLastRenteeId(dataList[dataList.length - 1].id);
+      }
+    }
   };
 
   const getSearchedEquipments = async (keyword) => {
-    if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
+    if (idForSortOrder[sortOrder].isRecentRentDesc === true) {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
         params: {
           keyword: keyword,
@@ -164,7 +144,7 @@ function Manager() {
   };
 
   const getListedBooks = async () => {
-    if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
+    if (idForSortOrder[sortOrder].isRecentRentDesc === true) {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
         params: {
           pageSize: 8,
@@ -179,7 +159,6 @@ function Manager() {
       setRentees(dataList);
       if (dataList.length !== 0) {
         setOffset(offset + dataList.length);
-        console.log(offset);
       }
 
     } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
@@ -203,7 +182,7 @@ function Manager() {
 
   const getListedEquipments = async () => {
 
-    if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
+    if (idForSortOrder[sortOrder].isRecentRentDesc === true) {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
         params: {
           pageSize: 8,
@@ -246,11 +225,6 @@ function Manager() {
         'Content-Type': 'multipart/form-data',
       },
     });
-    if (isSearch === true) {
-      getSearchedBooks();
-    } else {
-      getListedBooks();
-    }
   };
 
   const createEquipment = async (newEquipmentForm) => {
@@ -259,11 +233,6 @@ function Manager() {
         'Content-Type': 'multipart/form-data',
       },
     });
-    if (isSearch === true) {
-      getSearchedBooks();
-    } else {
-      getListedBooks();
-    }
   };
 
   const updateBook = async (newBookForm, bookId) => {
@@ -272,11 +241,6 @@ function Manager() {
         'Content-Type': 'multipart/form-data',
       },
     });
-    if (isSearch === true) {
-      getSearchedBooks();
-    } else {
-      getListedBooks();
-    }
   };
 
   const updateEquipment = async (newEquipmentForm, equipmentId) => {

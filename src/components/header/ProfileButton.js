@@ -35,7 +35,7 @@ const Profile = styled.button`
 `;
 
 const UserName = styled.div`
-  font-size: 3vw;
+  font-size: 1rem;
   font-weight: 500;
   
   margin-right: 1.5vw;
