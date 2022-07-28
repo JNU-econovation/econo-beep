@@ -3,7 +3,7 @@ import { FormControl, MenuItem, Select } from '@mui/material';
 import styled from 'styled-components';
 import SearchManagerBar from '../search/SearchManagerBar';
 
-function ManagerButtonSearchHolder({ isBookMode, onBookClick, onEquipmentClick, sortOrder, setSortOrder, onSearchPress}) {
+function ManagerButtonSearchHolder({ isBookMode, onBookClick, onEquipmentClick, sortOrder, setSortOrder, setLastRenteeId, onSearchPress}) {
   return (
     <ButtonSearchHolder>
       <Button state={isBookMode} onClick={onBookClick}>도서</Button>
@@ -14,7 +14,10 @@ function ManagerButtonSearchHolder({ isBookMode, onBookClick, onEquipmentClick, 
             labelId="SelectSortOrder"
             id="Select"
             value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
+            onChange={(e) => {
+              setSortOrder(e.target.value);
+              setLastRenteeId(null);
+            }}
             style={{borderRadius: 20}}
           >
             <MenuItem value={0}>최근에 추가된 순</MenuItem>

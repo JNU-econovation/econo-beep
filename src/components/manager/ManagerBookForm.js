@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { MenuItem, Select, TextField } from '@mui/material';
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import { DatePicker } from '@mui/x-date-pickers-pro';
-import RENTEE_TYPE from '../../constant/RENTEE_TYPE';
+import RENTEE_TYPE from '../constant/RENTEE_TYPE';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DateObjectToEpochSecond, EpochSecondToDateObject } from '../EpochConverter';
+import axios from 'axios';
 
 function ManagerBookForm({
   isEditMode,
@@ -17,6 +18,7 @@ function ManagerBookForm({
   updateBook
 }) {
 
+  const [id, setId] = useState(null);
   const [thumbnail, setThumbnail] = useState('');
   const [thumbnailPreview, setThumbnailPreview] = useState('');
   const [title, setTitle] = useState('');
@@ -31,14 +33,24 @@ function ManagerBookForm({
       return;
     }
 
-    setThumbnail('');
-    setThumbnailPreview(editingRentee?.thumbnailUrl);
-    setTitle(editingRentee?.title);
-    setAuthorName(editingRentee?.authorName);
-    setPublisherName(editingRentee?.publisherName);
-    setPublishedDate(editingRentee?.publishedDateEpochSecond);
-    setType(RENTEE_TYPE.INDEX[editingRentee?.type]);
-    setNote(editingRentee?.note);
+    async function loadEditData() {
+      setId(editingRentee?.id);
+
+      const thumbnailUrl = process.env.REACT_APP_BEEP_API + editingRentee?.thumbnailUrl;
+      const response = await fetch(thumbnailUrl);
+      const blob = await response.blob();
+      setThumbnail(new File([blob], 'image.jpg', {type: blob.type}));
+      setThumbnailPreview(thumbnailUrl);
+
+      setTitle(editingRentee?.title);
+      setAuthorName(editingRentee?.authorName);
+      setPublisherName(editingRentee?.publisherName);
+      setPublishedDate(editingRentee?.publishedDateEpochSecond);
+      setType(RENTEE_TYPE.INDEX[editingRentee?.type]);
+      setNote(editingRentee?.note);
+    }
+
+    loadEditData();
   }, [isEditMode]);
 
   useEffect(() => {
@@ -74,6 +86,42 @@ function ManagerBookForm({
     setEditingRentee(null);
   };
 
+  const onUpdateButtonClick = () => {
+    const newBookForm = new FormData();
+
+    newBookForm.append('thumbnail', thumbnail);
+    newBookForm.append('title', title);
+    newBookForm.append('type', RENTEE_TYPE.ARRAY[type]);
+    newBookForm.append('authorName', authorName);
+    newBookForm.append('publisherName', publisherName);
+    newBookForm.append('publishedDateEpochSecond', publishedDate);
+    newBookForm.append('note', note);
+
+    if (!confirm("정말로 수정하시겠습니까?")) {
+      return;
+    } else {
+      updateBook(newBookForm, id);
+    }
+  }
+
+  const onCreateButtonClick = () => {
+    const newBookForm = new FormData();
+
+    newBookForm.append('thumbnail', thumbnail);
+    newBookForm.append('title', title);
+    newBookForm.append('type', RENTEE_TYPE.ARRAY[type]);
+    newBookForm.append('authorName', authorName);
+    newBookForm.append('publisherName', publisherName);
+    newBookForm.append('publishedDateEpochSecond', publishedDate);
+    newBookForm.append('note', note);
+
+    if (!confirm("정말로 삭제하시겠습니까?")) {
+      return;
+    } else {
+      createBook(newBookForm);
+    }
+  }
+
   const handlePublishedDate = (date) => {
     setPublishedDate(DateObjectToEpochSecond(date));
   };
@@ -82,7 +130,7 @@ function ManagerBookForm({
     <Form>
       <Grid>
         <ImgBox>
-          <label for="input-thumbnail">
+          <label htmlFor="input-thumbnail">
             {
               thumbnail === '' ? (
                 <ThumbnailIcon>
@@ -128,7 +176,7 @@ function ManagerBookForm({
           <MenuItem disabled value={-1}><i>종류</i></MenuItem>
           {
             RENTEE_TYPE.ARRAY.map((element, index) => (
-              <MenuItem value={index}>{RENTEE_TYPE.KOREAN[element]}</MenuItem>
+              <MenuItem key={index} value={index}>{RENTEE_TYPE.KOREAN[element]}</MenuItem>
             ))
           }
         </Select>
@@ -140,11 +188,11 @@ function ManagerBookForm({
         {
           isEditMode ? (
             <EditBox>
-              <InputButton onClick={updateBook}>수정</InputButton>
+              <InputButton onClick={onUpdateButtonClick}>수정</InputButton>
               <InputButton onClick={onCancelButtonClick}>취소</InputButton>
             </EditBox>
           ) : (
-            <AddButton onClick={createBook}>추가</AddButton>
+            <AddButton onClick={onCreateButtonClick}>추가</AddButton>
           )
         }
       </Grid>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import epochSecondToDate from './epochSecondToDate';
 import RENTEE_TYPE from '../../constant/RENTEE_TYPE';
 
 function DetailBox({ rentee }) {
@@ -9,14 +10,14 @@ function DetailBox({ rentee }) {
       <CoverImg src={process.env.REACT_APP_BEEP_API + rentee.thumbnailUrl}/>
 
       <TitleHolder>
-        <TypeIcon src={`BOOK_TYPE_ICON.${rentee.type}`}/>
+        <TypeIcon src={RENTEE_TYPE.ICON_URL[rentee.type]}/>
         <TextHolder>
           <Id>{rentee.id}</Id>
           <Title>{rentee.title}</Title>
         </TextHolder>
       </TitleHolder>
 
-      { rentee.type != 'EQUIPMENT' ? (
+      { rentee.type != RENTEE_TYPE.EQUIPMENT ? (
         <DetailInfoBox>
           <InfoTitleHolder>
             <InfoTitle>저자</InfoTitle>
@@ -27,15 +28,16 @@ function DetailBox({ rentee }) {
             <AuthorText>{rentee.authorName}</AuthorText>
             <PublisherText>
               <Publisher>{rentee.publisherName}</Publisher>
-              <PublicationDay>{rentee.publishedDateEpochSecond}</PublicationDay>
+              <PublicationDay>{epochSecondToDate(rentee.publishedDateEpochSecond)}</PublicationDay>
             </PublisherText>
           </InfoTextHolder>
         </DetailInfoBox>
-      ) : null }
+      ) : (null)}
 
       <NoteBox>
         <NoteEmoji>💡</NoteEmoji>
         <NoteText>
+          #{RENTEE_TYPE.KOREAN[rentee.type]} <br />
           {rentee.note}
         </NoteText>
       </NoteBox>
@@ -65,8 +67,12 @@ const TitleHolder = styled.div`
 
 const TypeIcon = styled.img`
   width: 8%;
-  max-width: 30px;
-  border-radius: 50%;
+  max-width: 100px;
+  
+  margin-right: 1%;
+  border-radius: 0;
+  
+  object-fit: cover;
 `;
 
 const TextHolder = styled.div`
@@ -117,7 +123,7 @@ const InfoTitle = styled.div`
 
 const InfoTextHolder = styled.div`
   width: 100%;
-  
+
   display: flex;
   justify-content: space-between;
   align-items: center;

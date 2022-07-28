@@ -26,26 +26,37 @@ function PinCode() {
   const sendReturn = async () => {
     const postNumber = number.join('');
 
-    await axios.put(process.env.REACT_APP_BEEP_API + 'book/' + renteeId + '/return?pinCode=' + postNumber);
+    await axios.put(process.env.REACT_APP_BEEP_API + '/rentee/' + renteeId + '/return', {
+      params: {
+        id: renteeId,
+        pinCode: number
+      }
+    });
   };
 
   const sendRent = async () => {
     const postNumber = number.join("");
 
-    await axios.put(process.env.REACT_APP_BEEP_API + 'book/' + renteeId + '/rent?pinCode=' + postNumber);
+    await axios.put(process.env.REACT_APP_BEEP_API + '/rentee/' + renteeId + '/rent', {
+      params: {
+        id: renteeId,
+        pinCode: number
+      }
+    });
   };
 
   useEffect(() => {
     if (number.length !== 4) {
       return;
-    }
-
+    } else if (number.length === 4) {
       if (rentOrReturn === 'return') {
         sendReturn();
 
       } else if (rentOrReturn === 'rent') {
         sendRent();
       }
+    }
+
   }, [number]);
 
   return (
@@ -64,11 +75,9 @@ function PinCode() {
 const Body = styled.div`
   width: 100vw;
   height: 100vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: ${(props) => props.theme.bgColor};
 `;
 
@@ -77,14 +86,12 @@ const PinCodeBox = styled.div`
   max-width: 500px;
   height: 100%;
   max-height: 1000px;
-
   position: relative;
 `;
 
 const ResultBox = styled.div`
   width: 100%;
   height: 50%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;

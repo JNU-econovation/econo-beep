@@ -3,11 +3,14 @@ import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
 import axios from 'axios';
-import RENTEE_TYPE from '../../constant/RENTEE_TYPE';
+import RENTEE_TYPE from '../constant/RENTEE_TYPE';
 import { EpochSecondToDateObject } from '../EpochConverter';
+import { useNavigate } from 'react-router-dom';
 
 function ManagerBookInfo({ book, setIsEditMode, setEditingRentee, deleteBook }) {
   const publishedDate = EpochSecondToDateObject(book.publishedDateEpochSecond);
+
+  const navigate = useNavigate();
 
   const onEditClick = () => {
     setIsEditMode(true);
@@ -17,9 +20,9 @@ function ManagerBookInfo({ book, setIsEditMode, setEditingRentee, deleteBook }) 
   const onDeleteClick = () => {
     if (!confirm("정말로 삭제하시겠습니까?")) {
       return;
+    } else {
+      deleteBook(book.id);
     }
-
-    deleteBook(book.id)
   }
 
   return (
@@ -28,7 +31,7 @@ function ManagerBookInfo({ book, setIsEditMode, setEditingRentee, deleteBook }) 
       <ImgBox>
         <Img src={process.env.REACT_APP_BEEP_API + book.thumbnailUrl} />
       </ImgBox>
-      <TitleBox>{book.title}</TitleBox>
+      <TitleBox onClick={() => navigate(`/rentee/${book.id}`)}>{book.title}</TitleBox>
       <AuthorNameBox>{book.authorName}</AuthorNameBox>
       <PublisherNameBox>{book.publisherName}</PublisherNameBox>
       <PublishDayBox>{`${publishedDate.getFullYear()}-${publishedDate.getMonth()}-${publishedDate.getDay()}`}</PublishDayBox>
@@ -77,10 +80,12 @@ const TitleBox = styled.div`
   justify-content: center;
   align-items: center;
   
-  font-size: 1rem;
+  font-size: 125%;
   font-weight: 500;
   
   color: ${(props) => props.theme.black};
+  
+  cursor: pointer;
 `;
 
 const AuthorNameBox = styled.div`

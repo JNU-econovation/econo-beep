@@ -1,18 +1,93 @@
-import React from 'react';
-import EquipmentInfo from '../components/list/EquipmentInfo';
-import ListBody from '../components/list/ListBody';
-import Header from '../components/header/Header';
-import ListSearchBarHolder from '../components/list/ListSearchBarHolder';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import EquipmentInfo from '../components/list/EquipmentInfo'
 import SearchEquipmentBar from '../components/search/SearchEquipmentBar';
+import Header from '../components/header/Header';
+import ListBody from '../components/list/ListBody';
+import ListSearchBarHolder from '../components/list/ListSearchBarHolder';
 import ListResultBox from '../components/list/ListResultBox';
+import MoreRenteeButton from '../components/list/MoreRenteeButton';
+import axios from 'axios';
 
-function BooksList() {
-  const equipmentResultList = [
-    { to: '/555', src: 'https://www.lge.co.kr/kr/images/monitors/md08920891/gallery/medium01.jpg', equipmentId: 'e-555', equipmentName: '모니터', equipmentRent: '대여 가능' },
-    { to: '/555', src: 'https://i.dell.com/is/image/DellContent//content/dam/ss2/product-images/dell-multiple-products/monitor/dell-gen-snp-all-monitors-accessories-p3421w-800x620-right-facing.png?fmt=png-alpha&wid=800&hei=620', equipmentId: 'e-555', equipmentName: '모니터', equipmentRent: '대여 가능' },
-    { to: '/555', src: 'https://blog.kakaocdn.net/dn/bffERm/btrCdIiYwHi/YKDnATjkwCKvYRv18POBc1/img.jpg', equipmentId: 'e-555', equipmentName: '모니터', equipmentRent: '대여 가능' },
-    { to: '/555', src: 'https://www.lge.co.kr/kr/images/monitors/md08920891/gallery/medium01.jpg', equipmentId: 'e-555', equipmentName: '모니터', equipmentRent: '대여 가능' },
-  ];
+
+function EquipmentList() {
+  const [lastRenteeId, setLastRenteeId] = useState(null);
+  const [rentees, setRentees] = useState([]);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const initEquipmentList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/search/equipment/', {
+      params: {
+        pageSize: 8,
+      }
+    });
+    const newBookList = response.data;
+
+    if (newBookList.length !== 0) {
+      setLastRenteeId(newBookList[newBookList.length - 1].id);
+      setRentees(newBookList);
+    }
+  };
+
+  const loadEquipmentList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/search/equipment/', {
+      params: {
+        pageSize: 1,
+        lastRenteeId: lastRenteeId,
+      }
+    });
+    const newBookList = response.data;
+
+    if (newBookList.length !== 0) {
+      setLastRenteeId(newBookList[newBookList.length - 1].id);
+      setRentees((oldBookList) => [...oldBookList, ...newBookList]);
+    }
+  };
+
+  const initSearchList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/equipment`, {
+      params: {
+        keyword: searchParams.get('keyword'),
+        pageSize: 8
+      }
+    });
+
+    const newSearchList = response.data;
+
+    setRentees(newSearchList);
+
+    if (newSearchList.length !== 0) {
+      setLastRenteeId(newSearchList[newSearchList.length - 1].id);
+      setRentees(newSearchList);
+    }
+  };
+
+  const loadSearchList = async () => {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + `/rentee/search/equipment`, {
+      params: {
+        keyword: searchParams.get('keyword'),
+        lastRenteeId: lastRenteeId,
+        pageSize: 8
+      }
+    });
+
+    const newSearchList = response.data;
+
+    if (newSearchList.length !== 0) {
+      setLastRenteeId(newSearchList[newSearchList.length - 1].id);
+      setRentees((oldSearchList) => [...oldSearchList, ...newSearchList]);
+    }
+  };
+
+  useEffect(() => {
+    if (searchParams.get('keyword') === null) {
+      initEquipmentList();
+
+    } else if (searchParams.get('keyword')) {
+      initSearchList();
+    }
+  }, [searchParams.get('keyword')]);
 
   return (
     <ListBody>
@@ -21,19 +96,23 @@ function BooksList() {
         <SearchEquipmentBar />
       </ListSearchBarHolder>
       <ListResultBox>
-        {equipmentResultList.map((item) => (
+        {rentees.map((item) => (
           <EquipmentInfo
             key={item.id}
-            to={item.equipmentId}
-            src={item.src}
-            equipmentId={item.equipmentId}
-            equipmentName={item.equipmentName}
-            equipmentRent={item.equipmentRent}
+            id={item.id}
+            src={process.env.REACT_APP_BEEP_API + item.thumbnailUrl}
+            title={item.title}
+            rentState={item.rentState}
           />
         ))}
+        { searchParams.get('keyword') ? (
+          <MoreRenteeButton onClick={loadSearchList}>MORE EQUIPMENTS</MoreRenteeButton>
+        ) : (
+          <MoreRenteeButton onClick={loadEquipmentList}>MORE EQUIPMENTS</MoreRenteeButton>
+        )}
       </ListResultBox>
     </ListBody>
   );
 }
 
-export default BooksList;
+export default EquipmentList;
