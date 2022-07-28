@@ -38,7 +38,7 @@ function AppRouter() {
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
-  
+
   a {
     text-decoration: none;
     color: inherit;
@@ -50,7 +50,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     text-decoration: none;
   }
-  
+
   body {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
