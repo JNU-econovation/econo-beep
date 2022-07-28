@@ -3,18 +3,19 @@ import { FormControl, MenuItem, Select } from '@mui/material';
 import styled from 'styled-components';
 import SearchManagerBar from '../search/SearchManagerBar';
 
-function ManagerButtonSearchHolder({ isBookActivated, onBookClick, onEquipmentClick, viewMethod, onViewChange, setBookList}) {
+function ManagerButtonSearchHolder({ isBookMode, onBookClick, onEquipmentClick, sortOrder, setSortOrder, onSearchPress}) {
   return (
     <ButtonSearchHolder>
-      <Button state={isBookActivated} onClick={onBookClick}>도서</Button>
-      <Button state={!isBookActivated} onClick={onEquipmentClick}>기자재</Button>
+      <Button state={isBookMode} onClick={onBookClick}>도서</Button>
+      <Button state={!isBookMode} onClick={onEquipmentClick}>기자재</Button>
       <SelectBox>
         <FormControl fullWidth size="small">
           <Select
-            labelId="SelectViewMethod"
+            labelId="SelectSortOrder"
             id="Select"
-            value={viewMethod}
-            onChange={onViewChange}
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+            style={{borderRadius: 20}}
           >
             <MenuItem value={0}>최근에 추가된 순</MenuItem>
             <MenuItem value={1}>이전에 추가된 순</MenuItem>
@@ -23,7 +24,7 @@ function ManagerButtonSearchHolder({ isBookActivated, onBookClick, onEquipmentCl
         </FormControl>
       </SelectBox>
       <ManagerSearchBarHolder>
-        <SearchManagerBar isBookActivated={isBookActivated} setBookList={setBookList} />
+        <SearchManagerBar isBookMode={isBookMode} onSearchPress={onSearchPress} />
       </ManagerSearchBarHolder>
     </ButtonSearchHolder>
   )
@@ -43,26 +44,25 @@ const ButtonSearchHolder = styled.div`
 const Button = styled.button`
   width: 10%;
   height: 100%;
-  
-  text-align: center;
-  
   margin: 0 1vw;
   padding: 0;
   
   border: none;
   border-radius: 20px;
   
-  font-size: 1.2rem;
-  font-weight: 600;
-  
   color: ${ props => props.state === true ? "#FDFDFD" : "#001AFF"};
   background-color: ${ props => props.state === true ? "#001AFF" : "#CACFFF"};
+  
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  cursor: pointer;
 `;
 
 const SelectBox = styled.div`
   width: 20%;
   height: 100%;
-  
   padding: 0 1vw;
 `;
 

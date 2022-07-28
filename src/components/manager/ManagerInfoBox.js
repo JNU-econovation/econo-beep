@@ -18,8 +18,11 @@ const ManagerInfoBox = styled.button`
   color: ${(props) => props.theme.firstGray};
   font-size: 0.8rem;
   
+  
   :hover {
     box-shadow: 0 5px 20px 4px rgba(0, 0, 0, 0.06);
+    transform: scale(1.015);
+    transition: .17s;
   }
 `;
 

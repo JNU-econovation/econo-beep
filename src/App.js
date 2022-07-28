@@ -12,18 +12,20 @@ import BookDetail from './pages/BookDetail';
 import EquipmentDetail from './pages/EquipmentDetail';
 import Manager from './pages/Manager';
 import PinCode from './pages/PinCode';
+import TypeRenteesList from './pages/TypeRenteesList';
 
 function LoggedInRoutes() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/type/:to" element={<TypeRenteesList />} />
         <Route path="/search/books" element={<BooksList />} />
         <Route path="/search/equipments" element={<EquipmentList />} />
         <Route path="/search/all" element={<SearchList />} />
         <Route path="/book/:id" element={<BookDetail />} />
         <Route path="/equipment/:id" element={<EquipmentDetail />} />
-        <Route path="/pincode/:rentOrReturn/:renteeId" element={<PinCode />} />
+        <Route path="/pincode/:rentOrReturn/:id" element={<PinCode />} />
         <Route path="/manager" element={<Manager />} />
       </Routes>
     </Router>
@@ -36,10 +38,14 @@ function AppRouter() {
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
-  
+
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  i {
+    color: ${styledTheme.placeholderColor};
   }
 
   * {
@@ -48,7 +54,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     text-decoration: none;
   }
-  
+
   body {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;

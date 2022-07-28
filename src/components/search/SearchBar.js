@@ -4,21 +4,23 @@ import { BiSearch } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
 function SearchBar({ placeholder, searchApiUrl }) {
-  const [keyword, setKeyword] = useState('');
+  const [inputKeyword, setInputKeyword] = useState('');
 
   const navigate = useNavigate();
 
   const onChange = (event) => {
-    setKeyword(event.target.value);
+    setInputKeyword(event.target.value);
   };
 
   const onEnterPress = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
+      const keyword = inputKeyword.replace(/(\s*)/g, "");
       navigate({
         pathname: `/${searchApiUrl}`,
         search: `?keyword=${keyword}`
       });
+      // setInputKeyword('');
     }
   };
 
@@ -27,7 +29,7 @@ function SearchBar({ placeholder, searchApiUrl }) {
       <Icon>
         <BiSearch />
       </Icon>
-      <Search type="text" placeholder={placeholder} value={keyword} onChange={onChange} />
+      <Search type="text" placeholder={placeholder} value={inputKeyword} onChange={onChange} />
     </SearchBox>
   );
 }

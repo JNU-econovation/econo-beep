@@ -3,33 +3,45 @@ import styled from 'styled-components';
 import Type from './Type';
 import ContentTitle from './ContentTitle';
 import Content from './Content';
-import BOOK_TYPE_ICON from '../constant/BOOK_TYPE_ICON';
+import RENTEE_TYPE from '../constant/RENTEE_TYPE';
 
 function Category() {
   const firstRowTypes = [
-    { src: BOOK_TYPE_ICON.WEB.src, to: BOOK_TYPE_ICON.WEB.text, text: '웹' },
-    { src: BOOK_TYPE_ICON.APP.src, to: BOOK_TYPE_ICON.APP.text, text: '앱' },
-    { src: BOOK_TYPE_ICON.LANGUAGE.src, to: BOOK_TYPE_ICON.LANGUAGE.text, text: '개발 언어' },
-    { src: BOOK_TYPE_ICON.AI.src, to: BOOK_TYPE_ICON.AI.text, text: 'AI' },
+    { src: RENTEE_TYPE.ICON_URL.WEB, to: RENTEE_TYPE.WEB, text: RENTEE_TYPE.KOREAN.WEB },
+    { src: RENTEE_TYPE.ICON_URL.APP, to: RENTEE_TYPE.APP, text: RENTEE_TYPE.KOREAN.APP },
+    {
+      src: RENTEE_TYPE.ICON_URL.LANGUAGE,
+      to: RENTEE_TYPE.LANGUAGE,
+      text: RENTEE_TYPE.KOREAN.LANGUAGE
+    },
+    { src: RENTEE_TYPE.ICON_URL.AI, to: RENTEE_TYPE.AI, text: RENTEE_TYPE.KOREAN.AI },
   ];
 
   const secondRowTypes = [
-    { src: BOOK_TYPE_ICON.GAME.src, to: BOOK_TYPE_ICON.GAME.text, text: '게임' },
-    { src: BOOK_TYPE_ICON.DEVELOPMENT.src, to: BOOK_TYPE_ICON.DEVELOPMENT.text, text: '개발 교양' },
-    { src: BOOK_TYPE_ICON.MAJOR.src, to: BOOK_TYPE_ICON.MAJOR.text, text: '전공' },
-    { src: BOOK_TYPE_ICON.EQUIPMENT.src, to: BOOK_TYPE_ICON.EQUIPMENT.text, text: '기자재' },
+    { src: RENTEE_TYPE.ICON_URL.GAME, to: RENTEE_TYPE.GAME, text: RENTEE_TYPE.KOREAN.GAME },
+    {
+      src: RENTEE_TYPE.ICON_URL.DEVELOPMENT,
+      to: RENTEE_TYPE.DEVELOPMENT,
+      text: RENTEE_TYPE.KOREAN.DEVELOPMENT
+    },
+    { src: RENTEE_TYPE.ICON_URL.MAJOR, to: RENTEE_TYPE.MAJOR, text: RENTEE_TYPE.KOREAN.MAJOR },
+    {
+      src: RENTEE_TYPE.ICON_URL.EQUIPMENT,
+      to: RENTEE_TYPE.EQUIPMENT,
+      text: RENTEE_TYPE.KOREAN.EQUIPMENT
+    },
   ];
   return (
     <Content>
       <ContentTitle>카테고리</ContentTitle>
       <Row>
         {firstRowTypes.map((item) => (
-          <Type key={item.id} src={item.src} to={`search/books?type=${item.to}`} text={item.text} />
+          <Type key={item.to} src={item.src} to={`type/${item.to}`} text={item.text} />
         ))}
       </Row>
       <Row>
         {secondRowTypes.map((item) => (
-          <Type key={item.id} src={item.src} to={`search/books?type=${item.to}`} text={item.text} />
+          <Type key={item.to} src={item.src} to={`type/${item.to}`} text={item.text} />
         ))}
       </Row>
     </Content>
@@ -38,7 +50,7 @@ function Category() {
 
 const Row = styled.div`
   width: 100%;
-  
+
   padding: 0 8%;
   display: flex;
   justify-content: space-between;

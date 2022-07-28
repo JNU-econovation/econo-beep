@@ -4,12 +4,12 @@ import InfoImg from './InfoImg';
 import InfoBox from './InfoBox';
 import InfoText from './InfoText';
 
-function BookInfo({ to, src, bookId, bookTitle, bookAuthorName, bookRent }) {
+function BookInfo({ src, id, title, authorName, rentState }) {
   return (
-    <Link to={`/book/${to}`}>
+    <Link to={`/book/${id}`}>
       <InfoBox>
         <InfoImg src={src} />
-        <InfoText id={bookId} title={bookTitle} authorName={bookAuthorName} rent={bookRent} />
+        <InfoText id={id} title={title} authorName={authorName} rent={rentState} />
       </InfoBox>
     </Link>
   );

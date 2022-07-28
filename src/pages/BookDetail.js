@@ -10,34 +10,32 @@ import Header from '../components/header/Header';
 function BookDetail() {
   const { id } = useParams();
 
-  const [BOOK_DUMMY, setBookDummy] = useState({});
-  const [RENT_DUMMY, setRentDummy] = useState([]);
+  const [RENTEE_DUMMY, setRenteeDummy] = useState({});
+  const [RENTAL_RECORD, setRentalRecord] = useState([]);
 
-  const getBookDummy = async () => {
-    const list = await axios.get(process.env.REACT_APP_BEEP_API + "book/" + id,
+  const getRenteeDummy = async () => {
+    const list = await axios.get(process.env.REACT_APP_BEEP_API + "/rentee/" + id,
       {params: {id: id}});
     const dataList = list.data
     const historyList = dataList.rentalHistories
 
-    setBookDummy(dataList);
-    setRentDummy([...historyList]);
-    console.log(BOOK_DUMMY);
-    console.log(RENT_DUMMY);
+    setRenteeDummy(dataList);
+    setRentalRecord([...historyList]);
   }
 
   useEffect(() => {
-    getBookDummy();
+    getRenteeDummy();
   }, [id]);
 
   return (
     <Body>
       <Header />
       <DetailMain>
-        <DetailBox rentee={BOOK_DUMMY} />
+        <DetailBox rentee={RENTEE_DUMMY} />
         <ContentBox>
-          <RentBox rent={RENT_DUMMY} />
+          <RentBox rent={RENTAL_RECORD} />
         </ContentBox>
-        <RentButton renteeId={BOOK_DUMMY.id} isAvailable={BOOK_DUMMY.rentState} />
+        <RentButton id={RENTEE_DUMMY.id} isAvailable={RENTEE_DUMMY.rentState} />
       </DetailMain>
     </Body>
   );

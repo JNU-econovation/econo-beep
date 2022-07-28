@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import RENT_STATE from '../constant/RENT_STATE';
 
-function RentButton({ renteeId, isAvailable }) {
+function RentButton({ id, isAvailable }) {
   if (isAvailable === RENT_STATE.UNRENTABLE) {
     return (
       <ButtonBox>
@@ -13,7 +13,7 @@ function RentButton({ renteeId, isAvailable }) {
   } else if (isAvailable === RENT_STATE.RENTED) {
     const rentOrReturn = 'return';
     return (
-      <Link to={`/pincode/${rentOrReturn}/${renteeId}`}>
+      <Link to={`/pincode/` + rentOrReturn + '/' + id}>
         <ButtonBox>
           <RedButton>반납하기</RedButton>
         </ButtonBox>
@@ -22,7 +22,7 @@ function RentButton({ renteeId, isAvailable }) {
   } else if (isAvailable === RENT_STATE.RENTABLE) {
     const rentOrReturn = 'rent'
     return (
-      <Link to={`/pincode/${rentOrReturn}/${renteeId}`}>
+      <Link to={`/pincode/` + rentOrReturn + '/' + id}>
         <ButtonBox>
           <BlueButton>대여하기</BlueButton>
         </ButtonBox>
