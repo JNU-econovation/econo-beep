@@ -1,44 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function ManagerEquipmentForm({ correctData, onCorrectClick }) {
+function ManagerEquipmentForm({
+  isEditMode,
+  setIsEditMode,
+  editingData,
+  setCorrectData,
+  createEquipment,
+  updateEquipment,
+}) {
   return (
-    <FormBody>
-      {correctData ? (
-        <Form>
-          <InputImg>
-            <input type="file" placeholder="이미지" id="thumbnailImg" />
-          </InputImg>
-          <InputTitle placeholder="제목" id="title"/>
-          <InputNote placeholder="비고" id="note" />
-          <CorrectBox>
-            <InputButton>수정</InputButton>
-            <InputButton onClick={onCorrectClick}>취소</InputButton>
-          </CorrectBox>
-        </Form>
-      ) : (
-        <Form>
-          <InputImg>
-            <input type="file" placeholder="이미지" id="thumbnailImg" />
-          </InputImg>
-          <InputTitle placeholder="제목" id="title"/>
-          <InputNote placeholder="비고" id="note" />
-          <AddButton>추가</AddButton>
-        </Form>
-      )}
-    </FormBody>
+    <Form>
+      <InputImg>
+        <input type="file" placeholder="이미지" id="thumbnailImg"/>
+      </InputImg>
+      <InputTitle placeholder="제목" id="title"/>
+      <InputNote placeholder="비고" id="note"/>
+      <CorrectBox>
+        <InputButton>수정</InputButton>
+        <InputButton onClick={onCorrectClick}>취소</InputButton>
+      </CorrectBox>
+    </Form>
   );
 }
 
-const FormBody = styled.div`
+const Form = styled.div`
   width: 100%;
   height: 5vh;
-`;
 
-const Form = styled.form`
-  width: 100%;
-  height: 100%;
-  
   margin: 0.25% 0;
 
   display: flex;
@@ -53,19 +42,19 @@ const Form = styled.form`
 
   color: ${(props) => props.theme.firstGray};
   font-size: 0.8rem;
-  
+
   background-color: ${(props) => props.theme.bgColor};
 `;
 
 const InputImg = styled.div`
   width: 30%;
   height: 100%;
-  
+
   padding-left: 5%;
 
   border: none;
   border-radius: 10px;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,21 +62,20 @@ const InputImg = styled.div`
 const InputTitle = styled.input`
   width: 30%;
   height: 100%;
-  
+
   border: none;
   border-radius: 10px;
-  
+
   text-align: center;
 `;
-
 
 const InputNote = styled.input`
   width: 30%;
   height: 100%;
-  
+
   border: none;
   border-radius: 10px;
-  
+
   text-align: center;
 `;
 
@@ -108,7 +96,7 @@ const AddButton = styled.button`
 
   color: #001AFF;
   background-color: #CACFFF;
-  
+
   :hover {
     color: #FDFDFD;
     background-color: #001AFF;
@@ -121,7 +109,7 @@ const CorrectBox = styled.div`
 
   margin: 0 1vw;
   padding: 0;
-  
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -147,6 +135,5 @@ const InputButton = styled.button`
     background-color: #001AFF;
   }
 `;
-
 
 export default ManagerEquipmentForm;

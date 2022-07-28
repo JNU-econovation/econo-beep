@@ -3,49 +3,40 @@ import { RiDeleteBinLine, RiPencilFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import ManagerInfoBox from './ManagerInfoBox';
 import axios from 'axios';
+import RENTEE_TYPE from '../constant/RENTEE_TYPE';
+import { EpochSecondToDateObject } from '../EpochConverter';
 
-function ManagerBookInfo({ id, src, title, author, publisher, publishDay, type, note, setCorrectData }) {
-  const [deleteData, setDeleteData] = useState(false);
+function ManagerBookInfo({ book, setIsEditMode, setEditingRentee, deleteBook }) {
+  const publishedDate = EpochSecondToDateObject(book.publishedDateEpochSecond);
 
-  const onCorrectClick = () => {
-    setCorrectData(id);
-    console.log("연필 버튼 누름" + id);
+  const onEditClick = () => {
+    setIsEditMode(true);
+    setEditingRentee(book);
   }
 
   const onDeleteClick = () => {
-    setDeleteData(true);
-  }
-
-  const deleteBook = async () => {
-    // await axios.delete(process.env.REACT_APP_BEEP_API + 'management/book/', {
-    //   params: {id: id}
-    // });
-
-    console.log('delete ' + id)
-  }
-
-  useEffect(() => {
-    if (deleteData === true) {
-      deleteBook();
-      setDeleteData(false);
+    if (!confirm("정말로 삭제하시겠습니까?")) {
+      return;
     }
-  }, [deleteData]);
+
+    deleteBook(book.id)
+  }
 
   return (
     <ManagerInfoBox>
-      <IdBox>{id}</IdBox>
+      <IdBox>{book.id}</IdBox>
       <ImgBox>
-        <Img src={src} />
+        <Img src={process.env.REACT_APP_BEEP_API + book.thumbnailUrl} />
       </ImgBox>
-      <TitleBox>{title}</TitleBox>
-      <AuthorBox>{author}</AuthorBox>
-      <PublisherBox>{publisher}</PublisherBox>
-      <PublishDayBox>{publishDay}</PublishDayBox>
-      <TypeBox>{type}</TypeBox>
-      <NoteBox>{note}</NoteBox>
-      <ChangeButton onClick={onCorrectClick}>
+      <TitleBox>{book.title}</TitleBox>
+      <AuthorNameBox>{book.authorName}</AuthorNameBox>
+      <PublisherNameBox>{book.publisherName}</PublisherNameBox>
+      <PublishDayBox>{`${publishedDate.getFullYear()}-${publishedDate.getMonth()}-${publishedDate.getDay()}`}</PublishDayBox>
+      <TypeBox>{RENTEE_TYPE.KOREAN[book.type]}</TypeBox>
+      <NoteBox>{book.note}</NoteBox>
+      <EditButton onClick={onEditClick}>
         <RiPencilFill />
-      </ChangeButton>
+      </EditButton>
       <DeleteButton onClick={onDeleteClick}>
         <RiDeleteBinLine />
       </DeleteButton>
@@ -92,7 +83,7 @@ const TitleBox = styled.div`
   color: ${(props) => props.theme.black};
 `;
 
-const AuthorBox = styled.div`
+const AuthorNameBox = styled.div`
   width: 15%;
   height: 100%;
   
@@ -101,7 +92,7 @@ const AuthorBox = styled.div`
   align-items: center;
 `;
 
-const PublisherBox = styled.div`
+const PublisherNameBox = styled.div`
   width: 15%;
   height: 100%;
   
@@ -139,7 +130,8 @@ const NoteBox = styled.div`
 
 const OriginButton = styled.button`
   width: 5%;
-  height: 100%;
+  height: 80%;
+  border-radius: 100%;
 
   display: flex;
   justify-content: center;
@@ -152,15 +144,19 @@ const OriginButton = styled.button`
   font-size: 1.4rem;
 `;
 
-const ChangeButton = styled(OriginButton)`
+const EditButton = styled(OriginButton)`
+  cursor: pointer;
   :hover {
     color: ${(props) => props.theme.rentBlue};
+    background-color: ${(props) => props.theme.rentWeakBlue};
   }
 `;
 
 const DeleteButton = styled(OriginButton)`
+  cursor: pointer;
   :hover {
     color: ${(props) => props.theme.rentRed};
+    background-color: ${(props) => props.theme.rentWeakRed};
   }
 `;
 

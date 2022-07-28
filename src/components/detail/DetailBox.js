@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BOOK_TYPE_ICON from '../constant/BOOK_TYPE_ICON';
+import RENTEE_TYPE from '../constant/RENTEE_TYPE';
 
 function DetailBox({ rentee }) {
 

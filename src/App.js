@@ -12,6 +12,7 @@ import BookDetail from './pages/BookDetail';
 import EquipmentDetail from './pages/EquipmentDetail';
 import Manager from './pages/Manager';
 import PinCode from './pages/PinCode';
+import Theme from './styles/Theme';
 
 function LoggedInRoutes() {
   return (
@@ -40,6 +41,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  i {
+    color: ${Theme.placeholderColor};
   }
 
   * {
