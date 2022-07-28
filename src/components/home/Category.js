@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Type from './Type';
 import ContentTitle from './ContentTitle';
 import Content from './Content';
-import RENTEE_TYPE from '../../constant/RENTEE_TYPE';
+import RENTEE_TYPE from '../constant/RENTEE_TYPE';
 
 function Category() {
   const firstRowTypes = [
