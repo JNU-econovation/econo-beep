@@ -15,7 +15,5 @@ c
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
 V
 &src/components/constant/RENTEE_TYPE.js,a/a/aa70823edb766f21a709a2d12323cc37d7326c0f
-P
- src/components/EpochConverter.js,e/2/e23afd04e355406a88b64aa22c9fe1f0473f55ea
 Y
 )src/components/manager/ManagerBookInfo.js,b/9/b92a5d3f1088a04670986c56ee87346475a85f18
