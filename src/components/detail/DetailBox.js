@@ -67,7 +67,7 @@ const TitleHolder = styled.div`
 
 const TypeIcon = styled.img`
   width: 8%;
-  max-width: 100px;
+  max-width: 60px;
   
   margin-right: 1%;
   border-radius: 0;

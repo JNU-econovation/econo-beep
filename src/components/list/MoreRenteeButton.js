@@ -4,7 +4,7 @@ const MoreRenteeButton = styled.button`
   width: 85vw;
   height: 5vh;
   
-  max-width: 800px;
+  max-width: 400px;
   
   margin: 5% 0;
   
