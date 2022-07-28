@@ -74,6 +74,19 @@ function ManagerBookForm({
     setEditingRentee(null);
   };
 
+  const onCreateBookClick = () => {
+    let newBookForm = new FormData();
+    newBookForm.append('thumbnail', thumbnail);
+    newBookForm.append('title', title);
+    newBookForm.append('authorName', authorName);
+    newBookForm.append('publisherName', publisherName);
+    newBookForm.append('publishedDate', publishedDate);
+    newBookForm.append('type', type);
+    newBookForm.append('note', note);
+
+    createBook(newBookForm);
+  }
+
   const handlePublishedDate = (date) => {
     setPublishedDate(DateObjectToEpochSecond(date));
   };
@@ -82,7 +95,7 @@ function ManagerBookForm({
     <Form>
       <Grid>
         <ImgBox>
-          <label for="input-thumbnail">
+          <label htmlFor="input-thumbnail">
             {
               thumbnail === '' ? (
                 <ThumbnailIcon>
@@ -128,7 +141,7 @@ function ManagerBookForm({
           <MenuItem disabled value={-1}><i>종류</i></MenuItem>
           {
             RENTEE_TYPE.ARRAY.map((element, index) => (
-              <MenuItem value={index}>{RENTEE_TYPE.KOREAN[element]}</MenuItem>
+              <MenuItem key={index} value={index}>{RENTEE_TYPE.KOREAN[element]}</MenuItem>
             ))
           }
         </Select>
@@ -144,7 +157,7 @@ function ManagerBookForm({
               <InputButton onClick={onCancelButtonClick}>취소</InputButton>
             </EditBox>
           ) : (
-            <AddButton onClick={createBook}>추가</AddButton>
+            <AddButton onClick={onCreateBookClick}>추가</AddButton>
           )
         }
       </Grid>

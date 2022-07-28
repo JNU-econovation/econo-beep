@@ -19,7 +19,7 @@ function ManagerBookInfo({ book, setIsEditMode, setEditingRentee, deleteBook }) 
       return;
     }
 
-    deleteBook(book.id)
+    deleteBook(book.id);
   }
 
   return (

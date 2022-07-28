@@ -103,14 +103,14 @@ function Manager() {
   };
 
   const getListedBooks = async () => {
-    const list = await axios.get(process.env.REACT_APP_BEEP_API + serverBookSortListingUrl[sortOrder], {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + serverBookSortListingUrl[sortOrder], {
       params: {
         pageSize: 8,
         lastBookId: lastRenteeId
       }
     });
 
-    const dataList = list.data;
+    const dataList = response.data;
     setRentees(dataList);
     if (dataList.length !== 0) {
       setLastRenteeId(dataList[dataList.length - 1].id);
@@ -118,22 +118,27 @@ function Manager() {
   };
 
   const getListedEquipments = async () => {
-    const list = await axios.get(process.env.REACT_APP_BEEP_API + serverEquipmentSortListingUrl[sortOrder], {
+    const response = await axios.get(process.env.REACT_APP_BEEP_API + serverEquipmentSortListingUrl[sortOrder], {
       params: {
         pageSize: 8,
         lastBookId: lastRenteeId
       }
     });
 
-    const dataList = list.data;
+    const dataList = response.data;
     setRentees(dataList);
     if (dataList.length !== 0) {
       setLastRenteeId(dataList[dataList.length - 1].id);
     }
   };
 
-  const createBook = async (book) => {
-
+  const createBook = async (newBookForm) => {
+    // console.log(newBookForm.getAll());
+    // await axios.post(process.env.REACT_APP_BEEP_API + '/management/book', newBookForm, {
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data'
+    //   }
+    // });
   };
 
   const createEquipment = async (equipment) => {
@@ -148,8 +153,10 @@ function Manager() {
 
   };
 
-  const deleteBook = async (book) => {
-
+  const deleteBook = async (bookId) => {
+    await axios.delete(process.env.REACT_APP_BEEP_API + '/management/book/' + bookId, {
+      params: {id: bookId}
+    });
   };
 
   const deleteEquipment = async (equipment) => {
