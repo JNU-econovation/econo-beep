@@ -34,7 +34,7 @@ const SearchBox = styled.form`
   align-items: center;
 
   border-radius: 20px;
-  
+
   background-color: ${(props) => props.theme.bgColor};
 `;
 
@@ -46,7 +46,7 @@ const Icon = styled.div`
   margin: 0px 0px 0px 15px;
 
   font-size: 1.5rem;
-color: #7280FF`;
+  color: #7280FF`;
 
 const Search = styled.input`
   width: 85%;

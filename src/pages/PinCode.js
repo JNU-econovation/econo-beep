@@ -26,23 +26,13 @@ function PinCode() {
   const sendReturn = async () => {
     const postNumber = number.join('');
 
-    await axios.put(process.env.REACT_APP_BEEP_API + '/rentee/' + renteeId + '/return', {
-      params: {
-        id: renteeId,
-        pinCode: number
-      }
-    });
+    await axios.put(process.env.REACT_APP_BEEP_API + 'rentee/' + renteeId + '/return?pinCode=' + postNumber);
   };
 
   const sendRent = async () => {
     const postNumber = number.join("");
 
-    await axios.put(process.env.REACT_APP_BEEP_API + '/rentee/' + renteeId + '/rent', {
-      params: {
-        id: renteeId,
-        pinCode: number
-      }
-    });
+    await axios.put(process.env.REACT_APP_BEEP_API + 'rentee/' + renteeId + '/rent?pinCode=' + postNumber);
   };
 
   useEffect(() => {
