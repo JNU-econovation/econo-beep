@@ -19,7 +19,7 @@ function BooksList() {
   const initBookList = async () => {
     const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/book/', {
       params: {
-        pageSize: 1,
+        pageSize: 8,
       }
     });
     const newBookList = response.data;
@@ -33,7 +33,7 @@ function BooksList() {
   const loadBookList = async () => {
     const response = await axios.get(process.env.REACT_APP_BEEP_API + '/rentee/list/book/', {
       params: {
-        pageSize: 1,
+        pageSize: 8,
         lastRenteeId: lastRenteeId,
       }
     });
