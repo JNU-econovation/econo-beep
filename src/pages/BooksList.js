@@ -107,9 +107,9 @@ function BooksList() {
           />
         ))}
         { searchParams.get('keyword') ? (
-          <MoreRenteeButton onClick={loadSearchList}>MORE BOOK</MoreRenteeButton>
+          <MoreRenteeButton onClick={loadSearchList}>검색 결과 더 보기</MoreRenteeButton>
         ) : (
-          <MoreRenteeButton onClick={loadBookList}>MORE BOOK</MoreRenteeButton>
+          <MoreRenteeButton onClick={loadBookList}>도서 더 보기</MoreRenteeButton>
         )}
       </ListResultBox>
     </ListBody>

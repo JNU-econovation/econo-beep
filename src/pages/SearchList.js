@@ -118,9 +118,9 @@ function SearchList() {
           )
         ))}
         { searchParams.get('keyword') !== "" ? (
-          <MoreRenteeButton onClick={loadSearchList}>MORE INFO</MoreRenteeButton>
+          <MoreRenteeButton onClick={loadSearchList}>검색 결과 더 보기</MoreRenteeButton>
         ) : (
-          <MoreRenteeButton onClick={loadAllList}>MORE INFO</MoreRenteeButton>
+          <MoreRenteeButton onClick={loadAllList}>더 보기</MoreRenteeButton>
         )}
       </ListResultBox>
     </ListBody>
