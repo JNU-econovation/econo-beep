@@ -525,7 +525,7 @@ const Box = styled.div`
 `;
 
 const FormBox = styled(Box)`
-  position: absolute;
+  position: fixed;
   bottom: 0;
 `;
 
@@ -535,7 +535,7 @@ const LoadButton = styled.button`
 
   max-width: 400px;
 
-  margin: 2vh 0;
+  margin: 2vh 0 10vh 0;
 
   border: 1px solid ${(props) => props.theme.firstGray};
   border-radius: 10px;
