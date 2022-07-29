@@ -128,7 +128,7 @@ function ManagerEquipmentForm({
         >
           <MenuItem disabled value={-1}><i>종류</i></MenuItem>
           {
-            RENTEE_TYPE.ARRAY.map((element, index) => (
+            RENTEE_TYPE.ARRAY.slice(-1).map((element, index) => (
               <MenuItem key={index} value={index}>{RENTEE_TYPE.KOREAN[element]}</MenuItem>
             ))
           }

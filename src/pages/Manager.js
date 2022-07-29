@@ -13,7 +13,7 @@ import axios from 'axios';
 // test를 위해 pageSize = 1로 진행
 // 추후에 pageSize = 8로 변경할 것!
 
-const pageSize = 8;
+const pageSize = 1;
 
 const idForSortOrder = [
   { isIdAsc: false, isIdDesc: true, isRecentRentDesc: false }, // 최근에 추가된 순
@@ -42,14 +42,14 @@ function Manager() {
   }, [isBookMode, sortOrder]);
 
   const onBookClick = () => {
-    setSearchKeyword(null);
+    setSearchKeyword("");
     setIsBookMode(true);
     setLastRenteeId(null);
     setOffset(0);
   };
 
   const onEquipmentClick = () => {
-    setSearchKeyword(null);
+    setSearchKeyword("");
     setIsBookMode(false);
     setLastRenteeId(null);
     setOffset(0);
@@ -108,7 +108,7 @@ function Manager() {
   const loadSearchedBooks = async () => {
 
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/book', {
         params: {
           keyword: searchKeyword,
           pageSize: pageSize,
@@ -126,7 +126,7 @@ function Manager() {
       }
 
     } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/book', {
         params: {
           keyword: searchKeyword,
           pageSize: pageSize,
@@ -147,7 +147,7 @@ function Manager() {
 
   const initListBook = async () => {
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/book', {
         params: {
           pageSize: pageSize,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
@@ -164,7 +164,7 @@ function Manager() {
       }
 
     } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/book', {
         params: {
           pageSize: pageSize,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
@@ -183,7 +183,7 @@ function Manager() {
 
   const loadListBook = async () => {
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/book', {
         params: {
           pageSize: pageSize,
           offset: offset,
@@ -201,7 +201,7 @@ function Manager() {
       }
 
     } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/book', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/book', {
         params: {
           pageSize: 8,
           lastRenteeId: lastRenteeId,
@@ -261,7 +261,7 @@ function Manager() {
   const loadSearchEquipments = async () => {
 
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/equipment', {
         params: {
           keyword: searchKeyword,
           pageSize: pageSize,
@@ -279,7 +279,7 @@ function Manager() {
       }
 
     } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/equipment', {
         params: {
           keyword: searchKeyword,
           pageSize: pageSize,
@@ -300,7 +300,7 @@ function Manager() {
 
   const initListEquipment = async () => {
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/equipment', {
         params: {
           pageSize: pageSize,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
@@ -317,7 +317,7 @@ function Manager() {
       }
 
     } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/equipment', {
         params: {
           pageSize: pageSize,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
@@ -336,7 +336,7 @@ function Manager() {
 
   const loadListEquipment = async () => {
     if (idForSortOrder[sortOrder].isRecentRentDesc !== false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/equipment', {
         params: {
           pageSize: pageSize,
           offset: offset,
@@ -354,7 +354,7 @@ function Manager() {
       }
 
     } else if (idForSortOrder[sortOrder].isRecentRentDesc === false) {
-      const response = await axios.get(process.env.REACT_APP_BEEP_API + '/management/search/equipment', {
+      const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/equipment', {
         params: {
           pageSize: 8,
           lastRenteeId: lastRenteeId,
