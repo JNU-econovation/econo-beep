@@ -13,7 +13,7 @@ import axios from 'axios';
 // test를 위해 pageSize = 1로 진행
 // 추후에 pageSize = 8로 변경할 것!
 
-const pageSize = 1;
+const pageSize = 8;
 
 const idForSortOrder = [
   { isIdAsc: false, isIdDesc: true, isRecentRentDesc: false }, // 최근에 추가된 순
