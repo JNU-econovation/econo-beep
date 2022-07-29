@@ -10,6 +10,14 @@ function Profile() {
   const navigate = useNavigate();
   let sessionStorage = window.sessionStorage;
 
+  useEffect(() => {
+    console.log(sessionStorage.getItem(SESSION.IS_LOGGED_IN));
+    console.log(sessionStorage.getItem(SESSION.USER_EMAIL));
+    console.log(sessionStorage.getItem(SESSION.EMAIL_VERIFIED));
+    console.log(sessionStorage.getItem(SESSION.USER_NAME));
+  }, []);
+
+
   const logOut = () => {
     sessionStorage.clear();
 

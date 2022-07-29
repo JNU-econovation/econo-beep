@@ -2,11 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import { BiUserCircle } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import SESSION from '../constant/SESSION';
 
 function ProfileButton({ isToggled }) {
   return (
     <Profile isToggled={isToggled}>
-      {!isToggled ? <Link to="/profile"><Box><BiUserCircle /></Box></Link> : <NoLogo /> }
+      {
+        sessionStorage.getItem(SESSION.IS_LOGGED_IN) === 'true' &&
+        <UserName>
+          {sessionStorage.getItem(SESSION.USER_NAME)} 부원님!
+        </UserName>
+      }
+      {!isToggled ? <Link
+          to={sessionStorage.getItem(SESSION.IS_LOGGED_IN) === 'true' ? '/profile' : '/auth'}><Box><BiUserCircle/></Box></Link> :
+        <NoLogo/>}
     </Profile>
   );
 }
