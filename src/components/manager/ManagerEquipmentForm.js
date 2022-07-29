@@ -124,7 +124,6 @@ function ManagerEquipmentForm({
           labelId="SelectSortOrder"
           id="Select"
           size="small"
-          value={7}
         >
           <MenuItem disabled value={-1}><i>종류</i></MenuItem>
           {
