@@ -97,7 +97,7 @@ function ManagerBookForm({
     newBookForm.append('publishedDateEpochSecond', publishedDate);
     newBookForm.append('note', note);
 
-    if (!confirm("정말로 수정하시겠습니까?")) {
+    if (!confirm("수정하시겠습니까?")) {
       return;
     } else {
       updateBook(newBookForm, id);
@@ -115,7 +115,7 @@ function ManagerBookForm({
     newBookForm.append('publishedDateEpochSecond', publishedDate);
     newBookForm.append('note', note);
 
-    if (!confirm("정말로 삭제하시겠습니까?")) {
+    if (!confirm("추가하시겠습니까?")) {
       return;
     } else {
       createBook(newBookForm);

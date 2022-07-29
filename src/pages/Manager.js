@@ -72,6 +72,7 @@ function Manager() {
         params: {
           keyword: searchKeyword,
           pageSize: pageSize,
+          offset: 0,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
           isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
@@ -150,6 +151,7 @@ function Manager() {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/book', {
         params: {
           pageSize: pageSize,
+          offset: 0,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
           isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
@@ -225,6 +227,7 @@ function Manager() {
         params: {
           keyword: searchKeyword,
           pageSize: pageSize,
+          offset: 0,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
           isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,
@@ -303,6 +306,7 @@ function Manager() {
       const response = await axios.get(process.env.REACT_APP_BEEP_API + 'management/search/equipment', {
         params: {
           pageSize: pageSize,
+          offset: 0,
           isIdAsc: idForSortOrder[sortOrder].isIdAsc,
           isIdDesc: idForSortOrder[sortOrder].isIdDesc,
           isRecentRentDesc: idForSortOrder[sortOrder].isRecentRentDesc,

@@ -18,7 +18,7 @@ function ManagerBookInfo({ book, setIsEditMode, setEditingRentee, deleteBook }) 
   }
 
   const onDeleteClick = () => {
-    if (!confirm("정말로 삭제하시겠습니까?")) {
+    if (!confirm("삭제하시겠습니까?")) {
       return;
     } else {
       deleteBook(book.id);
