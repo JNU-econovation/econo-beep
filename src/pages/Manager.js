@@ -120,7 +120,7 @@ function Manager() {
       });
 
       const dataList = response.data;
-      setRentees(dataList);
+      setRentees(rentees => [...rentees, ...dataList]);
       if (dataList.length !== 0) {
         setOffset(offset + dataList.length);
       }
@@ -138,7 +138,7 @@ function Manager() {
       });
 
       const dataList = response.data;
-      setRentees(dataList);
+      setRentees(rentees => [...rentees, ...dataList]);
       if (dataList.length !== 0) {
         setLastRenteeId(dataList[dataList.length - 1].id);
       }
@@ -194,7 +194,7 @@ function Manager() {
       });
 
       const dataList = response.data;
-      setRentees(dataList);
+      setRentees(rentees => [...rentees, ...dataList]);
       if (dataList.length !== 0) {
         setOffset(offset + dataList.length);
         console.log(offset);
@@ -212,7 +212,7 @@ function Manager() {
       });
 
       const dataList = response.data;
-      setRentees(dataList);
+      setRentees(rentees => [...rentees, ...dataList]);
       if (dataList.length !== 0) {
         setLastRenteeId(dataList[dataList.length - 1].id);
       }
@@ -273,7 +273,7 @@ function Manager() {
       });
 
       const dataList = response.data;
-      setRentees(dataList);
+      setRentees(rentees => [...rentees, ...dataList]);
       if (dataList.length !== 0) {
         setOffset(offset + dataList.length);
       }
@@ -291,7 +291,7 @@ function Manager() {
       });
 
       const dataList = response.data;
-      setRentees(dataList);
+      setRentees(rentees => [...rentees, ...dataList]);
       if (dataList.length !== 0) {
         setLastRenteeId(dataList[dataList.length - 1].id);
       }
@@ -347,7 +347,7 @@ function Manager() {
       });
 
       const dataList = response.data;
-      setRentees(dataList);
+      setRentees(rentees => [...rentees, ...dataList]);
       if (dataList.length !== 0) {
         setOffset(offset + dataList.length);
         console.log(offset);
@@ -365,7 +365,7 @@ function Manager() {
       });
 
       const dataList = response.data;
-      setRentees(dataList);
+      setRentees(rentees => [...rentees, ...dataList]);
       if (dataList.length !== 0) {
         setLastRenteeId(dataList[dataList.length - 1].id);
       }
@@ -465,9 +465,9 @@ function Manager() {
                              deleteBook={deleteBook}/>
           ))}
           { searchKeyword !== null ? (
-            <button onClick={loadSearchedBooks}>검색 결과 더보기</button>
+            <LoadButton onClick={loadSearchedBooks}>검색 결과 더보기</LoadButton>
           ) : (
-            <button onClick={loadListBook}>리스트 더 보기</button>
+            <LoadButton onClick={loadListBook}>도서 더 보기</LoadButton>
           )}
         </Box>
       ) : (
@@ -481,9 +481,9 @@ function Manager() {
                                     deleteEquipment={deleteEquipment}/>
             ))}
           { searchKeyword !== null ? (
-            <button onClick={loadSearchEquipments}>검색 결과 더보기</button>
+            <LoadButton onClick={loadSearchEquipments}>검색 결과 더보기</LoadButton>
           ) : (
-            <button onClick={loadListEquipment}>리스트 더 보기</button>
+            <LoadButton onClick={loadListEquipment}>기자재 더 보기</LoadButton>
           )}
         </Box>
       )}
@@ -527,6 +527,25 @@ const Box = styled.div`
 const FormBox = styled(Box)`
   position: absolute;
   bottom: 0;
+`;
+
+const LoadButton = styled.button`
+  width: 85vw;
+  height: 5vh;
+
+  max-width: 400px;
+
+  margin: 2vh 0;
+
+  border: 1px solid ${(props) => props.theme.firstGray};
+  border-radius: 10px;
+
+  font-size: 1rem;
+  font-weight: 500;
+
+  color: ${(props) => props.theme.firstGray};
+  background-color: ${(props) => props.theme.bgColor};
+}
 `;
 
 export default Manager;
