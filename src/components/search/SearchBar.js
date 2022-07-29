@@ -61,7 +61,7 @@ const Search = styled.input`
   padding: 0 0 0 10px;
 
   border: none;
-  border-left: 2px solid #C8C8C8;
+  //border-left: 2px solid #C8C8C8;
 
   font-size: 0.9rem;
   color: ${(props) => props.theme.black};
